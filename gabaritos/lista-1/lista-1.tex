@@ -1,0 +1,220 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel} %\usepackage[latin1]{inputenc}
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage{enumerate}
+\usepackage{xifthen} \usepackage{tikz} 
+\usepackage{float, framed}  
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+\numberwithin{equation}{section}
+
+\setlength{\parindent}{12 pt} 
+
+\newfloat{Box}{h}{lob}[section]
+
+% Changes tombstone
+% \renewcommand{\qedsymbol}{\textcolor{white}{\rule{1.3ex}{1.3ex}}}
+
+\newenvironment{sol}
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm}
+}
+{}
+\begin{document}
+
+\newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+\newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+\newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+\newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+\newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+\newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+\newtheorem*{hipo}{Hipóteses}
+\newtheorem*{nota}{Notação}
+% \newtheorem*{sol}{Solução} 
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfb}{\mathbf{b}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfa}{\mathbf{a}}
+
+\newcommand{\bvecc}[2]{%
+  \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+  \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+
+\title{Álgebra Linear - Gabarito da Lista de Exercícios 1}
+
+\author{Caio Lins e Tiago Silva}
+
+\date{\today}
+
+\maketitle
+
+\begin{enumerate}
+
+%\item Ache uma combinação linear de $\bfw_1$, $\bfw_2$ e $\bfw_3$ que dê o vetor zero:
+%$$\bfw_1 = \bveccc{1}{2}{3}, \bfw_2 = \bveccc{4}{5}{6} \mbox{ e } \bfw_3 = \bveccc{7}{8}{9}.$$
+%
+%\item Multiplique $\begin{bmatrix}
+%1 & 2 & 0 \\
+%2 & 0 & 3 \\
+%4 & 1 & 1
+%\end{bmatrix} \bveccc{3}{-2}{1}$.
+
+\item Quais condições para $y_1, y_2$ e $y_3$ fazem com que os pontos $(0, y_1)$, $(1, y_2)$ e $(2, y_3)$ caiam numa reta?
+
+\begin{sol} 
+	 % escreva sua solução aqui. 
+\end{sol} 
+
+\item Se $(a,b)$ é um múltiplo de $(c,d)$ e são todos não-zeros, mostre que $(a,c)$ é um múltiplo de $(b,d)$. O que isso nos diz sobre a matriz
+$$A = \begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}?$$ 
+
+\begin{sol} 
+	 % escreva sua solução aqui. 
+\end{sol} 
+
+\item Se $\bfw$ e $\bfv$ são vetores unitários, calcule os produtos internos de (a) $\bfv$ e $-\bfv$; (b) $\bfv + \bfw$ e $\bfv - \bfw$; (c) $\bfv - 2\bfw$ e $\bfv + 2\bfw$.
+
+\begin{sol} 
+	 % escreva sua solução aqui. 
+\end{sol} 
+
+\item Se $\| \bfv \| = 5$ e $\| \bfw \| = 3$, quais são o menor e maior valores possíveis para $\|\bfv - \bfw\|$? E para $\bfv \cdot \bfw$?
+
+\begin{sol} 
+	 % escreva sua solução aqui. 
+\end{sol} 
+
+\item Considere o desenho dos vetores $\bfw$ e $\bfv$ abaixo. Hachure as regiões definidas pelas combinações lineares $c \bfv + d \bfw$ considerando as seguintes restrições: $c + d = 1$ (não necessariamente positivos), $c,d \in [0,1]$ e $c,d \geq 0$ (note que são três regiões distintas).
+
+\begin{center}
+ \begin{tikzpicture}[scale=0.7]
+    \draw[->] (-1,0)--(5,0) node[right]{};
+    \draw[->] (0,-1)--(0,5) node[above]{};
+    
+    \draw[black,-stealth,line width = 0.5mm] (0,0) -- (5,2) node[pos=0.5, anchor=north]{$\bfu$};
+    
+    \draw[black,-stealth,line width = 0.5mm] (0,0) -- (0.7,4)node[pos=0.5, anchor=east]{$\bfw$};
+    
+    \end{tikzpicture}
+\end{center} 
+
+\begin{sol} 
+	 % escreva sua solução aqui. 
+\end{sol} 
+
+\item É possível que três vetores em $\bR^2$ tenham $\bfu \cdot \bfv < 0$, $\bfv \cdot \bfw < 0$ e $\bfu \cdot \bfw < 0$? Argumente.
+
+\begin{sol} 
+	 % escreva sua solução aqui. 
+\end{sol} 
+
+\item Sejam $x,y,z$ satisfazendo $x + y + z = 0$. Calcule o ângulo entre os vetores $(x,y,z)$ e $(z,x,y)$.
+
+\begin{sol} 
+	 % escreva sua solução aqui. 
+\end{sol} 
+
+\item Resolva o sistema linear abaixo:
+$$\begin{bmatrix}
+1 & 0 & 0\\
+1 & 1 & 0\\
+1 & 1 & 1
+\end{bmatrix} \begin{bmatrix}
+x_1\\
+x_2\\
+x_3
+\end{bmatrix} = \begin{bmatrix}
+b_1\\
+b_2\\
+b_3
+\end{bmatrix}.$$
+Escreva a solução $\bfx$ como uma matriz $A$ vezes o vetor $\bfb$.
+
+\begin{sol} 
+	 % escreva sua solução aqui. 
+\end{sol} 
+
+\item Repita o problema acima para a matriz:
+$$\begin{bmatrix}
+-1 & 1 & 0\\
+0 & -1 & 1\\
+0 & 0 & -1
+\end{bmatrix}.$$
+
+\item Considere a equação de recorrência $-x_{i+1} + 2x_i - x_{i-1} = i$ para $i=1,2,3,4$ com $x_0 = x_5 = 0$. Escreva essas equações em notação matricial $A\bfx = \bfb$ e ache $\bfx$.
+
+\begin{sol} 
+	% escreva sua solução aqui. 
+\end{sol} 
+
+\item (Bônus) Use o seguinte código em \texttt{numpy} para gerar um vetor aleatório $\bfv=$\texttt{numpy.random.normal(size
+\\=[3,1])} em $\bR^3$. Fazendo $\bfu = \bfv/\|\bfv\|$ criamos então um vetor unitário aleatório. Crie 30 outros vetores unitários aleatórios $\bfu_j$ (use \texttt{numpy.random.normal(size
+=[3,30])}). Calcule a média dos produtos internos $|\bfu \cdot \bfu_j$ e compare com o valor exato $\frac{1}{\pi}\int_0^\pi |\cos \theta| d\theta = \frac{2}{\pi}$.
+
+\begin{sol} 
+	% escreva sua solução aqui. 
+\end{sol} 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document} 

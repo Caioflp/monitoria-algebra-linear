@@ -1,0 +1,623 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel} %\usepackage[latin1]{inputenc}
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage{enumerate}
+\usepackage{xifthen} \usepackage{tikz} 
+\usepackage{float, framed}  
+\usepackage{enumitem}
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+% Preambulo do Caio
+\input{../preamble}
+
+% \numberwithin{equation}{section}
+
+\setlength{\parindent}{12 pt} 
+
+\newfloat{Box}{h}{lob}[section]
+
+% Changes tombstone
+% \renewcommand{\qedsymbol}{\textcolor{white}{\rule{1.3ex}{1.3ex}}}
+
+\newenvironment{sol}
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm}
+}
+{}
+\begin{document}
+
+% \newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+% \newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+% \newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+% \newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+% 
+% \theoremstyle{definition}
+% \newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+% \newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+% \newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+% \newtheorem*{hipo}{Hipóteses}
+% \newtheorem*{nota}{Notação}
+% \newtheorem*{sol}{Solução} 
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfb}{\mathbf{b}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfa}{\mathbf{a}}
+
+\newcommand{\bvecc}[2]{%
+  \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+  \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+
+\title{Álgebra Linear - Soluções da Lista de Exercícios 1}
+
+\author{Caio Lins e Tiago Silva}
+
+\date{\today}
+
+\maketitle
+
+\begin{enumerate}
+
+%\item Ache uma combinação linear de $\bfw_1$, $\bfw_2$ e $\bfw_3$ que dê o vetor zero:
+%$$\bfw_1 = \bveccc{1}{2}{3}, \bfw_2 = \bveccc{4}{5}{6} \mbox{ e } \bfw_3 = \bveccc{7}{8}{9}.$$
+%
+%\item Multiplique $\begin{bmatrix}
+%1 & 2 & 0 \\
+%2 & 0 & 3 \\
+%4 & 1 & 1
+%\end{bmatrix} \bveccc{3}{-2}{1}$.
+
+\item Quais condições para $y_1, y_2$ e $y_3$ fazem com que os pontos $(0, y_1)$, $(1, y_2)$ e $(2, y_3)$ caiam numa reta?
+
+\begin{sol} 
+    Vamos ver o que tem que acontecer para que \( (2, y_{ 3 }) \) esteja na mesma reta de \( (0, y_{ 1 }) \) e \( ( 1, y_{ 2 } ) \).
+    Essa reta é dada pelo conjunto:
+    \begin{equation*}
+        \left\{ (0, y_{ 1 }) + \lambda (1, y_{ 2 } - y_{ 1 }) : \lambda \in \R \right\}
+    ,\end{equation*}
+    ou seja, pelos pontos da forma \( ( \lambda, y_{ 1 } + \lambda ( y_{ 2 } - y_{ 1 } )) \), onde \( \lambda \in \R \).
+    Igualando isso a \( ( 2, y_{ 3 } ) \), obtemos \( \lambda = 2 \) e \( y_{ 3 } = y_{ 1 } + \lambda ( y_{ 2 } - y_{ 1 } ) \), o que implica \( y_{ 3 } = 2 y_{ 2 } - y_{ 1 } \).
+\end{sol} 
+
+\item Se $(a,b)$ é um múltiplo de $(c,d)$ e são todos não-zeros, mostre que $(a,c)$ é um múltiplo de $(b,d)$. O que isso nos diz sobre a matriz
+$$A = \begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}?$$ 
+
+\begin{sol} 
+    Se \( ( a, b ) \) é múltiplo de \( ( c, d ) \) e são todos não nulos, então \( a = \lambda c \) e \( b = \lambda d \), com \( \lambda \in \R \backslash \left\{ 0 \right\} \).
+    Com isso, temos
+    \begin{align*}
+        ( a, c ) &= ( \lambda c, c ) \\
+                 &= c ( \lambda, 1 ) \\
+                 &= \frac{ c }{ d } ( \lambda d, d ) \\
+                 &= \frac{ c }{ d } ( b, d )
+    .\end{align*}
+    Logo, \( ( a, c ) \) é um múltiplo de \( ( b, d ) \).
+    Pondo \( \alpha = \frac{ c }{ d } \), temos que a matriz \( A \) é singular, visto que
+    \begin{equation*}
+        \begin{bmatrix}
+            a & b \\
+            c & d
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 \\
+            -\alpha
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            a \\
+            c
+        \end{bmatrix}
+        - \alpha
+        \begin{bmatrix}
+            b \\
+            d
+        \end{bmatrix}
+        = 0
+    .\end{equation*}
+\end{sol} 
+
+\item Se $\bfw$ e $\bfv$ são vetores unitários, calcule os produtos internos de (a) $\bfv$ e $-\bfv$; (b) $\bfv + \bfw$ e $\bfv - \bfw$; (c) $\bfv - 2\bfw$ e $\bfv + 2\bfw$.
+
+\begin{sol} 
+    \begin{enumerate}[label=(\alph*)]
+        \item \( \dotprod{\vec{v}, \vec{-v}} = - \dotprod{\vec{v}, \vec{v}} = - \norm{ \bfv }^2 = -1 \)
+        \item 
+            \begin{align*}
+                \dotprod{\bfv + \bfw, \bfv - \bfw}
+                &= \dotprod{\bfv, \bfv} + \dotprod{\bfv, - \bfw} + \dotprod{\bfw, \bfv} + \dotprod{\bfw, - \bfw} \\
+                &= \norm{ \bfv }^2 - \dotprod{\bfv, \bfw} + \dotprod{\bfv, \bfw} - \norm{ \bfw }^2 \\
+                &= 1 - 1 \\
+                &= 0
+            .\end{align*}
+        \item Analogamente, \( \dotprod{\bfv - 2\bfw, \bfv + 2\bfw} = \norm{ \bfv }^2 - \norm{ 2\bfw }^2 = \norm{ \bfv }^2 - 4 \norm{ \bfw }^2 = 1 - 4 = -3 \).
+    \end{enumerate}
+\end{sol} 
+
+\item Se $\| \bfv \| = 5$ e $\| \bfw \| = 3$, quais são o menor e maior valores possíveis para $\|\bfv - \bfw\|$? E para $\bfv \cdot \bfw$?
+
+\begin{sol} 
+    \begin{teo*}[Segunda desigualdade triangular]
+        Dados \( \bfv, \bfw \in \R^{ n } \), temos
+        \begin{equation*}
+            \abs{ \norm{ \bfv } - \norm{ \bfw } } \leq \norm{ \bfv - \bfw }
+        .\end{equation*}
+    \end{teo*}
+    \begin{proof}
+        Pela primeira desigualdade triangular, temos
+        \begin{align*}
+            \norm{ \bfv } &= \norm{ \bfv - \bfw + \bfw } \\
+                          &\leq \norm{ \bfv - \bfw } + \norm{ \bfw }
+        ,\end{align*}
+        o que implica \( \norm{ \bfv } - \norm{ \bfw } \leq \norm{ \bfv - \bfw } \).
+        Trocando os papeis de \( \bfv \) e \( \bfw \) temos \( \norm{ \bfw } - \norm{ \bfv } \leq \norm{ \bfw - \bfv } = \norm{ \bfv - \bfw } \).
+        Sendo assim,
+        \begin{equation*}
+            - ( \norm{ \bfv - \bfw } ) \leq \norm{ \bfv } - \norm{ \bfw } \leq \norm{ \bfv - \bfw }
+        ,\end{equation*}
+        o que implica \( \abs{ \norm{ \bfv } - \norm{ \bfw } } \leq \norm{ \bfv - \bfw } \).
+    \end{proof}
+    \begin{rem*}
+        Não era necessário provar essa desigualdade, nós apenas utilizaremos ela na solução do gabarito e achamos importante que vocês vissem a prova.
+    \end{rem*}
+    Pelas desigualdades triangulares, temos
+    \begin{equation*}
+        2 = \abs{ \norm{ \bfv } - \norm{ \bfw } } \leq \norm{ \bfv - \bfw } \leq \norm{ \bfv } + \norm{ \bfw } = 8
+    .\end{equation*}
+    Para provar que de fato esses são os valores mínimo e máximo que a expressão \( \norm{ \bfv - \bfw } \) pode alcançar, precisamos de mostrar que elas podem ser atingidas.
+    Observe que se \( \bfv = ( 5, \dots, 0 ) \) e \( \bfw = ( 3, \dots, 0 ) \), entao \( \norm{ \bfv - \bfw } = 2 \).
+    Entretanto, se \( \bfv = ( 5, \dots, 0 ) \) mas \( \bfw = ( -3, \dots, 0 ) \), então \( \norm{ \bfv - \bfw } = 8 \).
+
+    Pela desigualdade de Cauchy-Schwarz, temos
+    \begin{equation*}
+        -15 = - \norm{ \bfv } \norm{ \bfw } \leq \dotprod{\bfv, \bfw} \leq \norm{ \bfv } \norm{ \bfw } = 15
+    .\end{equation*}
+    Para provar que esses valores de fato podem ser atingidos, basta considerar os mesmos dois exemplos dados anteriormente.
+\end{sol} 
+
+\item Considere o desenho dos vetores $\bfw$ e $\bfv$ abaixo. Hachure as regiões definidas pelas combinações lineares $c \bfv + d \bfw$ considerando as seguintes restrições: $c + d = 1$ (não necessariamente positivos), $c,d \in [0,1]$ e $c,d \geq 0$ (note que são três regiões distintas).
+
+\begin{center}
+ \begin{tikzpicture}[scale=0.7]
+    \draw[->] (-1,0)--(5,0) node[right]{};
+    \draw[->] (0,-1)--(0,5) node[above]{};
+    
+    \draw[black,-stealth,line width = 0.5mm] (0,0) -- (5,2) node[pos=0.5, anchor=north]{$\bfv$};
+    
+    \draw[black,-stealth,line width = 0.5mm] (0,0) -- (0.7,4)node[pos=0.5, anchor=west]{$\bfw$};
+
+    \end{tikzpicture}
+\end{center} 
+
+\begin{sol} 
+    \begin{enumerate}[label=(\alph*)]
+        \item \( c + d = 1 \).
+
+            Podemos escrever \( c = 1 - d \) e, com isso,
+            \begin{align*}
+                c \bfv + d \bfw &= ( 1 - d ) \bfv + d \bfw \\
+                                &= \bfv - d \bfv + d \bfw \\
+                                &= \bfv + d ( \bfw - \bfv )
+            .\end{align*}
+            Ou seja, o conjunto \( \left\{ c \bfv + d \bfw : c + d = 1 \right\} \) é a reta que passa pelos pontos \( \bfv \) e \( \bfw \).
+            \begin{center}
+             \begin{tikzpicture}[scale=0.7]
+                \draw[->] (-1,0)--(5,0) node[right]{};
+                \draw[->] (0,-1)--(0,5) node[above]{};
+                
+                \draw[black,-stealth,line width = 0.5mm] (0,0) -- (5,2) node[pos=0.5, anchor=north]{$\bfv$};
+                \draw[black,-stealth,line width = 0.5mm] (0,0) -- (0.7,4)node[pos=0.5, anchor=west]{$\bfw$};
+
+                \draw[red, line width=0.5mm, <->] (6.4333333,1.33333333)--(-0.7333333,4.66666) node[above]{};
+                \end{tikzpicture}
+            \end{center} 
+
+        \item \( c, d \in [0, 1] \)
+
+            A região formada será o paralelogramo de vértices \( 0, \bfv, \bfw \) e \( \bfv + \bfw \).
+            \begin{center}
+             \begin{tikzpicture}[scale=0.7]
+                \draw[->] (-1,0)--(5,0) node[right]{};
+                \draw[->] (0,-1)--(0,5) node[above]{};
+                
+                \filldraw [fill=pink, even odd rule] (0,0) -- (5,2) -- (5.7,6) -- (0.7,4) -- cycle;
+
+                \draw[black,-stealth,line width = 0.5mm] (0,0) -- (5,2) node[pos=0.5, anchor=north]{$\bfv$};
+                \draw[black,-stealth,line width = 0.5mm] (0,0) -- (0.7,4)node[pos=01, anchor=east]{$\bfw$};
+                \draw[black,-stealth,line width = 0.5mm] (5,2) -- (5.7,6);
+                \draw[black,-stealth,line width = 0.5mm] (0.7, 4) -- (5.7,6);
+                \end{tikzpicture}
+            \end{center} 
+
+        \item \( c, d \geq 0 \)
+
+            A região formada será a parcela do plano contida entre as semirretas \( \left\{ \lambda \bfv : \lambda \geq 0 \right\} \) e \( \left\{ \lambda \bfw : \lambda \geq 0 \right\} \).
+
+            \begin{center}
+             \begin{tikzpicture}[scale=0.7]
+                \draw[->] (-1,0)--(5,0) node[right]{};
+                \draw[->] (0,-1)--(0,5) node[above]{};
+
+                \filldraw [fill=pink, even odd rule] (0,0) -- (14,5.6) -- (7,5.6) -- (0.98,5.6) -- cycle;
+                
+                \draw[black,-stealth,line width = 0.5mm] (0,0) -- (5,2) node[pos=0.5, anchor=north]{$\bfv$};
+                \draw[black,-stealth,line width = 0.5mm] (0,0) -- (0.7,4)node[pos=01, anchor=east]{$\bfw$};
+
+                \end{tikzpicture}
+            \end{center} 
+    \end{enumerate}
+\end{sol} 
+
+\item É possível que três vetores em $\bR^2$ tenham $\bfu \cdot \bfv < 0$, $\bfv \cdot \bfw < 0$ e $\bfu \cdot \bfw < 0$? Argumente.
+
+\begin{sol} 
+	 É possível.
+     Intuitivamente, o produto interno entre dois vetores é negativo se eles ``apontam em direções opostas''.
+     Matematicamente, como, em \( \R^{ 2 } \), \( \dotprod{\bfv, \bfw} = \norm{ \bfv } \norm{ \bfw } \cos \theta \), onde \( \theta \) é o menor ângulo entre \( \bfv \) e \( \bfw \), só temos \( \dotprod{\bfv, \bfw} < 0 \) se ambos são não nulos e \( \cos \theta < 0 \), ou seja, se \( \theta > \frac{ \pi }{ 2 } \).
+     Logo, tomando \( \bfu, \bfw \) e \( \bfv \) como vetores unitários tais que quaisquer dois deles são separados por um ângulo de \( \frac{ 2 \pi }{ 3 } \) (ou \( 120^{ \circ } \)), como na figura abaixo, teremos necessariamente \( \dotprod{\bfu, \bfv} < 0, \dotprod{\bfu, \bfw} < 0 \) e \( \dotprod{\bfv, \bfw} < 0 \).
+    \begin{center}
+     \begin{tikzpicture}[scale=0.7]
+        \draw[->] (-4,0)--(4,0) node[right]{};
+        \draw[->] (0,-4)--(0,5) node[above]{};
+        
+        \draw[black,-stealth,line width = 0.5mm] (0,0) -- (0,3) node[pos=0.5, anchor=west]{$\bfv$};
+        \draw[black,-stealth,line width = 0.5mm] (0,0) -- (2.5980,-1.5)node[pos=1, anchor=north]{$\bfw$};
+        \draw[black,-stealth,line width = 0.5mm] (0,0) -- (-2.5980,-1.5)node[pos=1, anchor=north]{$\bfu$};
+        \end{tikzpicture}
+    \end{center} 
+\end{sol} 
+
+
+\item Sejam $x,y,z$ satisfazendo $x + y + z = 0$. Calcule o ângulo entre os vetores $(x,y,z)$ e $(z,x,y)$.
+
+\begin{sol} 
+    Seja \( \bfv = (x, y, z) \) e \( \bfw = (z, x, y) \).
+    Vamos supor ambos vetores não nulos, pois caso contrário a pergunta não faz sentido.
+    O ângulo entre \( \bfv \) e \( \bfw \) é definido como o número \( \theta \in [ 0, \pi ] \) tal que
+    \begin{equation}
+        \cos \theta = \frac{ \dotprod{\bfv, \bfw} }{ \norm{ \bfv } \norm{ \bfw } }
+        \label{eq: cos}
+    .\end{equation}
+    Expandindo o lado direito de (\ref{eq: cos}), temos 
+    \begin{align}
+        \frac{ \dotprod{\bfv, \bfw} }{ \norm{ \bfv } \norm{ \bfw } }
+        &= \frac{ xz + yx + zy }{ \sqrt{ x^2 + y^2 + z^2 } \sqrt{ z^2 + x^2 + y^2 } } \nonumber \\
+        &= \frac{ xz + yx + zy }{ \sqrt{ (x^2 + y^2 + z^2)^2 } } \nonumber \\
+        &= \frac{ xz + yx + zy }{ x^2 + y^2 + z^2 } \label{eq: expand_cos}
+    .\end{align}
+    Agora perceba que
+    \begin{equation*}
+        0 = ( x + y + z )^2 = x^2 + y^2 + z^2 + 2 ( xz + yx + zy )
+    .\end{equation*}
+    Logo,
+    \begin{equation*}
+        xz + yx + zy = - \frac{ 1 }{ 2 } ( x^2 + y^2 + z^2 )
+    .\end{equation*}
+    Substituindo em (\ref{eq: expand_cos}), ficamos com
+    \begin{equation*}
+        \cos \theta = - \frac{ 1 }{ 2 }
+    ,\end{equation*}
+    o que implica \( \theta = \frac{ 2 \pi }{ 3 } \).
+\end{sol} 
+
+\item Resolva o sistema linear abaixo:
+$$\begin{bmatrix}
+1 & 0 & 0\\
+1 & 1 & 0\\
+1 & 1 & 1
+\end{bmatrix} \begin{bmatrix}
+x_1\\
+x_2\\
+x_3
+\end{bmatrix} = \begin{bmatrix}
+b_1\\
+b_2\\
+b_3
+\end{bmatrix}.$$
+Escreva a solução $\bfx$ como uma matriz $A$ vezes o vetor $\bfb$.
+
+\begin{sol} 
+	 Vamos prosseguir por eliminação gaussiana na matriz aumentada do sistema.
+     \begin{align*}
+         \begin{bmatrix}
+             1 & 0 & 0 & \mid & b_{ 1 } \\
+             1 & 1 & 0 & \mid & b_{ 2 }\\
+             1 & 1 & 1 & \mid & b_{ 3 }
+         \end{bmatrix}
+         &\xrightarrow{
+             \begin{array}{l}
+                 L_{ 2 } - L_{ 1 } \\
+                 L_{ 3 } - L_{ 1 }
+             \end{array}
+         }
+         \begin{bmatrix}
+             1 & 0 & 0 & \mid & b_{ 1 } \\
+             0 & 1 & 0 & \mid & b_{ 2 } - b_{ 1 } \\
+             0 & 1 & 1 & \mid & b_{ 3 } - b_{ 1 }
+         \end{bmatrix} \\
+         &\xrightarrow{
+             \begin{array}{l}
+                 L_{ 3 } - L_{ 2 }
+             \end{array}
+         }
+         \begin{bmatrix}
+             1 & 0 & 0 & \mid & b_{ 1 } \\
+             0 & 1 & 0 & \mid & b_{ 2 } - b_{ 1 } \\
+             0 & 0 & 1 & \mid & b_{ 3 } - b_{ 2 }
+         \end{bmatrix}
+     .\end{align*}
+     Assim,
+     \begin{equation*}
+         \bfx =
+         \begin{bmatrix}
+             b_{ 1 } \\
+             b_{ 2 } - b_{ 1 } \\
+             b_{ 3 } - b_{ 2 }
+         \end{bmatrix}
+     .\end{equation*}
+\end{sol} 
+Olhando cada linha de \( \bfx \) como uma combinação linear das entradas de \( \bfb \), podemos reescrevê-lo como
+\begin{equation*}
+    \bfx =
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        -1 & 1 & 0 \\
+        0 & -1 & 1
+    \end{bmatrix}
+    \bfb
+.\end{equation*}
+
+\item Repita o problema acima para a matriz:
+$$\begin{bmatrix}
+-1 & 1 & 0\\
+0 & -1 & 1\\
+0 & 0 & -1
+\end{bmatrix}.$$
+
+\begin{sol}
+    Novamente, prosseguiremos por eliminação gaussiana na matriz aumentada do sistema.
+    \begin{align*}
+    \begin{bmatrix}
+        -1 & 1  & 0  & \mid & b_{ 1 } \\
+        0  & -1 & 1  & \mid & b_{ 2 } \\
+        0  & 0  & -1 & \mid & b_{ 3 } \\
+    \end{bmatrix}
+    & \xrightarrow{ 
+        \begin{array}{l}
+            L_{ 1 } + L_{ 2 }
+        \end{array}
+    }
+    \begin{bmatrix}
+        -1 & 0  & 1  & \mid & b_{ 1 } + b_{ 2 } \\
+        0  & -1 & 1  & \mid & b_{ 2 } \\
+        0  & 0  & -1 & \mid & b_{ 3 } \\
+    \end{bmatrix} \\
+    &\xrightarrow{ 
+        \begin{array}{l}
+            L_{ 1 } + L_{ 3 } \\
+            L_{ 2 } + L_{ 3 }
+        \end{array}
+    }
+    \begin{bmatrix}
+        -1 & 0  & 0  & \mid & b_{ 1 } + b_{ 2 } + b_{ 3 } \\
+        0  & -1 & 0  & \mid & b_{ 2 } + b_{ 3 } \\
+        0  & 0  & -1 & \mid & b_{ 3 } \\
+    \end{bmatrix} \\
+    & \xrightarrow{ 
+        \begin{array}{l}
+            ( -1 ) \cdot L_{ 1 } \\
+            ( -1 ) \cdot L_{ 2 } \\
+            ( -1 ) \cdot L_{ 3 }
+        \end{array}
+    }
+    \begin{bmatrix}
+        1 & 0  & 0  & \mid & - ( b_{ 1 } + b_{ 2 } + b_{ 3 } ) \\
+        0  & 1 & 0  & \mid & - ( b_{ 2 } + b_{ 3 } ) \\
+        0  & 0  & 1 & \mid & - ( b_{ 3 } ) \\
+    \end{bmatrix} \\
+    .\end{align*}
+    Analogamente à questão anterior, temos
+    \begin{equation*}
+        \bfx =
+        \begin{bmatrix}
+            - ( b_{ 1 } + b_{ 2 } + b_{ 3 } ) \\
+            - ( b_{ 2 } + b_{ 3 } ) \\
+            - ( b_{ 3 } ) \\
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            -1 & -1 & -1 \\
+            0 & -1 & -1 \\
+            0 & 0 & -1
+        \end{bmatrix}
+        \bfb
+    .\end{equation*}
+\end{sol}
+
+\item Considere a equação de recorrência $-x_{i+1} + 2x_i - x_{i-1} = i$ para $i=1,2,3,4$ com $x_0 = x_5 = 0$. Escreva essas equações em notação matricial $A\bfx = \bfb$ e ache $\bfx$.
+
+\begin{sol} 
+    Vamos escrever cada uma dessas equações:
+    \begin{equation*}
+        \begin{cases}
+            -x_{ 2 } + 2 x_{ 1 } - x_{ 0 } = 1 \\
+            -x_{ 3 } + 2 x_{ 2 } - x_{ 1 } = 2 \\
+            -x_{ 4 } + 2 x_{ 3 } - x_{ 2 } = 3 \\
+            -x_{ 5 } + 2 x_{ 4 } - x_{ 3 } = 4 \\
+        \end{cases}
+    .\end{equation*}
+    Substituindo os valores de \( x_{ 0 } \) e \( x_{ 5 } \) e reordenando os termos, ficamos com o sistema:
+    \begin{equation*}
+        \begin{cases}
+            2 x_{ 1 } - x_{ 2 }  = 1 \\
+            - x_{ 1 } + 2 x_{ 2 } - x_{ 3 } = 2 \\
+            - x_{ 2 } + 2 x_{ 3 } - x_{ 4 } = 3 \\
+            - x_{ 3 } + 2 x_{ 4 } = 4 \\
+        \end{cases}
+    ,\end{equation*}
+    o qual, escrito matricialmente, tem a seguinte forma:
+    \begin{equation*}
+        \begin{bmatrix}
+            2 & -1 & 0 & 0 \\
+            -1 & 2 & -1 & 0 \\
+            0 & -1 & 2 & -1 \\
+            0 & 0 & -1 & 2
+        \end{bmatrix}
+        \begin{bmatrix}
+            x_{ 1 } \\
+            x_{ 2 } \\
+            x_{ 3 } \\
+            x_{ 4 } \\
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            1 \\
+            2 \\
+            3 \\
+            4
+        \end{bmatrix}
+    .\end{equation*}
+    Resolvendo por eliminação gaussiana na matriz aumentada do sistema, ficamos com:
+    \begin{align*}
+        \begin{bmatrix}
+            2 & -1 & 0 & 0  & \mid & 1 \\
+            -1 & 2 & -1 & 0 & \mid & 2 \\
+            0 & -1 & 2 & -1 & \mid & 3 \\
+            0 & 0 & -1 & 2  & \mid & 4
+        \end{bmatrix}
+        & \xrightarrow{
+            \begin{array}{l}
+                L_{ 2 } + \frac{ 1 }{ 2 } L_{ 1 }
+            \end{array}
+        }
+        \begin{bmatrix}
+            2 & -1 & 0 & 0  & \mid & 1 \\
+            0 & 3/2 & -1 & 0 & \mid & 5/2 \\
+            0 & -1 & 2 & -1 & \mid & 3 \\
+            0 & 0 & -1 & 2  & \mid & 4
+        \end{bmatrix} \\
+        & \xrightarrow{
+            \begin{array}{l}
+                L_{ 1 } + \frac{ 2 }{ 3 }L_{ 2 } \\
+                L_{ 3 } + \frac{ 2 }{ 3 }L_{ 2 }
+            \end{array}
+        }
+        \begin{bmatrix}
+            2 & 0 & -2/3 & 0  & \mid & 8/3 \\
+            0 & 3/2 & -1 & 0 & \mid & 5/2 \\
+            0 & 0 & 4/3 & -1 & \mid & 14/3 \\
+            0 & 0 & -1 & 2  & \mid & 4
+        \end{bmatrix} \\
+        & \xrightarrow{
+            \begin{array}{l}
+                L_{ 1 } + \frac{ 1 }{ 2 } L_{ 3 } \\
+                L_{ 2 } + \frac{ 3 }{ 4 } L_{ 3 } \\
+                L_{ 4 } + \frac{ 3 }{ 4 } L_{ 3 }
+            \end{array}
+        }
+        \begin{bmatrix}
+            2 & 0 & 0 & -1/2  & \mid & 5 \\
+            0 & 3/2 & 0 & -3/4 & \mid & 6 \\
+            0 & 0 & 4/3 & -1 & \mid & 14/3 \\
+            0 & 0 & 0 & 5/4  & \mid & 15/2
+        \end{bmatrix} \\
+        & \xrightarrow{
+            \begin{array}{l}
+                1/2 \cdot L_{ 1 } \\
+                2/3 \cdot L_{ 2 } \\
+                3/4 \cdot L_{ 3 } \\
+                4/5 \cdot L_{ 4 }
+            \end{array}
+        }
+        \begin{bmatrix}
+            1 & 0 & 0 & -1/4  & \mid & 5/2 \\
+            0 & 1 & 0 & -1/2 & \mid & 4 \\
+            0 & 0 & 1 & -3/4 & \mid & 7/2 \\
+            0 & 0 & 0 & 1  & \mid & 6
+        \end{bmatrix} \\
+        & \xrightarrow{
+            \begin{array}{l}
+                L_{ 1 } + \frac{ 1 }{ 4 } L_{ 4 } \\
+                L_{ 2 } + \frac{ 1 }{ 2 } L_{ 4 } \\
+                L_{ 3 } + \frac{ 3 }{ 4 } L_{ 4 }
+            \end{array}
+        }
+        \begin{bmatrix}
+            1 & 0 & 0 & 0  & \mid & 4 \\
+            0 & 1 & 0 & 0 & \mid & 7 \\
+            0 & 0 & 1 & 0 & \mid & 8 \\
+            0 & 0 & 0 & 1  & \mid & 6
+        \end{bmatrix}
+    .\end{align*}
+    Portanto,
+    \begin{equation*}
+        \begin{bmatrix}
+            x_{ 1 } \\
+            x_{ 2 } \\
+            x_{ 3 } \\
+            x_{ 4 } \\
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            4 \\
+            7 \\
+            8 \\
+            6
+        \end{bmatrix}
+    .\end{equation*}
+\end{sol} 
+
+\item (Bônus) Use o seguinte código em \texttt{numpy} para gerar um vetor aleatório $\bfv=$\texttt{numpy.random.normal(size
+\\=[3,1])} em $\bR^3$. Fazendo $\bfu = \bfv/\|\bfv\|$ criamos então um vetor unitário aleatório. Crie 30 outros vetores unitários aleatórios $\bfu_j$ (use \texttt{numpy.random.normal(size
+=[3,30])}). Calcule a média dos produtos internos $|\bfu \cdot \bfu_j|$ e compare com o valor exato $\frac{1}{\pi}\int_0^\pi |\cos \theta| d\theta = \frac{2}{\pi}$.
+
+\begin{rem*}
+    Aqui não há uma ``solução'', mas é interessante perceber intuitivamente por que isso ocorre.
+    Como todos os vetores são unitários, temos que \( \abs{ \dotprod{\bfu, \bfu_{ j }} } = \cos \theta \), onde \( \theta \in [0, \pi] \) é o ângulo entre os vetores \( \bfu \) e \( \bfu_{ j } \).
+    Como esses vetores são escolhidos aleatoriamente, o que estamos fazendo na verdade é calcular a média dos módulos dos cossenos de \( 30 \) ângulos escolhidos aleatoriamente entre \( [0, \pi] \).
+    Quando o número de amostragens cresce, essa média deve se aproximar da ``média'' da função \( \abs{ \cos \theta } \) no intervalo \( [0, \pi] \), dada, como vocês podem lembrar de Cálculo 1, pela integral fornecida.
+\end{rem*}
+\end{enumerate}
+\end{document} 

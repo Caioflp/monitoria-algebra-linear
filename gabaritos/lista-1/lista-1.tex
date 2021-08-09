@@ -206,7 +206,7 @@ c & d
     \begin{equation*}
         2 = \abs{ \norm{ \bfv } - \norm{ \bfw } } \leq \norm{ \bfv - \bfw } \leq \norm{ \bfv } + \norm{ \bfw } = 8
     .\end{equation*}
-    Para provar que de fato esses são os valores mínimo e máximo que a expressão \( \norm{ \bfv - \bfw } \) pode alcançar, precisamos de mostrar que elas podem ser atingidas.
+    Para provar que de fato esses são os valores mínimo e máximo que a expressão \( \norm{ \bfv - \bfw } \) pode alcançar, precisamos de mostrar que eles podem ser atingidos.
     Observe que se \( \bfv = ( 5, \dots, 0 ) \) e \( \bfw = ( 3, \dots, 0 ) \), entao \( \norm{ \bfv - \bfw } = 2 \).
     Entretanto, se \( \bfv = ( 5, \dots, 0 ) \) mas \( \bfw = ( -3, \dots, 0 ) \), então \( \norm{ \bfv - \bfw } = 8 \).
 
@@ -609,15 +609,32 @@ $$\begin{bmatrix}
     .\end{equation*}
 \end{sol} 
 
+\newpage
+
 \item (Bônus) Use o seguinte código em \texttt{numpy} para gerar um vetor aleatório $\bfv=$\texttt{numpy.random.normal(size
-\\=[3,1])} em $\bR^3$. Fazendo $\bfu = \bfv/\|\bfv\|$ criamos então um vetor unitário aleatório. Crie 30 outros vetores unitários aleatórios $\bfu_j$ (use \texttt{numpy.random.normal(size
-=[3,30])}). Calcule a média dos produtos internos $|\bfu \cdot \bfu_j|$ e compare com o valor exato $\frac{1}{\pi}\int_0^\pi |\cos \theta| d\theta = \frac{2}{\pi}$.
+\\=[2,1])} em $\bR^3$. Fazendo $\bfu = \bfv/\|\bfv\|$ criamos então um vetor unitário aleatório. Crie 30 outros vetores unitários aleatórios $\bfu_j$ (use \texttt{numpy.random.normal(size
+=[2,30])}). Calcule a média dos produtos internos $|\bfu \cdot \bfu_j|$ e compare com o valor exato $\frac{1}{\pi}\int_0^\pi |\cos \theta| d\theta = \frac{2}{\pi}$.
 
 \begin{rem*}
     Aqui não há uma ``solução'', mas é interessante perceber intuitivamente por que isso ocorre.
-    Como todos os vetores são unitários, temos que \( \abs{ \dotprod{\bfu, \bfu_{ j }} } = \cos \theta \), onde \( \theta \in [0, \pi] \) é o ângulo entre os vetores \( \bfu \) e \( \bfu_{ j } \).
+    Como todos os vetores são unitários, temos que \( \abs{ \dotprod{\bfu, \bfu_{ j }} } = \abs{ \cos \theta } \), onde \( \theta \in [0, \pi] \) é o ângulo entre os vetores \( \bfu \) e \( \bfu_{ j } \).
     Como esses vetores são escolhidos aleatoriamente, o que estamos fazendo na verdade é calcular a média dos módulos dos cossenos de \( 30 \) ângulos escolhidos aleatoriamente entre \( [0, \pi] \).
-    Quando o número de amostragens cresce, essa média deve se aproximar da ``média'' da função \( \abs{ \cos \theta } \) no intervalo \( [0, \pi] \), dada, como vocês podem lembrar de Cálculo 1, pela integral fornecida.
+    Quando o número de amostragens cresce, essa média deve se aproximar da ``média'' da função \( \abs{ \cos \theta } \) no intervalo \( [0, \pi] \), dada pela integral fornecida.
+    A realidade, entretanto, é mais complicada que isso.
+    O que acontece é que a distribuição de probabilidade do ângulo entre cada vetor \( \bfu_{ j } \) e o vetor \( \bfu \) é uniforme no intervalo \( [0, \pi] \), sendo que esse é um fato verificado apenas em dimensão \( 2 \).
+    Com isso, pela Lei dos Grandes Números, que vocês estudarão em Teoria da Probabilidade, a média dos valores \( \abs{ \dotprod{\bfu, \bfu_{ j }} } \) deve se aproximar do valor esperado\footnotemark da variável aleatória \( Y = \abs{ \cos(\Theta) } \), onde \( \Theta \) tem distribuição uniforme em \( [0, \pi] \).
+    Esse valor esperado é dado pela integral fornecida.
+
+    \footnotetext{Intuitivamente, o valor esperado de uma variável aleatória é uma média ponderada dos valores que ela pode assumir, utilizando como pesos as probabilidades dela assumir cada valor.
+    Por exemplo, suponha que você jogou uma moeda justa para cima, e seja \( X \) uma variável aleatória que é igual a \( 0 \) se caiu cara e \( 1 \) se caiu coroa.
+Então o valor esperado de \( X \) é dado por
+\begin{equation*}
+    \mathbb{E}[X] = 1 \cdot \mathbb{P}(X = 1) + 0 \cdot \mathbb{P}(X = 0)
+                  = 1 \cdot \frac{ 1 }{ 2 } + 0 \cdot \frac{ 1 }{ 2 }
+                  = \frac{ 1 }{ 2 }
+.\end{equation*}
+    No caso em que a variável aleatória assume valores num contínuo, seu valor esperado é dado por uma integral.
+}
 \end{rem*}
 \end{enumerate}
 \end{document} 

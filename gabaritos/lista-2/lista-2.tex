@@ -1,0 +1,590 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel} 
+\usepackage[utf8]{inputenc}
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage{enumerate}
+\usepackage{xifthen} \usepackage{tikz}
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+% \numberwithin{equation}{section}
+
+\setlength{\parindent}{12 pt}
+
+\begin{document}
+
+\newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+\newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+\newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+\newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+\newtheorem{proposition}{Proposição} 
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+\newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+\newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+\newtheorem*{hipo}{Hipóteses}
+\newtheorem*{nota}{Notação}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+
+\newenvironment{sol}
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm}
+}
+{}
+
+\newcommand{\bvecc}[2]{%
+  \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+  \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+
+\title{Álgebra Linear - Lista de Exercícios 2}
+
+\author{Caio Lins e Tiago da Silva}
+
+\date{}
+
+\maketitle
+
+Vamos, por conveniência, declarar algumas notações. Daqui em diante, $\mathbb{R}^{m \times n}$ representa o conjunto das matrizes de dimensão $m \times n$; em particular, identificamos por $\mathbb{R}^{m}$ o conjunto dos vetores colunas $\mathbb{R}^{m \times 1}$. Além disso, escrevemos $E_{ij}(p) = I + p \Delta_{ij}$, em que $I$ é a matriz identidade (o tamanho, em geral, é contextualizado no enunciado) e $\Delta_{ij} = (\delta_{ab})$ satisfaz $\delta_{ij} = 1$ e $\delta_{ab} = 0$ se $(a, b) \neq (i, j)$; por exemplo, 
+
+\begin{equation*} 
+	E_{32}(9) = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 9 & 1 \end{bmatrix}. 
+\end{equation*} 
+
+\noindent Perceba, aliás, que a operação elementar que consiste em somar $p$ vezes a linha $j$ na linha $i$ equivale à multiplicação (à esquerda) por $E_{ij}(p)$. 
+
+Enunciamos, adicionalmente, a proposição seguinte, que estabelece uma forma mais agradável de operar com matrizes esparsas. Ela é particularmente importante para a questão sete, em que devem ser computadas algumas matrizes inversas.  
+
+\begin{proposition}[Multiplicação em Blocos] \label{mul}  
+	Sejam $\{A_{1}, \cdots, A_{n}\}$ e $\{B_{1}, \cdots, B_{n}\}$ conjuntos de matrizes tais que $A_{i} \in \mathbb{R}^{a_{i} \times n_{i}}$ e $B_{i} \in \mathbb{R}^{n_{i} \times b_{i}}$, com $a_{i}, b_{i}, n_{i} \in \mathbb{N}$. Se, nesse sentido, 
+
+	\begin{equation*} 
+		A = 
+		\begin{bmatrix} 
+			A_{1} & \cdots & 0 \\ 
+			\vdots & \ddots & \vdots \\ 
+			0 & \cdots & A_{n} \\ 
+		\end{bmatrix}, \  
+		B = 
+		\begin{bmatrix} 
+			B_{1} & \cdots & 0 \\ 
+			\vdots & \ddots & \vdots \\ 
+			0 & \cdots & B_{n} \\ 
+		\end{bmatrix}, \ 
+		\tilde A = 
+		\begin{bmatrix} 
+			0 & \cdots & A_{1} \\ 
+			\vdots & \ddots & \vdots \\ 
+			A_{n} & \cdots & 0 \\ 
+		\end{bmatrix} 
+		\text{ e } 
+		\tilde B = 
+		\begin{bmatrix} 
+			0 & \cdots & B_{1} \\ 
+			\vdots & \ddots & \vdots \\ 
+			B_{n} & \cdots & 0 \\ 
+		\end{bmatrix}, 
+	\end{equation*} 
+	
+	\noindent então 
+
+	\begin{equation*} 
+		AB = 
+		\begin{bmatrix} 
+			A_{1}B_{1} & \cdots & 0 \\ 
+			\vdots & \ddots & \vdots \\ 
+			0 & \cdots & A_{n}B_{n} \\ 
+		\end{bmatrix} 
+		\text{ e } 
+		\tilde A \tilde B = 
+		\begin{bmatrix} 
+			A_{1}B_{n} & \cdots & 0 \\ 
+			\vdots & \ddots & \vdots \\ 
+			0 & \cdots & A_{n}B_{1} \\  
+		\end{bmatrix}. 
+	\end{equation*} 
+
+	\noindent Em particular, $A$ e $\tilde A$ são invertíveis se, e somente se, cada $A_{i}$, $1 \le i \le n$, o é; nesse caso, 
+	\begin{equation*} 
+		A^{-1} = 
+		\begin{bmatrix} 
+			A_{1}^{-1} & \cdots & 0 \\ 
+			\vdots & \ddots & \vdots \\ 
+			0 & \cdots & A_{n}^{-1} \\ 
+		\end{bmatrix} 
+		\text{ e } 
+		\tilde A^{-1} = 
+		\begin{bmatrix} 
+			0 & \cdots & A_{n}^{-1} \\ 
+			\vdots & \ddots & \vdots \\ 
+			A_{1}^{-1} & \cdots & 0 \\ 
+		\end{bmatrix}. 
+	\end{equation*} 
+\end{proposition} 
+
+\begin{enumerate}
+
+\item Ache a matriz de eliminação $E$ que reduz a matriz de Pascal em uma menor:
+$$E \begin{bmatrix} 1 & 0 & 0 & 0 \\
+1 & 1 & 0 & 0 \\
+1 & 2 & 1 & 0 \\
+1 & 3 & 3 & 1
+\end{bmatrix} = \begin{bmatrix} 1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 1 & 1 & 0 \\
+0 & 1 & 2 & 1 
+\end{bmatrix}.$$
+Qual matriz $M$ reduz a matriz de Pascal à matriz identidade?
+
+\begin{sol} 
+	Seja $P$ a matriz de Pascal. Precisamos, a partir do método da eliminação de Gauss, subtrair a linha um das linhas dois, três e quatro; isso equivale a multiplicar por $E_{41}(-1)E_{31}(-1)E_{21}(-1)$. Ficamos, assim, com 
+
+	\begin{equation*} 
+		E_{41}(-1)E_{31}(-1)E_{21}(-1)P = 
+		\begin{bmatrix} 
+			1 & 0 & 0 & 0 \\ 
+			0 & 1 & 0 & 0 \\ 
+			0 & 2 & 1 & 0 \\ 
+			0 & 3 & 3 & 1 \\ 
+		\end{bmatrix}.  
+	\end{equation*} 
+	
+	\noindent Subtraímos, agora, a linha dois das linhas três e quatro; em seguida, subtraímos a linha três da linha quatro. Ora, esse conjunto de operações é equivalente à multiplicação (à esquerda) por $E_{34}(-1)E_{23}(-1)E_{24}(-1)$. Portanto, 
+
+	\begin{equation*} 
+		E_{34}(-1)E_{23}(-1)E_{24}(-1)E_{41}(-1)E_{31}(-1)E_{21}(-1)P = 
+	\begin{bmatrix} 
+		1 & 0 & 0 & 0 \\ 
+		0 & 1 & 0 & 0 \\ 
+		0 & 1 & 1 & 0 \\ 
+		0 & 1 & 2 & 1 \\ 
+	\end{bmatrix}, 
+	\end{equation*} 
+
+	\noindent e, dessa maneira, $E = E_{34}(-1)E_{23}(-1)E_{24}(-1)E_{41}(-1)E_{31}(-1)E_{21}(-1)$; essa expressão é igual a 
+
+	\begin{equation*} 
+		\begin{bmatrix} 
+			1 & 0 & 0 & 0 \\ 
+			-1 & 1 & 0 & 0 \\ 
+			0 & -1 & 1 & 0 \\ 
+			0 & 0 & -1 & 1 \\ 
+		\end{bmatrix}.  
+	\end{equation*} 
+
+	\noindent Perceba, dessa maneira, que, para transformarmos $EP$ na matriz identidade, podemos subtrair a linha dois das linhas três e quatro e, então, subtrair o dobro da linha três da linha quatro, o que equivale a multiplicar (à esquerda) por $E_{34}(-2)E_{23}(-1)E_{24}(-1)$. Logo, $M = E_{34}(-2)E_{23}(-1)E_{24}(-1)E$, de modo que 
+
+	\begin{equation*} 
+		M = 
+		\begin{bmatrix} 
+			1 & 0 & 0 & 0 \\ 
+			-1 & 1 & 0 & 0 \\ 
+			1 & -2 & 1 & 0 \\ 
+			-1 & 3 & -3 & 1 \\ 
+		\end{bmatrix}.  
+	\end{equation*} 
+
+\end{sol} 
+
+\item Use o método de Gauss-Jordan para achar a inversa da matriz triangular \textbf{superior}\footnote{O enunciado original estava equivocado; a matriz $U$ é \textit{triangular superior}.}:
+$$U = \begin{bmatrix} 1 & a & b  \\
+0 & 1 & c  \\
+0 & 0 & 1 
+\end{bmatrix}.$$
+
+\begin{sol} 
+	O procedimento é similar ao da questão um. Iniciamos, assim, subtraindo $a$ vezes a linha dois da linha um e, em seguida, $b - ac$ vezes a linha três da linha um; essas operações, que equivalem à multiplicação (à esquerda) por $E_{13}(-(b - ac))E_{12}(-a)$, culminam em
+	
+	\begin{equation*} 
+		E_{13}(ac - b)E_{12}(-a)U = 
+		\begin{bmatrix} 
+			1 & 0 & 0 \\ 
+			0 & 1 & c \\ 
+			0 & 0 & 1 \\ 
+		\end{bmatrix}.  
+	\end{equation*} 
+	
+	\noindent Precisamos, neste momento, subtrair $c$ vezes a linha três da linha dois. Verificamos, desta forma, que a inversa de $U$ é igual a 
+
+	\begin{equation*} 
+		U^{-1} = E_{23}(-c)E_{13}(ac - b)E_{12}(-a) = 
+		\begin{bmatrix} 
+			1 & -a & ac - b \\ 
+			0 & 1 & -c \\ 
+			0 & 0 & 1 \\ 
+		\end{bmatrix}.  
+	\end{equation*} 
+\end{sol} 
+
+\item Para quais valores de $a$ o método de eliminação não dará 3 pivôs?
+$$\begin{bmatrix} 
+a & 2 & 3  \\
+a & a & 4  \\
+a & a & a 
+\end{bmatrix}.$$
+
+\begin{sol} 
+	Seja $A$ a matriz do enunciado. Vamos, para iniciar o método da eliminação de Gauss, subtrair a linha um das linhas dois e três e, então, subtrair a linha dois da linha três; ficamos, portanto, com a matriz, 
+
+	\begin{equation} \label{a} 
+		E_{32}(-1)E_{31}(-1)E_{21}(-1)A = 
+		\begin{bmatrix} 
+			a & 2 & 3 \\ 
+			0 & a - 2 & 1 \\ 
+			0 & 0 & a - 4 \\ 
+		\end{bmatrix}.  
+	\end{equation} 
+
+	\noindent Em particular, o método não produzirá três pivôs se, e somente se, $a \in \{0, 2, 4\}$ (isto é, se algum dos elementos da diagonal principal da matriz da Equação~\eqref{a} for nulo). 
+\end{sol} 
+
+\item Verdadeiro ou falso (prove ou forneça um contra-exemplo):
+
+\begin{enumerate}
+
+\item Se $A^2$ está bem definida, então $A$ é quadrada.
+
+\item Se $AB$ e $BA$ estão bem definidas, então $A$ e $B$ são quadradas.
+
+\item Se $AB$ e $BA$ estão bem definidas, então $AB$ e $BA$ são quadradas.
+
+\item Se $AB = B$, então $A = I$.
+
+\end{enumerate}
+
+\begin{sol} 
+	\begin{enumerate} 
+		\item Ora, se $A^2$ está bem definida, então $A$ tem a mesma quantidade de linhas e de colunas. Portanto, a afirmação é \textbf{verdadeira}.  
+
+		\item A afirmação é \textbf{falsa}. Se, por exemplo, $A$ é um vetor linha e $B$, um vetor coluna, ambos de tamanho $n$, então $AB \in \mathbb{R}$ e $BA \in \mathbb{R}^{n}$ estão bem definidas. 
+
+		\item Sejam $A \in \mathbb{R}^{m \times n}$ e $B \in \mathbb{R}^{k \times p}$. Como $AB$ e $BA$ estão bem definidas, $n = k$ e $p = m$. Portanto, como $AB \in \mathbb{R}^{m \times p}$ e $BA \in \mathbb{R}^{k \times n}$, a afirmação é \textbf{verdadeira}.  
+
+		\item Ora, se $B$ é a matriz nula, então $AB = B$ para qualquer matriz $A$; portanto, a afirmação é \textbf{falsa}.   
+	\end{enumerate} 
+\end{sol} 
+
+\item Mostre que se $BA = I$ e $AC = I$, então $B=C$.
+
+\begin{sol} 
+	Perceba que, como $BA = I$ e $AC = I$, $B(AC) = (BA)C = BI = IC \implies B = C$. Logo, $B = C$.   
+\end{sol} 
+
+\item Ache uma matriz não-zero $A$ tal que $A^2 = 0$ e uma matriz $B$ com $B^2 \neq 0$ e $B^3 = 0$.
+
+\begin{sol} 
+	Perceba, inicialmente, que as matrizes têm que ser quadradas; isso porque suas potências estão bem definidas. Vamos, portanto, munidos da interpretação geométrica de matrizes quadradas, construir as matrizes $A$ e $B$. 
+
+	Por um lado, vamos, para a matriz $A$, considerar a aplicação que conduz, no plano, o ponto $(x, y)$ ao ponto $(y, 0)$; em particular, todos os pontos da forma $(x, 0)$, $x \in \mathbb{R}$, são direcionados à origem. Assim, 
+
+	\begin{equation*} 
+		A = 
+		\begin{bmatrix} 
+			0 & 1 \\ 
+			0 & 0 \\ 
+		\end{bmatrix} 
+		\text{ e } A^2 = 0. 
+	\end{equation*} 
+
+	Por outro lado, seja, no espaço, $B$ a matriz correspondente à condução do ponto $(x, y, z)$ ao ponto $(y, z, 0)$. Iterando, dessa forma, esse procedimento duas vezes, conduzimos $(x, y, z)$ a $(z, 0, 0)$; na próxima iteração, direcionaremos $(z, 0, 0)$ à origem. A matriz $B$, nesse sentido, satisfaz $B^2 \neq 0$ e $B^3 = 0$; além disso, ela assume a forma 
+
+	\begin{equation*} 
+		B = 
+		\begin{bmatrix} 
+			0 & 1 & 0 \\ 
+			0 & 0 & 1 \\ 
+			0 & 0 & 0 \\ 
+		\end{bmatrix}. 
+	\end{equation*} 
+
+	Aliás, perceba que, em geral, podemos construir, dado $n \in \mathbb{N} = \{1, 2, \cdots\}$, uma matriz $X$ tal que $X^{n - 1} \neq 0$ e $X^{n} = 0$ de forma semelhante à construção de $A$ e de $B$. Escreva, com efeito, $X$ como a matriz que conduz $(x_{1}, \cdots, x_{n})$ a $(x_{2}, \cdots, x_{n}, 0)$; podemos, \textit{grosso modo}, dizer que $X$ é a matriz identidade com a diagonal deslocada. 
+\end{sol} 
+
+\item Ache as inversas de 
+$$\begin{bmatrix} 
+3 & 2 & 0 & 0 \\
+4 & 3 & 0 & 0 \\
+0 & 0 & 6 & 5 \\
+0 & 0 & 7 & 6
+\end{bmatrix} \mbox{ e } 
+\begin{bmatrix} 
+0 & 0 & 0 & 2 \\
+0 & 0 & 3 & 0 \\
+0 & 5 & 0 & 0 \\
+1 & 0 & 0 & 0
+\end{bmatrix}$$
+
+\begin{sol} 
+	Sejam 
+
+	\begin{equation*} 
+		A = 
+		\begin{bmatrix} 
+			3 & 2 & 0 & 0 \\ 
+			4 & 3 & 0 & 0 \\ 
+			0 & 0 & 6 & 5 \\ 
+			0 & 0 & 7 & 6 \\ 
+		\end{bmatrix} 
+		\text{ e } 
+		B = 
+		\begin{bmatrix} 
+			0 & 0 & 0 & 2 \\ 
+			0 & 0 & 3 & 0 \\ 
+			0 & 5 & 0 & 0 \\ 
+			1 & 0 & 0 & 0 \\ 
+		\end{bmatrix}. 
+	\end{equation*} 
+	
+	\noindent Pela Proposição~\ref{mul}, temos que, como\footnote{Existe uma fórmula razoavelmente elementar para computar a inversa de uma matriz $2 \times 2$: se $A = \begin{bmatrix} a_{1} & a_{2} \\ a_{3} & a_{4} \end{bmatrix}$, então, se $a_{1}a_{4} - a_{3}a_{2} \neq 0$, $A^{-1} = \frac{1}{a_{1}a_{4} - a_{2}a_{3}} \begin{bmatrix} a_{4} & -a_{2} \\ -a_{3} & a_{1} \end{bmatrix}$; a quantidade $a_{1}a_{4} - a_{3}a_{2}$ é chamada de \textit{determinante} da matriz A.}  
+
+	\begin{equation*} 
+		\begin{bmatrix} 
+			3 & 2 \\ 
+			4 & 3 \\ 
+		\end{bmatrix}^{-1} = 
+		\frac{1}{3 \cdot 3 - 4 \cdot 2} 
+		\begin{bmatrix} 
+			3 & -2 \\ 
+			-4 & 3 \\  
+		\end{bmatrix} 
+		\text{ e } 
+		\begin{bmatrix} 
+			6 & 5 \\ 
+			7 & 6 \\ 
+		\end{bmatrix}^{-1} = 
+		\frac{1}{6 \cdot 6 - 7 \cdot 5} 
+		\begin{bmatrix} 
+			6 & -5 \\ 
+			-7 & 6 \\ 
+		\end{bmatrix},   
+	\end{equation*} 
+	
+	\noindent a inversa de $A$ é igual a 
+
+	\begin{equation*} 
+		A^{-1} = 
+		\begin{bmatrix} 
+			3 & -2 & 0 & 0 \\ 
+			-4 & 3 & 0 & 0 \\ 
+			0 & 0 & 6 & -5 \\ 
+			0 & 0 & -7 & 6 \\ 
+		\end{bmatrix}.  
+	\end{equation*} 
+
+	Além disso, a Proposição~\ref{mul} também garante que 
+
+	\begin{equation*} 
+		B^{-1} = 
+		\begin{bmatrix} 
+			0 & 0 & 0 & 1 \\ 
+			0 & 0 & 1/5 & 0 \\ 
+			0 & 1/3 & 0 & 0 \\ 
+			1/2 & 0 & 0 & 0 \\ 
+		\end{bmatrix}   
+	\end{equation*} 
+	
+	\noindent (nas notações desta proposição, perceba que cada $B_{i}$ é uma matriz $1 \times 1$; isto é, $B_{i}$ é um número real). 
+\end{sol} 
+
+\item Verifique que a inversa de $M = I - \bfu \bfv^T$ é dada por $M^{-1} = I + \frac{\bfu\bfv^T}{1 - \bfv^T\bfu}$. Verifique também que a inversa de $N = A - UW^{-1}V$ é dada por $N^{-1} = A^{-1} + A^{-1}U(W - VA^{-1}U)^{-1}VA^{-1}$.
+
+\begin{sol} 
+	Seja $P = I + \frac{\mathbf{u}\mathbf{v}^T}{1 - \mathbf{v}^T\mathbf{u}}$; vamos mostrar que $P$ é a inversa de $M$. Para isso, perceba que 
+
+	\begin{equation} \label{mp}  
+		\begin{split} 
+		MP = \left(I - \mathbf{u}\mathbf{v}^T\right)\left(I + \frac{\mathbf{u}\mathbf{v}^T}{1 - \mathbf{v}^T\mathbf{u}}\right) = \\ 
+		= I - \frac{\mathbf{u}\mathbf{v}^T}{1 - \mathbf{v}^T\mathbf{u}} - \mathbf{u}\mathbf{v}^T + \frac{\mathbf{u}\mathbf{v}^T\mathbf{u}\mathbf{v}^T}{1 - \mathbf{v}^T\mathbf{u}}.    
+		\end{split} 
+	\end{equation} 
+
+	\noindent Nesse sentido, como $\mathbf{v}^T\mathbf{u} \in \mathbb{R}$, temos que $\mathbf{u}\mathbf{v}^T\mathbf{u}\mathbf{v}^T = (\mathbf{v}^T\mathbf{u})\mathbf{u}\mathbf{v}^T$ e, assim, 
+
+	\begin{equation*} 
+		\frac{\mathbf{u}\mathbf{v}^T}{1 - \mathbf{v}^T\mathbf{u}} + \frac{\mathbf{u}\mathbf{v}^T\mathbf{u}\mathbf{v}^T}{1 - \mathbf{v}^T\mathbf{u}} = \mathbf{u}\mathbf{v}^T. 
+	\end{equation*} 
+
+	\noindent Logo, a Equação~\eqref{mp} garante que $MP = I$ e, portanto, $P$ é a inversa de $M$. 
+
+	Além disso, seja $N = A - U W^{-1}V$; vamos verificar que $J = A^{-1} + A^{-1}U(W - VA^{-1}U)VA^{-1}$ é a inversa de $N$. Podemos, com efeito, computar $NJ$ e observar que esta é a matriz identidade; contudo, as contas não são atrativas. Dessa maneira, escolhemos um vetor $x$ arbitrariamente (consistente com as dimensões de $N$) e verificamos que, se $y = Nx$, então $Jy = x$. Ora, como $Nx = y$, $Ax - UW^{-1}Vx = y \implies A^{-1}y = x - A^{-1}UW^{-1}Vx$. Portanto, 
+	
+	\begin{equation*} 
+		\begin{split} 
+			Jy = A^{-1}y + A^{-1}U(W - VA^{-1}U)^{-1}VA^{-1}y = \\ 
+			= x - A^{-1}UW^{-1}Vx + A^{-1}U(W - VA^{-1}U)^{-1}VA^{-1}y.   
+		\end{split} 
+	\end{equation*} 
+
+	\noindent Ficamos, assim, com a tarefa de mostrar que 
+
+	\begin{equation*} 
+		A^{-1}UW^{-1}Vx = A^{-1}U(W - VA^{-1}U)^{-1}VA^{-1}y.   
+	\end{equation*} 
+
+	\noindent Ora, isso é equivalente a 
+
+	\begin{equation*} 
+		UW^{-1}Vx = U(W - VA^{-1}U)^{-1}VA^{-1}y,   
+	\end{equation*} 
+
+	\noindent e, como $y = Ax - UW^{-1}Vx$, 
+
+	\begin{equation*} 
+		\begin{split} 
+			UW^{-1}Vx = U(W - VA^{-1}U)^{-1}VA^{-1}(Ax - UW^{-1}Vx) \iff \\ 
+			\iff UW^{-1}Vx - U(W - VA^{-1}U)^{-1}Vx = -U(W - VA^{-1}U)^{-1}VA^{-1}UW^{-1}Vx. 
+		\end{split} 
+	\end{equation*} 
+
+	\noindent Deste modo, temos que provar a seguinte identidade 
+
+	\begin{equation} \label{uv}  
+		UW^{-1}V - U(W - VA^{-1}U)^{-1}V = -U(W - VA^{-1}U)^{-1}VA^{-1}UW^{-1}V.  
+	\end{equation} 
+
+	\noindent Nesse sentido, fatoramos $U$ e $V$ e verificamos que uma condição suficiente\footnote{Em maior detalhe, uma condição suficiente para a igualdade $UAV = UBV$ é a de que $A = B$; no entanto, ela não é necessária, na medida em que ela é sempre válida se, por exemplo, $U = 0$, mesmo que $A \neq B$.} para que a Equação~\eqref{uv} seja verdadeira é 
+
+	\begin{equation} \label{uva}  
+		W^{-1} - (W - VA^{-1}U)^{-1} = -(W - VA^{-1}U)^{-1}VA^{-1}UW^{-1}.  
+	\end{equation} 
+
+	\noindent Multiplicando, enfim, ambos os lados da Equação~\eqref{uva} por $(W - VA^{-1}U)$, ficamos com 
+
+	\begin{equation*} 
+		(W - VA^{-1}U)W^{-1} - I = -VA^{-1}UW^{-1},   
+	\end{equation*} 
+
+	\noindent que é verdadeira. Portanto, a Equação~\eqref{uv} é válida e, assim, $Jy = x$, de modo que a arbitrariedade de $x$ garante que $J$ é a inversa de $N$. 
+\end{sol} 
+
+\item Sabemos que a matriz de diferenças tem a seguinte inversa
+$$L^{-1} = \begin{bmatrix}
+1 & 0 & 0\\
+-1 & 1 & 0\\
+0 & -1 & 1
+\end{bmatrix}^{-1} = \begin{bmatrix}
+1 & 0 & 0\\
+1 & 1 & 0\\
+\mathbf{1} & 1 & 1
+\end{bmatrix}.\footnote{Havia, no documento original, outro equívoco no enunciado: o item em negrito da matriz era nulo; no entanto, ele é unitário.}$$ 
+Use essa propriedade (e sua versão triangular superior) para achar a inversa de
+$$T = \begin{bmatrix}
+1 & -1 & 0\\
+-1 & 2 & -1\\
+0 & -1 & 2
+\end{bmatrix}.$$
+
+\textit{Dica: escreva $T$ como produto de duas matrizes.}
+
+\begin{sol} 
+	Seja 
+
+	\begin{equation*} 
+		U = L^T = 
+		\begin{bmatrix} 
+			1 & -1 & 0 \\ 
+			0 & 1 & -1 \\ 
+			0 & 0 & 1 \\ 
+		\end{bmatrix};   
+	\end{equation*} 
+
+	\noindent como a inversa da transposta é igual à transpota da inversa, temos que 
+
+	\begin{equation*} 
+		U^{-1} = 
+		\begin{bmatrix} 
+			1 & 1 & 1 \\ 
+			0 & 1 & 1 \\ 
+			0 & 0 & 1 \\ 
+		\end{bmatrix}.  
+	\end{equation*} 
+	
+	Agora, perceba que $T = LU$; logo, $T^{-1} = U^{-1}L^{-1}$ e, portanto, 
+
+	\begin{equation*} 
+		T^{-1} = 
+		\begin{bmatrix} 
+			3 & 2 & 1 \\ 
+			2 & 2 & 1 \\ 
+			1 & 1 & 1 \\ 
+		\end{bmatrix}.  
+	\end{equation*} 
+\end{sol} 
+
+\item Mostre que $I + BA$ e $I + AB$ são ambas invertíveis ou singulares. Relacione a inversa de $I + BA$ com a inversa de $I + AB$, caso elas existam.
+
+\begin{sol} 
+	Suponha, por um lado, que $I + AB$ seja invertível. Nesse caso, o exercício oito garante que, se pedirmos, em suas notações, que $U = B$, $V = -A$, $A = I$ e $W = I$, verificaremos que $I + BA$ é invertível e, ainda, que a sua inversa é igual a $I - B(I + AB)^{-1}A$. Por outro lado, temos, similarmente, que, se $I + BA$ é invertível, $I + AB$ é invertível; com efeito, escolhemos, no exercício oito, $U = A$, $V = -B$, $A = I$ e $W = I$. Portanto, $I + AB$ é invertível se, e somente se, $I + BA$ também o é; e, nessa situação, a equação 
+
+	\begin{equation*} 
+		(I + AB)^{-1} = I - A(I + BA)^{-1}B   
+	\end{equation*} 
+
+	\noindent é verdadeira. 
+\end{sol}
+
+\item (Bônus) Mostre que se $\alpha_kA^k + \alpha_{k-1}A^{k-1} + \cdots + \alpha_1 A + \alpha_0 I = 0$, com $\alpha_0 \neq 0$, então $A$ é invertível
+
+\begin{sol} 
+	Suponha, por contraposição, que $A$ não é invertível. Nesse caso, existe $v \neq 0$ tal que $Av = 0$ e, em geral, $A^{k}v = 0$ para $k \ge 1$. Portanto, como $\alpha_{o} \neq 0$, 
+
+	\begin{equation*} 
+		\left(\sum_{0 \le i \le k} \alpha_{i}A^{i}\right)v = \alpha_{o}v \neq 0;  
+	\end{equation*} 
+
+	\noindent (escrevemos $I = A^{0}$) logo, $\sum_{0 \le i \le k} \alpha_{i}A^{i} \neq 0$. Assim, se $\sum_{0 \le i \le k} \alpha_{i} A^{i} = 0$, então $A$ é invertível.  
+\end{sol} 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document} 

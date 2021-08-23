@@ -1,0 +1,715 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel} %\usepackage[latin1]{inputenc}
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage{enumerate}
+\usepackage{xifthen} \usepackage{tikz}
+\usepackage{xcolor}
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+\numberwithin{equation}{section}
+
+\setlength{\parindent}{12 pt}
+
+\begin{document}
+
+\newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+\newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+\newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+\newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+\newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+\newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+\newtheorem*{hipo}{Hipóteses}
+\newtheorem*{nota}{Notação}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+
+\definecolor{mygreen}{rgb}{0.1, 0.7, 0.1}
+\definecolor{myblue}{rgb}{0.1, 0.1, 0.7}
+\definecolor{myred}{rgb}{0.7, 0.1, 0.1}
+
+% \input{../preamble}
+\newcommand{\transpose}{\mathsf{T}}
+
+\newenvironment{sol}
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm}
+}
+{}
+
+\newcommand{\bvecc}[2]{%
+    \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+    \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+
+\title{Álgebra Linear - Soluções da Lista de Exercícios 3}
+
+\author{Caio Lins e Tiago Silva}
+
+\date{\today}
+
+\maketitle
+
+\begin{enumerate}
+
+    \item Ache a decomposição LU da matriz:
+        $$A =
+        \begin{bmatrix}
+            1 & 3 & 0  \\
+            2 & 4 & 0  \\
+            2 & 0 & 1 
+        \end{bmatrix}.
+        $$
+
+        \begin{sol} 
+            Vamos realizar a eliminação Gaussiana até obter uma matriz triangular superior:
+            \begin{align*}
+                \begin{bmatrix}
+                    1 & 3 & 0  \\
+                    2 & 4 & 0  \\
+                    2 & 0 & 1 
+                \end{bmatrix}
+                &\xrightarrow{
+                    \begin{array}{l}
+                        L_{ 2 } - {\color{myred} 2} L_{ 1 } \\
+                        L_{ 3 } - {\color{myblue} 2} L_{ 1 }
+                    \end{array}
+                }
+                \begin{bmatrix}
+                    1 & 3 & 0  \\
+                    0 & -2 & 0  \\
+                    0 & -6 & 1 
+                \end{bmatrix} \\
+                &\xrightarrow{
+                    \begin{array}{l}
+                        L_{ 3 } - {\color{mygreen} 3} L_{ 2 }
+                    \end{array}
+                }
+                \begin{bmatrix}
+                    1 & 3 & 0  \\
+                    0 & -2 & 0  \\
+                    0 & 0 & 1 
+                \end{bmatrix}
+                = U
+            .\end{align*}
+            Para obter a matriz \( L \), basta observar os coeficientes utilizados para eliminar cada entrada da matriz.
+            Com isso,
+            \begin{equation*}
+                L =
+                \begin{bmatrix}
+                    1 & 0 & 0 \\
+                    {\color{myred} 2} & 1 & 0 \\
+                    {\color{myblue} 2} & {\color{mygreen} 3} & 1
+                \end{bmatrix}
+            .\end{equation*}
+            Portanto,
+            \begin{equation*}
+                A = 
+                \begin{bmatrix}
+                    1 & 0 & 0 \\
+                    2 & 1 & 0 \\
+                    2 & 3 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1 & 3 & 0  \\
+                    0 & -2 & 0  \\
+                    0 & 0 & 1 
+                \end{bmatrix}
+            .\end{equation*}
+        \end{sol} 
+
+    \item Ache a decomposição LU da matriz simétrica:
+        $$A = 
+        \begin{bmatrix}
+            a & a & a & a  \\
+            a & b & b & b  \\
+            a & b & c & c  \\
+            a & b & c & d 
+        \end{bmatrix}.
+        $$
+        Qual condição para $a,b,c,d$ para que $A$ ter quatro pivots?
+
+        \begin{sol} 
+            Novamente, prosseguimos por eliminação Gaussiana.
+            \begin{align*}
+                \begin{bmatrix}
+                    a & a & a & a  \\
+                    a & b & b & b  \\
+                    a & b & c & c  \\
+                    a & b & c & d 
+                \end{bmatrix}
+                    &\xrightarrow{
+                        \begin{array}{l}
+                            L_{ 2 } - L_{ 1 } \\
+                            L_{ 3 } - L_{ 1 } \\
+                            L_{ 4 } - L_{ 1 } \\
+                        \end{array}
+                    }
+                    \begin{bmatrix}
+                        a & a & a & a  \\
+                        0 & b - a & b - a & b - a  \\
+                        0 & b - a & c - a & c - a  \\
+                        0 & b - a & c - a & d - a 
+                    \end{bmatrix} \\
+                    &\xrightarrow{
+                        \begin{array}{l}
+                            L_{ 3 } - L_{ 2 } \\
+                            L_{ 4 } - L_{ 2 }
+                        \end{array}
+                    }
+                    \begin{bmatrix}
+                        a & a & a & a  \\
+                        0 & b - a & b - a & b - a  \\
+                        0 & 0     & c - b & c - b  \\
+                        0 & 0     & c - b & d - b 
+                    \end{bmatrix} \\
+                    &\xrightarrow{
+                        \begin{array}{l}
+                            L_{ 4 } - L_{ 3 }
+                        \end{array}
+                    }
+                    \begin{bmatrix}
+                        a & a & a & a  \\
+                        0 & b - a & b - a & b - a  \\
+                        0 & 0     & c - b & c - b  \\
+                        0 & 0     & 0     & d - c 
+                    \end{bmatrix} = U
+                .\end{align*}
+                Pelos coeficientes utilizados na eliminação, temos
+                \begin{equation*}
+                    L =
+                    \begin{bmatrix}
+                        1 & 0 & 0 & 0 \\
+                        1 & 1 & 0 & 0 \\
+                        1 & 1 & 1 & 0 \\
+                        1 & 1 & 1 & 1
+                    \end{bmatrix}
+                .\end{equation*}
+                Pela diagonal de \( U \) vemos que, para que \( A \) tenha quatro pivôs, é necessário e suficiente que tenhamos:
+                \begin{equation*}
+                    \begin{cases}
+                        a \neq 0 \\
+                        b \neq a \\
+                        c \neq b \\
+                        d \neq c
+                    \end{cases}
+                .\end{equation*}
+            \end{sol} 
+
+        \item Ache a uma matriz de permutação $P$ tal que:
+
+            \begin{enumerate}
+
+                \item $P$ é 3x3, $P \neq I$ e $P^3 = I$.
+
+                    \begin{sol} 
+                        Intuitivamente, nossa matriz desloca uma casa para cima todas as linhas da matriz sobre a qual ela opera.
+                        Ou seja, nossa matriz é
+                        \begin{equation*}
+                            P =
+                            \begin{bmatrix}
+                                0 & 1 & 0 \\
+                                0 & 0 & 1 \\
+                                1 & 0 & 0
+                            \end{bmatrix}
+                        .\end{equation*}
+                        Com isso, \( P \neq I \) e
+                        \begin{align*}
+                            P^2 &=
+                            \begin{bmatrix}
+                                0 & 0 & 1 \\
+                                1 & 0 & 0 \\
+                                0 & 1 & 0 \\
+                            \end{bmatrix} \\
+                            P^3 &=
+                            \begin{bmatrix}
+                                1 & 0 & 0 \\
+                                0 & 1 & 0 \\
+                                0 & 0 & 1 \\
+                            \end{bmatrix} = I
+                        .\end{align*}
+                    \end{sol} 
+
+                \item $S$ é 4x4 e $S^4 \neq I$
+
+                    \begin{sol} 
+                        Observe que se tomarmos a matriz do item anterior, de fato teremos \( P^{ 4 } = P \neq I \).
+                        Entretanto, precisamos de uma matriz \( 4 \times 4 \).
+                        Felizmente, basta ``imbutir'' \( P \) em uma matriz identidade \( 4 \times 4 \), obtendo, assim,
+                        \begin{equation*}
+                            S =
+                            \begin{bmatrix}
+                                P & 0 \\
+                                0 & 1
+                            \end{bmatrix}
+                            =
+                            \begin{bmatrix}
+                                0 & 1 & 0 & 0 \\
+                                0 & 0 & 1 & 0 \\
+                                1 & 0 & 0 & 0 \\
+                                0 & 0 & 0 & 1
+                            \end{bmatrix}
+                        .\end{equation*}
+                        Com isso,
+                        \begin{equation*}
+                            S^{ 4 } =
+                            \begin{bmatrix}
+                                P^{ 4 } & 0 \\
+                                0 & 1
+                            \end{bmatrix}
+                            =
+                            \begin{bmatrix}
+                                P & 0 \\
+                                0 & 1
+                            \end{bmatrix}
+                            = S \neq I
+                        .\end{equation*}
+                    \end{sol} 
+
+            \end{enumerate}
+
+        \item Seja $A$ uma matriz $4x4$. Quantas entradas de $A$ podem ser escolhidas independentemente caso $A$ seja
+
+            \begin{enumerate}
+
+                \item simétrica ($A^T = A$)?
+
+                    \begin{sol} 
+                        Precisamos apenas selecionar os elementos da diagonal e todos aqueles abaixo dela, por exemplo.
+                        Logo, o número de entradas que podem ser escolhidas independentemente é \( 10 \).
+                    \end{sol} 
+
+                \item anti-simétrica ($A^T = -A$)?
+
+                    \begin{sol} 
+                        A resposta é parecida com a do item anterior, porém a diagonal já está determinada, pois deve ser igual a \( 0 \).
+                        Portanto, apenas \( 6 \) entradas podem ser escolhidas independentemente.
+                    \end{sol} 
+
+            \end{enumerate}
+
+        \item Suponha que $A$ já é triangular inferior com 1's na diagonal. Mostre que $U = I$.
+
+            \begin{sol} 
+                Observe que \( A \) pode ser decomposta como \( A = A I \), onde \( A \) é uma matriz triangular inferior com 1's na diagonal e \( I \) é uma matriz triangular superior com diagonal não nula.
+                Portanto, pela unicidade da decomposição \( LU \), temos \( U = I \).
+            \end{sol} 
+
+        \item Seja 
+            $$
+            A 
+            \begin{bmatrix}
+                1 & c & 0  \\
+                2 & 4 & 1  \\
+                3 & 5 & 1 
+            \end{bmatrix}.
+            $$
+
+            \begin{enumerate}
+
+                \item Qual é o número $c$ que leva o segundo pivô a ser 0? O que podemos fazer para resolver tal problema? Ainda é válido $A = LU$?
+
+                    \begin{sol} 
+                        Realizando a primeira eliminação em \( A \) obtemos
+                        \begin{equation*}
+                            A
+                            \xrightarrow{
+                                \begin{array}{l}
+                                    L_{ 2 } - 2 L_{ 1 }
+                                \end{array}
+                            }
+                            \begin{bmatrix}
+                                1 & c & 0  \\
+                                0 & 4 - 2 c & 1  \\
+                                3 & 5 & 1 
+                            \end{bmatrix}
+                        .\end{equation*}
+                        Logo, se \( c = 2 \) temos \( 4 - 2c = 0 \), fazendo aparecer um pivô nulo.
+                        Para concertar isso, podemos, antes de começar o processo de eliminação, permutar a segunda e a terceira linhas utilizando a matriz de permutação
+                        \begin{equation*}
+                            P =
+                            \begin{bmatrix}
+                                1 & 0 & 0 \\
+                                0 & 0 & 1 \\
+                                0 & 1 & 0
+                            \end{bmatrix}
+                        .\end{equation*}
+                        Com isso, supondo \( c = 2 \), obtemos a matriz
+                        \begin{equation*}
+                            PA =
+                            \begin{bmatrix}
+                                1 & 2 & 0 \\
+                                3 & 5 & 1 \\
+                                2 & 4 & 1
+                            \end{bmatrix}
+                        .\end{equation*}
+                        Então, realizando o primeiro passo da eliminação ficamos com
+                        \begin{equation*}
+                            \begin{bmatrix}
+                                1 & 2 & 0 \\
+                                3 & 5 & 1 \\
+                                2 & 4 & 1
+                            \end{bmatrix}
+                            \xrightarrow{
+                                \begin{array}{l}
+                                    L_{ 2 } - 3L_{ 1 }
+                                \end{array}
+                            }
+                            \begin{bmatrix}
+                                1 & 2 & 0 \\
+                                0 & -1 & 1 \\
+                                2 & 4 & 1
+                            \end{bmatrix}
+                        ,\end{equation*}
+                        e o segundo pivô não é mais nulo.
+                        Continuando o processo de eliminação, obtemos
+                        \begin{align*}
+                            \begin{bmatrix}
+                                1 & 2 & 0 \\
+                                0 & -1 & 1 \\
+                                2 & 4 & 1
+                            \end{bmatrix}
+                                &\xrightarrow{
+                                    \begin{array}{l}
+                                        L_{ 3 } - 2 L_{ 1 }
+                                    \end{array}
+                                }
+                                \begin{bmatrix}
+                                    1 & 2 & 0 \\
+                                    0 & -1 & 1 \\
+                                    0 & 0 & 1
+                                \end{bmatrix} = U
+                            .\end{align*}
+                            Dessa forma, não temos mais uma decomcoposição \( L = LU \), mas sim \( PA = LU \), dada por
+                            \begin{equation*}
+                                \underbrace{
+                                    \begin{bmatrix}
+                                        1 & 0 & 0 \\
+                                        0 & 0 & 1 \\
+                                        0 & 1 & 0
+                                    \end{bmatrix}
+                                }_{ P }
+                                \underbrace{
+                                    \begin{bmatrix}
+                                        1 & 2 & 0  \\
+                                        2 & 4 & 1  \\
+                                        3 & 5 & 1 
+                                    \end{bmatrix}
+                                }_{ A }
+                                =
+                                \underbrace{
+                                    \begin{bmatrix}
+                                        1 & 0 & 0 \\
+                                        3 & 1 & 0 \\
+                                        2 & 0 & 1
+                                    \end{bmatrix}
+                                }_{ L }
+                                \underbrace{
+                                    \begin{bmatrix}
+                                        1 & 2 & 0 \\
+                                        0 & -1 & 1 \\
+                                        0 & 0 & 1
+                                    \end{bmatrix}
+                                }_{ U }
+                            .\end{equation*}
+                        \end{sol} 
+
+                    \item Qual é o número $c$ que leva o terceiro pivô a ser 0? É possível resolver esse problema?
+
+                        \begin{sol} 
+                            Prosseguindo com a eliminação em \( A \), ficamos com
+                            \begin{align*}
+                                A
+                                &\xrightarrow{
+                                    \begin{array}{l}
+                                        L_{ 2 } - 2 L_{ 1 }
+                                        L_{ 3 } - 3 L_{ 1 }
+                                    \end{array}
+                                }
+                                \begin{bmatrix}
+                                    1 & c & 0  \\
+                                    0 & 4 - 2 c & 1  \\
+                                    0 & 5 - 3 c & 1 
+                                \end{bmatrix} \\
+                                &\xrightarrow{
+                                    \begin{array}{l}
+                                        L_{ 3 } - \frac{ 5 - 3c }{ 4 - 2 c } L_{ 2 }
+                                    \end{array}
+                                }
+                                \begin{bmatrix}
+                                    1 & c & 0  \\
+                                    0 & 4 - 2 c & 1  \\
+                                    0 & 0       & 1 - \frac{ 5 - 3c }{ 4 - 2c } 
+                                \end{bmatrix}
+                            .\end{align*}
+                            Logo, o terceiro pivô será zero se, e somente se,
+                            \begin{equation*}
+                                5 - 3c = 4 - 2c
+                            ,\end{equation*}
+                            ou seja, se \( c = 1 \).
+                            Nesse caso, oberve que o problema não tem concerto, pois mesmo que trocássemos a terceira linha com a segunda, continuaríamos com um pivô nulo, porém, agora, seria o segundo.
+                            Analogamente, se trocarmos a terceira linha com a primeira, o primeiro pivô passará a ser nulo.
+                        \end{sol} 
+
+                \end{enumerate}
+
+            \item Se $A$ e $B$ são simétricas, quais dessas matrizes são também simétricas:
+
+                \begin{enumerate}
+
+                    \item $A^2 - B^2$;
+
+                        \begin{sol} 
+                            Observe que
+                            \begin{align*}
+                                \left(
+                                    A^2 - B^2
+                                \right)^{ \mathsf{T} }
+                                &=
+                                \left(
+                                    A^2
+                                \right)^{ \transpose }
+                                -
+                                \left(
+                                    B^2
+                                \right)^{ \transpose } \\
+                                &= ( AA )^{ \transpose } - ( BB )^{ \transpose } \\
+                                &= ( A^{ \transpose } A^{ \transpose } )
+                                -
+                                ( B^{ \transpose } B^{ \transpose } ) \\
+                                &= ( AA ) - ( BB ) \\
+                                &= A^2 - B^2
+                            .\end{align*}
+                            Logo, \( A^2 - B^2 \) também é simétrica.
+                        \end{sol} 
+
+                    \item $(A + B)(A - B)$;
+
+                        \begin{sol} 
+                            Observe que \( ( A + B )( A - B ) = A^2 + BA - AB + B^2 \).
+                            Já sabemos que \( A^2 - B^2 \) é simétrica.
+                            Como a soma de matrizes simétricas é simétrica, vamos verificar se \( BA - AB \) é simétrica:
+                            \begin{align*}
+                                ( BA - AB )^{ \transpose }
+                                &= ( BA )^{ \transpose } - ( AB )^{ \transpose } \\
+                                &= A^{ \transpose } B^{ \transpose }
+                                - B^{ \transpose } A^{ \transpose } \\
+                                &= AB - BA \\
+                                &= - ( BA - AB )
+                            .\end{align*}
+                            Sendo assim, \( BA - AB \) é antissimétrica e, com isso, a menos que \( A \) e \( B \) comutem, de modo que \( BA - AB = 0 \), a matriz \( ( A + B )( A - B ) \) não será simétrica.
+                        \end{sol} 
+
+                    \item $ABA$;
+
+                        \begin{sol} 
+                            Temos
+                            \begin{align*}
+                                ( ABA )^{ \transpose }
+                                &= A^{ \transpose } B^{ \transpose } A^{ \transpose } \\
+                                &= ABA
+                            .\end{align*}
+                            Logo, \( ABA \) é simétrica.
+                        \end{sol} 
+
+                    \item $ABAB$.
+
+                        \begin{sol} 
+                            Calculando a transposta, obtemos
+                            \begin{align*}
+                                ( ABAB )^{ \transpose }
+                                &= B^{ \transpose } A^{ \transpose } B^{ \transpose } A^{ \transpose } \\
+                                &= BABA
+                            .\end{align*}
+                            Portanto, a menos que \( A \) e \( B \) comutem, \( ABAB \) não será simétrica.
+                        \end{sol} 
+
+                \end{enumerate}
+
+            \item Prove que é sempre possível escrever $A = B + C$, onde $B$ é simétrica e $C$ anti-simétrica. \textit{Dica: $B$ e $C$ são combinações simples de $A$ e $A^T$.}
+
+                \begin{sol} 
+                    Tome
+                    \begin{equation*}
+                        \begin{cases}
+                            B = \frac{ 1 }{ 2 } \left(
+                                A + A^{ \transpose }
+                            \right) \\
+                            C = \frac{ 1 }{ 2 } \left(
+                                A - A^{ \transpose }
+                            \right)
+                        \end{cases}
+                    .\end{equation*}
+                    Com isso, claramente temos \( A = C + B \) e, ainda,
+                    \begin{align*}
+                        B^{ \transpose } =
+                        \frac{ 1 }{ 2 }
+                        \left(
+                            A + A^{ \transpose }
+                        \right)^{ \transpose }
+                        = 
+                        \frac{ 1 }{ 2 }
+                        \left(
+                            A^{ \transpose } + A
+                        \right)
+                        = B, \\
+                        C^{ \transpose } =
+                        \frac{ 1 }{ 2 }
+                        \left(
+                            A - A^{ \transpose }
+                        \right)^{ \transpose }
+                        = 
+                        \frac{ 1 }{ 2 }
+                        \left(
+                            A^{ \transpose } - A
+                        \right)
+                        = -C \\
+                    ,\end{align*}
+                    ou seja, \( B \) é simétrica e \( C \) é antissimétrica.
+                \end{sol} 
+
+            \item Seja $A$ uma matriz em blocos:
+                $$A = \begin{bmatrix}
+                    A_{11} & A_{12}\\
+                    A_{21} & A_{22}
+                \end{bmatrix}$$
+                onde cada $A_{ii}$ é quadrada $n \times n$ e as matrizes $A_{11}$ e \( A_{ 22 } - A_{ 21 } A_{ 11 }^{ -1 } A_{ 12 } \) possuem decomposição LU.
+                Ache $L$ e $U$ em blocos tal que $A = LU$:
+                $$L = \begin{bmatrix}
+                    L_{11} & L_{12}\\
+                    L_{21} & L_{22}
+                    \end{bmatrix} \mbox{ e } U = \begin{bmatrix}
+                    U_{11} & U_{12}\\
+                    U_{21} & U_{22}
+                \end{bmatrix},$$
+                onde $L_{11}$, $L_{22}$ são triangulares inferiores com 1's na diagonal e $U_{11}$, $U_{22}$ são triangulares superiores.
+        \end{enumerate}
+
+        \begin{sol} 
+            Vamos fazer uma espécie de ``eliminação em blocos'' na matriz \( A \).
+            Perceba que
+            \begin{equation*}
+                \underbrace{
+                    \begin{bmatrix}
+                        I & 0 \\
+                        - A_{ 21 } A_{ 11 }^{ -1 } & I
+                    \end{bmatrix}
+                }_{ \text{Matriz de eliminação} }
+                \begin{bmatrix}
+                    A_{ 11 } & A_{ 12 } \\
+                    A_{ 21 } & A_{ 22 }
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    A_{ 11 } & A_{ 12 } \\
+                    0 & A_{ 22 } - A_{ 21 } A_{ 11 }^{ -1 } A_{ 12 }
+                \end{bmatrix}
+            .\end{equation*}
+            Com isso, multiplicando ambos lados à esquerda pela inversa da matriz de eliminação temos
+            \begin{equation*}
+                A =
+                \begin{bmatrix}
+                    I & 0 \\
+                    A_{ 21 } A_{ 11 }^{ -1 } & I
+                \end{bmatrix}
+                \begin{bmatrix}
+                    A_{ 11 } & A_{ 12 } \\
+                    0 & A_{ 22 } - A_{ 21 } A_{ 11 }^{ -1 } A_{ 12 }
+                \end{bmatrix}
+            .\end{equation*}
+            Sejam, agora, \( L_{ 1 }, L_{ 2 } \) matrizes triangulares inferiores com 1's na diagonal e \( U_{ 1 }, U_{ 2 } \) matrizes triangulares superiores tais que
+            \begin{equation*}
+                \begin{cases}
+                    A_{ 11 } = L_{ 1 } U_{ 1 } \\
+                    A_{ 22 } - A_{ 21 } A_{ 11 }^{ -1 } A_{ 12 } = L_{ 2 } U_{ 2 }
+                \end{cases}
+            ,\end{equation*}
+            as quais existem por hipótese.
+            Com isso, temos
+            \begin{align*}
+                A &=
+                \begin{bmatrix}
+                    I & 0 \\
+                    A_{ 21 } A_{ 11 }^{ -1 } & I
+                \end{bmatrix}
+                \begin{bmatrix}
+                    A_{ 11 } & A_{ 12 } \\
+                    0 & A_{ 22 } - A_{ 21 } A_{ 11 }^{ -1 } A_{ 12 }
+                \end{bmatrix} \\
+                  &= 
+                  \begin{bmatrix}
+                      I & 0 \\
+                      A_{ 21 } A_{ 11 }^{ -1 } & I
+                  \end{bmatrix}
+                  \begin{bmatrix}
+                      L_{ 1 } U_{ 1 } & A_{ 12 } \\
+                      0 & L_{ 2 } U_{ 2 }
+                  \end{bmatrix} \\
+                  &= 
+                  \begin{bmatrix}
+                      I & 0 \\
+                      A_{ 21 } A_{ 11 }^{ -1 } & I
+                  \end{bmatrix}
+                  \begin{bmatrix}
+                      L_{ 1 } & 0 \\
+                      0 & L_{ 2 }
+                  \end{bmatrix}
+                  \begin{bmatrix}
+                      U_{ 1 } & L_{ 1 }^{ -1 } A_{ 12 } \\
+                      0 & U_{ 2 }
+                  \end{bmatrix} \\
+                  &=
+                  \begin{bmatrix}
+                      L_{ 1 } & 0 \\
+                      A_{ 21 } U_{ 1 }^{ -1 } & L_{ 2 }
+                  \end{bmatrix}
+                  \begin{bmatrix}
+                      U_{ 1 } & L_{ 1 }^{ -1 } A_{ 12 } \\
+                      0 & U_{ 2 }
+                  \end{bmatrix} \\
+                  &= LU
+              .\end{align*}
+          \end{sol} 
+
+          \end{document} 

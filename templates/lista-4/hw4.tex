@@ -1,0 +1,250 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel} % \usepackage[latin1]{inputenc}
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage{enumerate}
+\usepackage{xifthen} \usepackage{tikz}
+\usepackage{mathtools} 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue
+}
+\usetikzlibrary{automata,arrows,positioning,calc}
+% \input{../preamble}
+
+\newtheorem{teo}{Teorema}[section] 
+
+\numberwithin{equation}{section}
+
+\setlength{\parindent}{12 pt}
+
+\begin{document}
+
+% \newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+% \newtheorem{prop}[teo]{Proposição}
+\newtheorem*{prop*}{Proposição}
+\newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+% \newtheorem{cor}[teo]{Corolário}
+\newtheorem*{cor*}{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+\newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+\newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+\newtheorem*{hipo}{Hipóteses}
+\newtheorem*{nota}{Notação}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\DeclarePairedDelimiter{\dotprod}{\langle}{\rangle} 
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+
+\newcommand{\bvecc}[2]{%
+    \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+    \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+\newenvironment{sol}
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm}
+}
+{} 
+
+\title{Álgebra Linear - Lista de Exercícios 4}
+
+\author{escreva seu nome aqui}
+
+\date{}
+
+\maketitle
+
+\begin{enumerate}
+
+    \item Sejam $S$ e $T$ dois subespaços de um espaço vetorial $V$.
+
+        \begin{enumerate}
+
+            \item Defina $S + T = \{s + t \ ; \ s \in S \mbox{ e } t \in T\}$. Mostre que $S + T$ é um subespaço vetorial.
+	
+	\begin{sol} 
+		% escreva sua solução aqui.  
+	\end{sol} 
+
+            \item Defina $S \cup T = \{x \ ; \ x \in S \mbox{ ou } x \in T\}$. Argumente que $S \cup T$ não é necessariamente um subespaço vetorial.
+	
+	\begin{sol} 
+		% escreva sua solução aqui.  
+	\end{sol} 
+
+            \item Se $S$ e $T$ são retas no $\R^3$, o que é $S + T$ e $S \cup T$?
+	
+	\begin{sol} 
+		% escreva sua solução aqui.  
+	\end{sol} 
+        \end{enumerate}
+
+    \item Como o núcleo $N(C)$ é relacionado aos núcleos $N(A)$ e $N(B)$, onde $C = \begin{bmatrix}A \\ B \end{bmatrix}$?
+	
+    \begin{sol} 
+    	% escreva sua solução aqui.  
+    \end{sol} 
+
+    \item Considere a matriz
+        $$A = \begin{bmatrix} 
+            1 & 5 & 7 & 9\\
+            0 & 4 & 1 & 7 \\
+            2 & -2 & 11 & -3
+        \end{bmatrix}.$$
+
+        \begin{enumerate}
+
+            \item Ache a sua forma escalonada reduzida.
+	    
+	    \begin{sol} 
+	    	% escreva sua solução aqui.  
+	    \end{sol} 
+
+            \item Qual é o posto dessa matriz?
+	    
+	    \begin{sol} 
+	    	% escreva sua solução aqui.  
+	    \end{sol} 
+
+            \item Ache uma solução especial para a equação $Ax = 0$.
+	    \begin{sol} 
+	    	% escreva sua solução aqui.  
+	    \end{sol} 
+        \end{enumerate}
+
+    \item Ache a matrizes $A_1$ e $A_2$ (não triviais) tais que posto$(A_1B) = 1$ e posto$(A_2B) = 0$ para $B = \begin{bmatrix}1 & 1 \\ 1 & 1 \end{bmatrix}$.
+
+    \item Verdadeiro ou Falso:
+
+        \begin{enumerate}
+
+            \item O espaço das matrizes simétricas é subespaço.
+	    
+	    \begin{sol} 
+	    	% escreva sua solução aqui.  
+	    \end{sol} 
+
+            \item O espaço das matrizes anti-simétricas é um subespaço.
+	    
+            \begin{sol} 
+	    	% escreva sua solução aqui.  
+	    \end{sol} 
+
+            \item O espaço das matrizes não-simétricas ($A^T \neq A$) é um subespaço.
+	    
+	    \begin{sol} 
+	    	% escreva sua solução aqui.  
+	    \end{sol} 
+
+        \end{enumerate}
+
+    \item Se $A$ é $4\times 4$ e inversível, descreva todos os vetores no núcleo da matriz $B = \begin{bmatrix}A & A \end{bmatrix}$ (que é $4\times 8$).
+    
+    \begin{sol} 
+    	% escreva sua solução aqui.  
+    \end{sol} 
+
+    \item Mostre por contra-exemplos que as seguintes afirmações são falsas em geral:
+
+        \begin{enumerate}
+
+            \item $A$ e $A^T$ tem os mesmo núcleos.
+	    
+	    \begin{sol} 
+	    	% escreva sua solução aqui.  
+	    \end{sol} 
+
+            \item $A$ e $A^T$ tem as mesmas variáveis livres.
+	    
+	    \begin{sol} 
+	   	% escreva sua solução aqui.  
+	    \end{sol} 
+
+            \item Se $R$ é a forma escalonada de $A$, então $R^T$ é a forma escalonada de $A$.
+	    
+	    \begin{sol} 
+	    	% escreva sua solução aqui.  
+	    \end{sol} 
+        \end{enumerate}
+
+    \item Construa uma matriz cujo espaço coluna contenha $(1,1,5)$ e $(0,3,1)$ e cujo núcleo contenha $(1,1,2)$.
+
+    \begin{sol} 
+    	% escreva sua solução aqui.  
+    \end{sol} 
+
+    \item Construa uma matriz cujo núcleo contenha todos os múltiplos de $(4,3,2,1)$.
+    
+    \begin{sol} 
+    	% escreva sua solução aqui.  
+    \end{sol} 
+
+    \item (\textit{Bônus}) Dado um espaço vetorial real \( V \), definimos o conjunto
+        \begin{equation*}
+            V^{ * } \defeq \left\{ f : V \to \R \mid f \text{ é linear} \right\}
+        .\end{equation*}
+        Ou seja, \( V^{ * } \) é o conjunto de todas as funções lineares entre \( V \) e \( \R \).
+        Relembramos que uma função \( f : E \to F \), onde \( E \) e \( F \) são espaços vetoriais, é dita \textit{linear} se para todos \( \bfv, \bfw \in E \) e \( \alpha \in \R \) temos \( f ( \bfv + \bfw ) = f ( \bfv ) + f ( \bfw ) \) e \( f ( \alpha \bfv ) = \alpha f ( \bfv ) \).
+        Chamamos \( V^{ * } \) de \textit{espaço dual} de \( V \).
+        \begin{enumerate}
+            \item Mostre que \( V^{ * } \) é um espaço vetorial.
+	    
+	    \begin{sol} 
+	    	% escreva sua solução aqui.  
+	    \end{sol} 
+            \item Agora, seja \( V = \R^{ n } \).
+                Mostre que existe uma bijeção \( \varphi : V^{ * } \to V \) tal que , para toda \( f \in V^{ * } \) e para todo \( \bfv \in V \), tenhamos
+                \begin{equation*}
+                    f(\bfv) = \dotprod{\varphi(f), \bfv}
+                .\end{equation*} 
+                \textit{Dica}: Utilize a dimensão finita de \( \R^{ n } \) para expandir \( \bfv \) como uma combinação linear dos vetores da base canônica e aplique a linearidade de \( f \).
+	    
+	    \begin{sol} 
+	    	% escreva sua solução aqui.  
+	    \end{sol} 	
+        \end{enumerate}
+        Em dimensão infinita, esse resultado é conhecido como \href{https://en.wikipedia.org/wiki/Riesz_representation_theorem}{Teorema da Representação de Riesz}.
+\end{enumerate}
+
+\end{document} 

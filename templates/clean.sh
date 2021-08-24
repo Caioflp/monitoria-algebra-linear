@@ -1,6 +1,6 @@
 #!/bin/bash 
 DIR=$1
-EXTENSIONS=("*.aux" "*.fdb_latexmk" "*.fls" "*.log" "*.synctex.gz")   
+EXTENSIONS=("*.aux" "*.fdb_latexmk" "*.fls" "*.log" "*.synctex.gz" "*.out")   
 
 if [ -h ${DIR} ]; then 
 	echo The directory ${DIR} does not exist! 

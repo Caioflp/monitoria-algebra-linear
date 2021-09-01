@@ -1,0 +1,92 @@
+%% Packages
+
+\usepackage{mathtools, amsthm}
+% \usepackage{tikz}
+% \usetikzlibrary{positioning}
+% \usepackage{csquotes}
+% \usepackage{hyperref}
+
+%% Environments
+
+\theoremstyle{plain} % default
+\newtheorem{teo}{Teorema}[section]
+\newtheorem*{teo*}{Teorema}
+\newtheorem{lem}{Lema}[section]
+\newtheorem{prop}{Proposição}[section]
+\newtheorem{cor}[teo]{Corolário}
+\newtheorem*{axiom}{Axioma}
+
+\newtheorem*{TAU}{Teorema da Aproximação Universal}
+\newtheorem*{Riesz}{Teorema da Representação de Riesz}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definição}[section]
+\newtheorem{conj}{Conjectura}[section]
+\newtheorem{exmp}{Exemplo}[section]
+\newtheorem{rem}{Observação}[section]
+\newtheorem*{rem*}{Observação}
+
+\theoremstyle{remark}
+\newtheorem*{note}{Nota}
+\newtheorem{case}{Caso}
+
+
+% Macros
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\Re}{\text{Re}}
+
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\I}{\mathbb{I}}
+
+\DeclarePairedDelimiter{\dotprod}{\langle}{\rangle}
+
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\intt}{int}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rref}{rref}
+\DeclareMathOperator{\vspan}{span}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\lin}{Lin}
+\DeclareMathOperator{\supp}{supp}
+
+\newcommand{\func}[3]{#1 : #2 \rightarrow #3}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\rr}{R_{r}}
+\newcommand{\tq}{ : }
+\newcommand{\mdc}{\text{mdc}}
+\newcommand{\mmc}{\text{mmc}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\comp}{\mathscr{C}}
+
+
+%% Upper and Lower Integrals
+\newcommand{\loint}[4]{
+    \lefteqn{\int_{ #1 }^{ #2 } #3}\lefteqn{\hspace{0.0ex}\rule[-2.25ex]{1.1ex}{.05ex}} \phantom{\int_{ #1 }^{ #2 } #3}\mathrm{d}#4
+}
+\newcommand{\upint}[4]{
+    \lefteqn{\int_{ #1 }^{ #2 } #3 \ }\lefteqn{\hspace{1.2ex}\rule[ 3.35ex]{1.1ex}{.05ex}} \phantom{\int_{ #1 }^{ #2 } #3 \ }\mathrm{d}#4
+}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\DeclareMathOperator{\sen}{sen}
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+\newcommand{\transpose}{\mathsf{T}}

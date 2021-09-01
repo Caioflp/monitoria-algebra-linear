@@ -1,0 +1,221 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel}% \usepackage[latin1]{inputenc}
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage{enumerate}
+\usepackage{xifthen} \usepackage{tikz}
+\usepackage{mathtools} 
+\usepackage{hyperref}
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+% \input{../preamble}
+
+\numberwithin{equation}{section}
+
+\setlength{\parindent}{12 pt}
+
+
+%% \newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+%% \newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+%% \newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+%% \newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+
+%% \theoremstyle{definition}
+%% \newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+%% \newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+%% \newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+%% \newtheorem*{hipo}{Hipóteses}
+%% \newtheorem*{nota}{Notação}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}} 
+
+\DeclarePairedDelimiter{\dotprod}{\langle}{\rangle} 
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfz}{\mathbf{z}}
+
+\newcommand{\func}[3]{#1 : #2 \rightarrow #3}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\rr}{R_{r}}
+\newcommand{\tq}{ : }
+\newcommand{\mdc}{\text{mdc}}
+\newcommand{\mmc}{\text{mmc}}
+\newcommand{\comp}{\mathscr{C} 
+}
+
+\newcommand{\bvecc}[2]{%
+    \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+    \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+\newcommand{\bvecfour}[4]{%
+    \begin{bmatrix} #1 \\ #2 \\ #3 \\ #4 \end{bmatrix}
+}
+
+\newenvironment{sol}
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm}
+}
+{} 
+
+\title{Álgebra Linear - Lista de Exercícios 5}
+
+\author{escreva seu nome aqui}
+\date{} 
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+
+    \item Explique porque essas afirmações são falsas
+
+        \begin{enumerate}
+
+            \item A solução completa é qualquer combinação linear de $x_p$ e $x_n$.
+
+	\begin{sol} 
+		% escreva sua solução aqui.    
+	\end{sol} 
+
+            \item O sistema $Ax = b$ tem no máximo uma solução particular.
+
+	\begin{sol} 
+		% escreva sua solução aqui.    
+	\end{sol} 
+
+            \item Se $A$ é inversível, não existe nenhuma solução $x_n$ no núcleo.
+
+	\begin{sol} 
+		% escreva sua solução aqui.    
+	\end{sol} 
+
+        \end{enumerate}
+
+    \item Sejam
+        $$U = \begin{bmatrix} 
+            1 & 2 & 3 \\
+            0 & 0 & 4
+            \end{bmatrix} \mbox{ e } c = \begin{bmatrix} 
+            5 \\
+            8
+        \end{bmatrix}.$$
+
+        Use a eliminação de Gauss-Jordan para reduzir as matrizes $[U \ 0]$ e $[U \ c]$ para $[R \ 0]$ e $[R \ d]$. Resolva $Rx = 0$ e $Rx = d$
+
+	\begin{sol} 
+		% escreva sua solução aqui.    
+	\end{sol} 
+
+    \item Suponha que $Ax = b$ e $Cx = b$ tenham as mesmas soluções (completas) para todo $b$. Podemos concluir que $A = C$?
+
+	    \begin{sol} 
+	    	% escreva sua solução aqui.    
+	    \end{sol} 
+
+    \item Ache o maior número possível de vetores linearmente independentes dentre os vetores:
+
+        $$\bvecfour{1}{-1}{0}{0}, \ \bvecfour{1}{0}{-1}{0}, \ \bvecfour{1}{0}{0}{-1}, \ \bvecfour{0}{1}{-1}{0}, \ \bvecfour{0}{1}{0}{-1} \mbox{ e } \bvecfour{0}{0}{1}{-1}$$
+
+	\begin{sol} 
+		% escreva sua solução aqui.    
+	\end{sol} 
+
+    \item Ache uma base para o plano $x - 2y + 3z = 0$ em $\bR^3$. Encontre então uma base para a interseção desse plano com o plano $xy$. Ache ainda uma base para todos os vetores perpendiculares a esse plano.
+
+	\begin{sol} 
+		% escreva sua solução aqui.    
+	\end{sol} 
+
+    \item Ache (na sua forma mais simples) a matriz que é o produto das matrizes de posto 1 $\bfu \bfv^T$ e $\bfw \bfz^T$? Qual seu posto?
+
+	\begin{sol} 
+		% escreva sua solução aqui.    
+	\end{sol} 
+
+    \item Suponha que a coluna $j$ de $B$ é uma combinação linear das colunas anteriores de $B$. Mostre que a coluna $j$ de $AB$ é uma combinação linear das colunas anteriores de $AB$. Conclua que posto$(AB) \leq $ posto$(B)$.
+
+	\begin{sol} 
+		% escreva sua solução aqui.    
+	\end{sol} 
+
+    \item O item anterior nos dá posto$(B^T A^T) \leq $ posto$(A^T)$. É possível concluir que posto$(AB) \leq $ posto$(A)$?
+
+	\begin{sol} 
+		% escreva sua solução aqui.    
+	\end{sol} 
+
+    \item Suponha que $A$ e $B$ são matrizes quadradas e $AB = I$. Prove que posto$(A) = n$. Conclua que $B$ precisa ser a inversa (de ambos lados) de $A$. Então, $BA = I$.
+
+	\begin{sol} 
+		% escreva sua solução aqui.    
+	\end{sol} 
+
+    \item (\textit{Bônus}) Dado um espaço vetorial real \( V \), definimos o conjunto
+        \begin{equation*}
+            V^{ * } \defeq \left\{ f : V \to \R \mid f \text{ é linear} \right\}
+        .\end{equation*}
+        Ou seja, \( V^{ * } \) é o conjunto de todas as funções lineares entre \( V \) e \( \R \).
+        Relembramos que uma função \( f : E \to F \), onde \( E \) e \( F \) são espaços vetoriais, é dita \textit{linear} se para todos \( \bfv, \bfw \in E \) e \( \alpha \in \R \) temos \( f ( \bfv + \bfw ) = f ( \bfv ) + f ( \bfw ) \) e \( f ( \alpha \bfv ) = \alpha f ( \bfv ) \).
+        Chamamos \( V^{ * } \) de \textit{espaço dual} de \( V \).
+        \begin{enumerate}
+            \item Mostre que \( V^{ * } \) é um espaço vetorial.
+	
+		\begin{sol} 
+			% escreva sua solução aqui.    
+		\end{sol} 
+
+            \item Agora, seja \( V = \R^{ n } \).
+                Mostre que existe uma bijeção \( \varphi : V^{ * } \to V \) tal que , para toda \( f \in V^{ * } \) e para todo \( \bfv \in V \), tenhamos
+                \begin{equation*}
+                    f(\bfv) = \dotprod{\varphi(f), \bfv}
+                .\end{equation*}
+                \textit{Dica}: Utilize a dimensão finita de \( \R^{ n } \) para expandir \( \bfv \) como uma combinação linear dos vetores da base canônica e aplique a linearidade de \( f \).
+
+		\begin{sol} 
+			% escreva sua solução aqui.    
+		\end{sol} 
+        \end{enumerate}
+        Em dimensão infinita, esse resultado é conhecido como \href{https://en.wikipedia.org/wiki/Riesz_representation_theorem}{Teorema da Representação de Riesz}.
+\end{enumerate}
+
+\end{document} 

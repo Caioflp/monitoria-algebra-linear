@@ -1,0 +1,277 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel}% \usepackage[latin1]{inputenc}
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage{enumerate}
+\usepackage{xifthen} \usepackage{tikz}
+\usepackage{mathtools} 
+\usepackage{hyperref}
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+\input{../preamble}
+
+\numberwithin{equation}{section}
+
+\setlength{\parindent}{12 pt}
+
+
+%% \newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+%% \newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+%% \newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+%% \newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+
+%% \theoremstyle{definition}
+%% \newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+%% \newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+%% \newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+%% \newtheorem*{hipo}{Hipóteses}
+%% \newtheorem*{nota}{Notação}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}} 
+
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfz}{\mathbf{z}}
+\newcommand{\bfe}{\mathbf{e}}
+
+
+\newcommand{\bvecc}[2]{%
+    \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+    \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+\newcommand{\bvecfour}[4]{%
+    \begin{bmatrix} #1 \\ #2 \\ #3 \\ #4 \end{bmatrix}
+}
+
+\newenvironment{sol}
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm}
+}
+{} 
+
+\title{Álgebra Linear - Soluções da Lista de Exercícios 5}
+
+\author{Caio Lins e Tiago Silva}
+\date{\today} 
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+
+    \item Explique porque essas afirmações são falsas
+
+        \begin{enumerate}
+
+            \item A solução completa é qualquer combinação linear de $x_p$ e $x_n$.
+
+                \begin{sol} 
+                    % escreva sua solução aqui.    
+                \end{sol} 
+
+            \item O sistema $Ax = b$ tem no máximo uma solução particular.
+
+                \begin{sol} 
+                    % escreva sua solução aqui.    
+                \end{sol} 
+
+            \item Se $A$ é inversível, não existe nenhuma solução $x_n$ no núcleo.
+
+                \begin{sol} 
+                    % escreva sua solução aqui.    
+                \end{sol} 
+
+        \end{enumerate}
+
+    \item Sejam
+        $$U = \begin{bmatrix} 
+            1 & 2 & 3 \\
+            0 & 0 & 4
+            \end{bmatrix} \mbox{ e } c = \begin{bmatrix} 
+            5 \\
+            8
+        \end{bmatrix}.$$
+
+        Use a eliminação de Gauss-Jordan para reduzir as matrizes $[U \ 0]$ e $[U \ c]$ para $[R \ 0]$ e $[R \ d]$. Resolva $Rx = 0$ e $Rx = d$
+
+        \begin{sol} 
+            % escreva sua solução aqui.    
+        \end{sol} 
+
+    \item Suponha que $Ax = b$ e $Cx = b$ tenham as mesmas soluções (completas) para todo $b$. Podemos concluir que $A = C$?
+
+        \begin{sol} 
+            % escreva sua solução aqui.    
+        \end{sol} 
+
+    \item Ache o maior número possível de vetores linearmente independentes dentre os vetores:
+
+        $$\bvecfour{1}{-1}{0}{0}, \ \bvecfour{1}{0}{-1}{0}, \ \bvecfour{1}{0}{0}{-1}, \ \bvecfour{0}{1}{-1}{0}, \ \bvecfour{0}{1}{0}{-1} \mbox{ e } \bvecfour{0}{0}{1}{-1}$$
+
+        \begin{sol} 
+            % escreva sua solução aqui.    
+        \end{sol} 
+
+    \item Ache uma base para o plano $x - 2y + 3z = 0$ em $\bR^3$. Encontre então uma base para a interseção desse plano com o plano $xy$. Ache ainda uma base para todos os vetores perpendiculares a esse plano.
+
+        \begin{sol} 
+            % escreva sua solução aqui.    
+        \end{sol} 
+
+    \item Ache (na sua forma mais simples) a matriz que é o produto das matrizes de posto 1 $\bfu \bfv^T$ e $\bfw \bfz^T$? Qual seu posto?
+
+        \begin{sol} 
+            % escreva sua solução aqui.    
+        \end{sol} 
+
+    \item Suponha que a coluna $j$ de $B$ é uma combinação linear das colunas anteriores de $B$. Mostre que a coluna $j$ de $AB$ é uma combinação linear das colunas anteriores de $AB$. Conclua que posto$(AB) \leq $ posto$(B)$.
+
+        \begin{sol} 
+            % escreva sua solução aqui.    
+        \end{sol} 
+
+    \item O item anterior nos dá posto$(B^T A^T) \leq $ posto$(A^T)$. É possível concluir que posto$(AB) \leq $ posto$(A)$?
+
+        \begin{sol} 
+            % escreva sua solução aqui.    
+        \end{sol} 
+
+    \item Suponha que $A$ e $B$ são matrizes quadradas e $AB = I$. Prove que posto$(A) = n$. Conclua que $B$ precisa ser a inversa (de ambos lados) de $A$. Então, $BA = I$.
+
+        \begin{sol} 
+            % escreva sua solução aqui.    
+        \end{sol} 
+
+    \item (\textit{Bônus}) Dado um espaço vetorial real \( V \), definimos o conjunto
+        \begin{equation*}
+            V^{ * } \defeq \left\{ f : V \to \R \mid f \text{ é linear} \right\}
+        .\end{equation*}
+        Ou seja, \( V^{ * } \) é o conjunto de todas as funções lineares entre \( V \) e \( \R \).
+        Relembramos que uma função \( f : E \to F \), onde \( E \) e \( F \) são espaços vetoriais, é dita \textit{linear} se para todos \( \bfv, \bfw \in E \) e \( \alpha \in \R \) temos \( f ( \bfv + \bfw ) = f ( \bfv ) + f ( \bfw ) \) e \( f ( \alpha \bfv ) = \alpha f ( \bfv ) \).
+        Chamamos \( V^{ * } \) de \textit{espaço dual} de \( V \).
+        \begin{enumerate}
+            \item Mostre que \( V^{ * } \) é um espaço vetorial.
+
+                \begin{sol} 
+                    Podemos definir a soma de funcionais (funcionais, pois o contradomínio é \( \R \)) de uma maneira natural.
+                    Dadas \( f, g \in V^{ * } \), definimos
+                    \begin{align*}
+                        f + g : V &\to \R \\
+                        \bfv &\mapsto f ( \bfv ) + g ( \bfv )
+                    .\end{align*}
+                \end{sol} 
+                Com isso, a soma de dois funcionais lineares é um funcional linear .
+                Além disso, definimos de maneira análoga a multiplicação de um funcional por um escalar.
+                Dada \( f \in V^{ * } \) e \( \alpha \in \R \), definimos
+                \begin{align*}
+                    \alpha f : V &\to \R \\
+                    \bfv &\mapsto \alpha f ( \bfv )
+                .\end{align*}
+                Portanto, a multiplicação de um funcional linear por um escalar é um funcional linear.
+
+            \item Agora, seja \( V = \R^{ n } \).
+                Mostre que existe uma bijeção \( \varphi : V^{ * } \to V \) tal que , para toda \( f \in V^{ * } \) e para todo \( \bfv \in V \), tenhamos
+                \begin{equation*}
+                    f(\bfv) = \dotprod{\varphi(f), \bfv}
+                .\end{equation*}
+                \textit{Dica}: Utilize a dimensão finita de \( \R^{ n } \) para expandir \( \bfv \) como uma combinação linear dos vetores da base canônica e aplique a linearidade de \( f \).
+
+                \begin{sol} 
+                    Denotanto por \( \bfe_{ i } \) o \( i \)-ésimo vetor da base canônica, dado \( \bfv \in V \) podemos escrever
+                    \begin{equation*}
+                        \bfv = \sum_{ i=1 }^{ n } \alpha_{ i } \bfe_{ i }
+                    ,\end{equation*}
+                    para alguns \( \alpha_{ i } \in \R \), \( i = 1, \dots, n \).
+                    Com isso, se \( f \in V^{ * } \), pela sua linearidade podemos escrever
+                    \begin{align*}
+                        f ( \bfv )
+                        &= f \left(
+                            \sum_{ i=1 }^{ n } \alpha_{ i } \bfe_{ i }
+                        \right) \\
+                        &= \sum_{ i=1 }^{ n } f ( \alpha_{ i } \bfe_{ i } ) \\
+                        &= \sum_{ i=1 }^{ n } \alpha_{ i } f ( \bfe_{ i } ) \\
+                        &=
+                        \begin{bmatrix}
+                            f ( \bfe_{ 1 } ) & \cdots & f ( \bfe_{ n } )
+                        \end{bmatrix}
+                        \bfv
+                    .\end{align*}
+                    Perceba que, com isso, conhecendo os \( n \) valores \( f ( \bfe_{ i } ), \dots, f ( \bfe_{ n } ) \) podemos calcular \( f ( \bfv ) \) para qualquer vetor \( \bfv \in V \), realizando o produto interno
+                    \begin{equation*}
+                        \begin{bmatrix}
+                            f ( \bfe_{ i } ) \\
+                            \vdots \\
+                            f ( \bfe_{ n } )
+                        \end{bmatrix}^{ \transpose }
+                        \bfv
+                    .\end{equation*}
+                    Sendo assim, podemos definir uma função
+                    \begin{align*}
+                        \varphi : V^{ * } &\to V \\
+                        f &\mapsto \varphi ( f ) =
+                        \begin{bmatrix}
+                            f ( \bfe_{ 1 } ) \cdots f ( \bfe_{ n } )
+                        \end{bmatrix}^{ \transpose }
+                    .\end{align*}
+                    Pela discussão anterior, já temos a identidade
+                    \begin{equation*}
+                        f ( \bfv ) = \dotprod{\varphi ( f ), \bfv}
+                    \end{equation*}
+                    para toda \( f \in V^{ * } \) e \( \bfv \in V \).
+                    Resta mostrar que \( \varphi \) é uma bijeção.
+
+                    Vamos mostrar, primeiro, que \( \varphi \) é sobrejetiva.
+                    Dado \( \bfu =
+                    \begin{bmatrix}
+                        \beta_{ 1 } \cdots \beta_{ n }
+                    \end{bmatrix}^{ \transpose } \in V\), devemos encontrar uma \( g \in V^{ * } \) tal que \( \varphi ( g ) = \bfu \).
+                    Ora, definindo \( g \) por \( g ( \bfv ) = \bfu^{ \transpose } \bfv \) para todo \( \bfv \in V \), claramente \( g \in V^{ * } \) e, ainda, temos
+                    \begin{equation*}
+                        g ( \bfe_{ i } ) = \bfu^{ \transpose } \bfe_{ i } = \beta_{ i }
+                    \end{equation*}
+                    para todo \( i = 1, \dots, n \).
+                    Logo, \( \varphi ( g ) = \bfu \).
+
+                    Para mostrar a injetividade de \( \varphi \), 
+                \end{sol} 
+        \end{enumerate}
+        Em dimensão infinita, esse resultado é conhecido como \href{https://en.wikipedia.org/wiki/Riesz_representation_theorem}{Teorema da Representação de Riesz}.
+\end{enumerate}
+
+\end{document} 

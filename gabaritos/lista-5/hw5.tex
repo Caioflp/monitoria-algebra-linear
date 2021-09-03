@@ -61,6 +61,8 @@
 \newcommand{\bfu}{\mathbf{u}}
 \newcommand{\bfz}{\mathbf{z}}
 \newcommand{\bfe}{\mathbf{e}}
+\newcommand{\bfa}{\mathbf{a}}
+\newcommand{\bfx}{\mathbf{x}}
 
 
 \newcommand{\bvecc}[2]{%
@@ -93,6 +95,23 @@
 
 \maketitle
 
+\begin{rem*}
+    Escreveremos \( ( x_{ 1 }, \dots, x_{ n } ) \), com parênteses, para denotar um vetor em \( \R^{ n } \) cujas coordenadas na base canônica são \( x_{ 1 }, \dots, x_{ n } \).
+    Ou seja, \( ( x_{ 1 }, \dots, x_{ n } ) \) é para ser entendido como a mesma coisa que
+    \begin{equation*}
+        \begin{bmatrix}
+            x_{ 1 } \\
+            \vdots \\
+            x_{ n }
+        \end{bmatrix}
+    .\end{equation*}
+    Utilizaremos essa notação para evitar o uso de transposição ao definir um vetor.
+    Ao invés de escrevermos \( \bfv =
+    \begin{bmatrix}
+        x_{ 1 } & \cdots & x_{ n }
+    \end{bmatrix}^{ \transpose }\), podemos agora escrever apenas \( \bfv = ( x_{ 1 }, \dots, x_{ n } ) \).
+\end{rem*}
+
 \begin{enumerate}
 
     \item Explique porque essas afirmações são falsas
@@ -102,19 +121,26 @@
             \item A solução completa é qualquer combinação linear de $x_p$ e $x_n$.
 
                 \begin{sol} 
-                    % escreva sua solução aqui.    
+                    Se o sistema \( Ax = b \) tem \( b = 0 \), isso é verdade, pois qualquer solução particular está no núcleo de \( A \), o qual é um espaço vetorial.
+                    Se, por outro lado, tivermos \( b \neq 0 \), a afirmação está errada.
+                    De fato, tome a combinação linear de \( x_{ p } \) e \( x_{ n } \) dada por \( 2 \cdot x_{ p } + 0 \cdot x_{ n } \).
+                    Então
+                    \begin{equation*}
+                        A ( 2x_{ p } ) = 2 Ax_{ p } = 2b \neq b
+                    .\end{equation*}
+                    Logo, ela não é uma solução.
                 \end{sol} 
 
             \item O sistema $Ax = b$ tem no máximo uma solução particular.
 
                 \begin{sol} 
-                    % escreva sua solução aqui.    
+                    Se há alguma solução particular e o núcleo de \( A \) é não vazio, então há infinitas soluções.
                 \end{sol} 
 
             \item Se $A$ é inversível, não existe nenhuma solução $x_n$ no núcleo.
 
                 \begin{sol} 
-                    % escreva sua solução aqui.    
+                    Na verdade, sempre existe a solução trivial \( x = 0 \) no núcleo.
                 \end{sol} 
 
         \end{enumerate}
@@ -137,7 +163,10 @@
     \item Suponha que $Ax = b$ e $Cx = b$ tenham as mesmas soluções (completas) para todo $b$. Podemos concluir que $A = C$?
 
         \begin{sol} 
-            % escreva sua solução aqui.    
+            Podemos.
+            Seja \( \bfe_{ i } \) o \( i \)-ésimo vetor da base canônica e defina \( \bfa_{ i } = A \bfe_{ i } \), ou seja, \( \bfa_{ i } \) é a \( i \)-ésima coluna de \( A \).
+            Por hipótese, \( \bfe_{ i } \) deve ser solução do sistema \( C \bfx = \bfa_{ i } \), porém isso implica em \( C \bfe_{ i } = \bfa_{ i } \), ou seja, a \( i \)-ésima coluna de \( C \) é igual à \( i \)-ésima coluna de \( A \).
+            Como \( i \) foi tomado arbitrariamente, \( A = C \).
         \end{sol} 
 
     \item Ache o maior número possível de vetores linearmente independentes dentre os vetores:
@@ -151,7 +180,38 @@
     \item Ache uma base para o plano $x - 2y + 3z = 0$ em $\bR^3$. Encontre então uma base para a interseção desse plano com o plano $xy$. Ache ainda uma base para todos os vetores perpendiculares a esse plano.
 
         \begin{sol} 
-            % escreva sua solução aqui.    
+            Seja \( \Pi \) o plano em questão.
+            Observe que esse plano é justamente o núcleo da matriz
+            \begin{equation*}
+                M =
+                \begin{bmatrix}
+                    1 & -2 & 3
+                \end{bmatrix}
+            .\end{equation*}
+            Como ela já está em sua forma escalonada reduzida, podemos obter seu núcleo diretamente, pois ele será o \( \vspan  \) dos vetores
+            \begin{equation*}
+                \bfv =
+                \begin{bmatrix}
+                    -2 \\
+                    1 \\
+                    0
+                \end{bmatrix}
+                \text{ e }
+                \bfw =
+                \begin{bmatrix}
+                    3 \\
+                    0 \\
+                    1
+                \end{bmatrix}
+            .\end{equation*}
+            Sendo assim, \( \left\{ \bfv, \bfw \right\} \) é uma base para \( \Pi \).
+            
+            Os vetores \( ( x, y, z ) \in \R^{ 3 } \) pertencentes à interseção entre \( \Pi \) e o plano \( xy \) são justamente os que satisfazem \( x - 2y = 0 \), ou seja,
+            \begin{equation*}
+                x = 2y
+            .\end{equation*}
+            Portanto, eles são da forma \( ( 2t, t ), t \in \R \).
+            É evidente que o vetor \( ( 2, 1 ) \) constitui uma base para esse conjunto.
         \end{sol} 
 
     \item Ache (na sua forma mais simples) a matriz que é o produto das matrizes de posto 1 $\bfu \bfv^T$ e $\bfw \bfz^T$? Qual seu posto?
@@ -189,7 +249,7 @@
             \item Mostre que \( V^{ * } \) é um espaço vetorial.
 
                 \begin{sol} 
-                    Podemos definir a soma de funcionais (funcionais, pois o contradomínio é \( \R \)) de uma maneira natural.
+                    Podemos definir a soma de funcionais (funções lineares que têm \( \R \) como contradomínio são chamadas de \textit{funcionais lineares}) de uma maneira natural.
                     Dadas \( f, g \in V^{ * } \), definimos
                     \begin{align*}
                         f + g : V &\to \R \\
@@ -261,14 +321,23 @@
                     \begin{bmatrix}
                         \beta_{ 1 } \cdots \beta_{ n }
                     \end{bmatrix}^{ \transpose } \in V\), devemos encontrar uma \( g \in V^{ * } \) tal que \( \varphi ( g ) = \bfu \).
-                    Ora, definindo \( g \) por \( g ( \bfv ) = \bfu^{ \transpose } \bfv \) para todo \( \bfv \in V \), claramente \( g \in V^{ * } \) e, ainda, temos
+                    Ora, definindo \( g \) por \( g ( \bfv ) = \bfu^{ \transpose } \bfv \) para todo \( \bfv \in V \), claramente \( g \in V^{ * } \) e, ainda,
                     \begin{equation*}
                         g ( \bfe_{ i } ) = \bfu^{ \transpose } \bfe_{ i } = \beta_{ i }
                     \end{equation*}
                     para todo \( i = 1, \dots, n \).
                     Logo, \( \varphi ( g ) = \bfu \).
 
-                    Para mostrar a injetividade de \( \varphi \), 
+                    Para mostrar a injetividade de \( \varphi \), vamos supor que existem \( f, g \in V^{ * } \ \) tais que \( \varphi ( f ) = \varphi ( g ) \).
+                    Pela definição da \( \varphi \), isso implica em \( f ( \bfe_{ i } ) = g ( \bfe_{ i } ) \) para todo \( i = 1, \dots, n \).
+                    Com isso, dado qualquer \( \bfv \in V \) com \( \bfv = \sum_{ i=1 }^{ n } \alpha_{ i } \bfe_{ i } \), temos, por um desenvolvimento feito anteriormente,
+                    \begin{equation*}
+                        f ( \bfv )
+                        = \sum_{ i=1 }^{ n } \alpha_{ i } f ( \bfe_{ i } )
+                        = \sum_{ i=1 }^{ n } \alpha_{ i } g ( \bfe_{ i } )
+                        = g ( \bfv )
+                    .\end{equation*}
+                    Portanto, \( f = g \) e \( \varphi \) é injetiva, o que conclui a demonstração. \hfill \qed
                 \end{sol} 
         \end{enumerate}
         Em dimensão infinita, esse resultado é conhecido como \href{https://en.wikipedia.org/wiki/Riesz_representation_theorem}{Teorema da Representação de Riesz}.

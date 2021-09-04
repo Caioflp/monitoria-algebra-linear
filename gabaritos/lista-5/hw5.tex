@@ -62,6 +62,7 @@
 \newcommand{\bfz}{\mathbf{z}}
 \newcommand{\bfe}{\mathbf{e}}
 \newcommand{\bfa}{\mathbf{a}}
+\newcommand{\bfb}{\mathbf{b}}
 \newcommand{\bfx}{\mathbf{x}}
 
 
@@ -157,7 +158,41 @@
         Use a eliminação de Gauss-Jordan para reduzir as matrizes $[U \ 0]$ e $[U \ c]$ para $[R \ 0]$ e $[R \ d]$. Resolva $Rx = 0$ e $Rx = d$
 
         \begin{sol} 
-            % escreva sua solução aqui.    
+            Vamos trabalhar de uma vez com a matriz aumentada \( [ U \ c] \).
+            \begin{align*}
+                \begin{bmatrix}
+                    1 & 2 & 3 & \mid & 5 \\
+                    0 & 0 & 4 & \mid & 8
+                \end{bmatrix}
+                &\xrightarrow{
+                    \begin{array}{l}
+                        L_{ 1 } - \frac{ 3 }{ 4 } L_{ 2 }
+                    \end{array}
+                }
+                \begin{bmatrix}
+                    1 & 2 & 0 & \mid & -1 \\
+                    0 & 0 & 4 & \mid & 8
+                \end{bmatrix} \\
+                &\xrightarrow{
+                    \begin{array}{l}
+                        L_{ 2 }/4
+                    \end{array}
+                }
+                \begin{bmatrix}
+                    1 & 2 & 0 & \mid & -1 \\
+                    0 & 0 & 1 & \mid & 2
+                \end{bmatrix}
+            .\end{align*}
+            Como \( U \) possui \( 2 \) pivôs, pelo Teorema do Posto sabemos que seu núcleo tem dimensão \( 1 \).
+            Como a segunda coluna não tem pivô, a variável livre é \( x_{ 2 } \).
+            Portanto, para encontrar uma base para o núcleo podemos definir \( x_{ 2 } = 1 \) e, com isso, concluímos que \( x_{ 1 } = -2 \) e \( x_{ 3 } = 0 \).
+            Ou seja, a solução de \( Rx = 0 \) é o \( \vspan \) do vetor \( ( -2, 1, 0 ) \).
+
+            Para obter uma solução particular de \( Rx = d \), novamente definimos \( x_{ 2 } = 1 \) e, dessa vez, obtemos \( x_{ 1 } = -3 \) e \( x_{ 3 } = 2 \).
+            Logo, a solução completa de \( Rx = d \) é dada por
+            \begin{equation*}
+                ( -3, 1, 2 ) + t ( -2, 1, 0 ), t \in \R
+            .\end{equation*}
         \end{sol} 
 
     \item Suponha que $Ax = b$ e $Cx = b$ tenham as mesmas soluções (completas) para todo $b$. Podemos concluir que $A = C$?
@@ -174,7 +209,50 @@
         $$\bvecfour{1}{-1}{0}{0}, \ \bvecfour{1}{0}{-1}{0}, \ \bvecfour{1}{0}{0}{-1}, \ \bvecfour{0}{1}{-1}{0}, \ \bvecfour{0}{1}{0}{-1} \mbox{ e } \bvecfour{0}{0}{1}{-1}$$
 
         \begin{sol} 
-            % escreva sua solução aqui.    
+            Vamos realizar a eliminação de Gauss-Jordan em uma matriz que tem esses vetores como colunas.
+            Com isso, obteremos o posto dessa matriz, ou seja, o maior número de colunas L.I. que ela possui.
+            \begin{align*}
+                \begin{bmatrix}
+                    1 & 1 & 1 & 0 & 0 & 0 \\
+                    -1 & 0 & 0 & 1 & 1 & 0 \\
+                    0 & -1 & 0 & -1 & 0 & 1 \\
+                    0 & 0 & -1 & 0 & -1 & -1
+                \end{bmatrix}
+                &\xrightarrow{
+                    \begin{array}{l}
+                        L_{ 2 } + L_{ 1 }
+                    \end{array}
+                }
+                \begin{bmatrix}
+                    1 & 1 & 1 & 0 & 0 & 0 \\
+                    0 & 1 & 1 & 1 & 1 & 0 \\
+                    0 & -1 & 0 & -1 & 0 & 1 \\
+                    0 & 0 & -1 & 0 & -1 & -1
+                \end{bmatrix} \\
+                &\xrightarrow{
+                    \begin{array}{l}
+                        L_{ 3 } + L_{ 2 }
+                    \end{array}
+                }
+                \begin{bmatrix}
+                    1 & 1 & 1 & 0 & 0 & 0 \\
+                    0 & 1 & 1 & 1 & 1 & 0 \\
+                    0 & 0 & 1 & 0 & 1 & 1 \\
+                    0 & 0 & -1 & 0 & -1 & -1
+                \end{bmatrix} \\
+                &\xrightarrow{
+                    \begin{array}{l}
+                        L_{ 4 } + L_{ 3 }
+                    \end{array}
+                }
+                \begin{bmatrix}
+                    1 & 1 & 1 & 0 & 0 & 0 \\
+                    0 & 1 & 1 & 1 & 1 & 0 \\
+                    0 & 0 & 1 & 0 & 1 & 1 \\
+                    0 & 0 & 0 & 0 & 0 & 0
+                \end{bmatrix}
+            .\end{align*}
+            Portanto, essa matriz tem \( 3 \) pivôs e, assim, esse é o maior número possível de vetores linearmente independentes dentre suas colunas.
         \end{sol} 
 
     \item Ache uma base para o plano $x - 2y + 3z = 0$ em $\bR^3$. Encontre então uma base para a interseção desse plano com o plano $xy$. Ache ainda uma base para todos os vetores perpendiculares a esse plano.
@@ -192,50 +270,146 @@
             \begin{equation*}
                 \bfv =
                 \begin{bmatrix}
-                    -2 \\
+                    2 \\
                     1 \\
                     0
                 \end{bmatrix}
                 \text{ e }
                 \bfw =
                 \begin{bmatrix}
-                    3 \\
+                    -3 \\
                     0 \\
                     1
                 \end{bmatrix}
             .\end{equation*}
             Sendo assim, \( \left\{ \bfv, \bfw \right\} \) é uma base para \( \Pi \).
-            
+
             Os vetores \( ( x, y, z ) \in \R^{ 3 } \) pertencentes à interseção entre \( \Pi \) e o plano \( xy \) são justamente os que satisfazem \( x - 2y = 0 \), ou seja,
             \begin{equation*}
                 x = 2y
             .\end{equation*}
             Portanto, eles são da forma \( ( 2t, t ), t \in \R \).
             É evidente que o vetor \( ( 2, 1 ) \) constitui uma base para esse conjunto.
-        \end{sol} 
+
+            Agora, afirmamos que um vetor é perpendicular a \( \Pi \) se, e somente se, ele é perpendicular a \( \bfv \) e \( \bfw \).
+            De fato, como \( \bfv \) e \( \bfw \) pertencem a \( \Pi \), naturalmente um vetor perpendicular a \( \Pi \) será perpendicular a \( \bfv \) e \( \bfw \).
+            Reciprocamente, se \( \bfu \) é tal que \( \dotprod{\bfu, \bfv} = \dotprod{\bfu, \bfw} = 0 \), então, dado \( \bfx = \alpha \bfv + \beta \bfw \in \Pi \), temos
+            \begin{align*}
+                \dotprod{\bfu, \bfx} &= \dotprod{\bfu, \alpha \bfv + \beta \bfw} \\
+                                     &= \alpha \dotprod{\bfu, \bfv} + \beta \dotprod{\bfu, \bfw} \\
+                                     &= \alpha \cdot 0 + \beta \cdot 0 \\
+                                     &= 0
+                                 .\end{align*}
+                             \end{sol} 
+                             Portanto, o conjunto dos vetores perpendiculares a \( \Pi \) será justamente o núcleo da matriz
+                             \begin{equation*}
+                                 A =
+                                 \begin{bmatrix}
+                                     \bfv & \bfw
+                                 \end{bmatrix}^{ \transpose }
+                                 =
+                                 \begin{bmatrix}
+                                     \bfv^{ \transpose } \\
+                                     \bfw^{ \transpose }
+                                 \end{bmatrix}
+                                 =
+                                 \begin{bmatrix}
+                                     2 & 1 & 0 \\
+                                     -3 & 0 & 1
+                                 \end{bmatrix}
+                             .\end{equation*}
+                             Vamos obter a forma escalonada reduzida de \( A \):
+                             \begin{align*}
+                                 \begin{bmatrix}
+                                     2 & 1 & 0 \\
+                                     -3 & 0 & 1
+                                 \end{bmatrix}
+            &\xrightarrow{
+                \begin{array}{l}
+                    L_{ 2 } + \frac{ 3 }{ 2 } L_{ 1 }
+                \end{array}
+            }
+            \begin{bmatrix}
+                2 & 1 & 0 \\
+                0 & \frac{ 3 }{ 2 } & 1
+            \end{bmatrix} \\
+            &\xrightarrow{
+                \begin{array}{l}
+                    L_{ 1 } - \frac{ 2 }{ 3 } L_{ 2 }
+                \end{array}
+            }
+            \begin{bmatrix}
+                2 & 0 & - \frac{ 2 }{ 3 } \\
+                0 & \frac{ 3 }{ 2 } & 1
+            \end{bmatrix} \\
+            &\xrightarrow{
+                \begin{array}{l}
+                    L_{ 1 } \cdot \frac{ 1 }{ 2 } \\
+                    L_{ 2 } \cdot \frac{ 2 }{ 3 }
+                \end{array}
+            }
+            \begin{bmatrix}
+                1 & 0 & - \frac{ 1 }{ 3 } \\
+                0 & 1 & \frac{ 2 }{ 3 }
+            \end{bmatrix}
+        .\end{align*}
+        Logo, concluímos que o vetor \( ( \frac{ 1 }{ 3 }, - \frac{ 2 }{ 3 }, 1 ) \) constitui uma base para o núcleo de \( A \) e, assim, para o conjunto dos vetores perpendiculares a \( \Pi \).
 
     \item Ache (na sua forma mais simples) a matriz que é o produto das matrizes de posto 1 $\bfu \bfv^T$ e $\bfw \bfz^T$? Qual seu posto?
 
         \begin{sol} 
-            % escreva sua solução aqui.    
+            Utilizando o fato de que \( \bfv^{ \transpose } \bfw \) é um número real, temos
+            \begin{align*}
+                ( \bfu \bfv^{ \transpose } ) ( \bfw \bfz^{ \transpose } )
+                &= \bfu ( \bfv^{ \transpose } \bfw ) \bfz^{ \transpose } \\
+                &= ( \bfv^{ \transpose } \bfw ) ( \bfu \bfz^{ \transpose } )
+            .\end{align*}
+            Sabemos que \( \bfu \bfz^{ \transpose } \) é uma matriz de posto \( 1 \).
+            Logo, por ser múltipla de uma matriz de posto \( 1 \), \( ( \bfu \bfv^{ \transpose } ) ( \bfw \bfz^{ \transpose } ) \) tem posto \( 1 \).
         \end{sol} 
 
     \item Suponha que a coluna $j$ de $B$ é uma combinação linear das colunas anteriores de $B$. Mostre que a coluna $j$ de $AB$ é uma combinação linear das colunas anteriores de $AB$. Conclua que posto$(AB) \leq $ posto$(B)$.
 
         \begin{sol} 
-            % escreva sua solução aqui.    
+            Vamos supor que \( A \) é \( m \times n \) e \( B \) é \( n \times p \).
+            Sejam \( \bfa_{ 1 }, \dots, \bfa_{ n } \) as colunas de \( A \) e \( \bfb_{ 1 }, \dots, \bfb_{ p } \) as colunas de \( B \).
+            Pelo enunciado, sabemos que existem \( \alpha_{ 1 }, \dots, \alpha_{ j-1 } \in \R \), não todos nulos, tais que
+            \begin{equation*}
+                \bfb_{ j } = \sum_{ i=1 }^{ j-1 } \alpha_{ i } \bfb_{ i }
+            .\end{equation*}
+            Multiplicando essa equação por \( A \) e usando a linearidade da multiplicação matricial, obtemos
+            \begin{equation*}
+                A \bfb_{ j } = \sum_{ i=1 }^{ j-1 } \alpha_{ i } ( A \bfb_{ i } )
+            ,\end{equation*}
+            ou seja, a \( j \)-ésima coluna de \( AB \) é combinação linear das colunas anteriores de \( AB \).
+
+            Com isso, concluímos que o número de colunas L.D. de \( AB \) é maior ou igual ao número de colunas L.D. de \( B \).
+            Como o posto de uma matriz é o maior número de colunas linearmente independentes que ela possui, isso implica \( \posto ( AB ) \leq \posto ( B ) \).
         \end{sol} 
 
     \item O item anterior nos dá posto$(B^T A^T) \leq $ posto$(A^T)$. É possível concluir que posto$(AB) \leq $ posto$(A)$?
 
         \begin{sol} 
-            % escreva sua solução aqui.    
+            É possível.
+            De fato, como \( \posto ( M^{ \transpose } ) = \posto ( M ) \) para toda matriz \( M \), temos
+            \begin{equation*}
+                \posto ( AB ) = \posto ( AB )^{ \transpose } = \posto ( B^{ \transpose } A^{ \transpose } ) \leq \posto ( A^{ \transpose } ) = \posto ( A )
+            .\end{equation*}
         \end{sol} 
 
     \item Suponha que $A$ e $B$ são matrizes quadradas e $AB = I$. Prove que posto$(A) = n$. Conclua que $B$ precisa ser a inversa (de ambos lados) de $A$. Então, $BA = I$.
 
         \begin{sol} 
-            % escreva sua solução aqui.    
+            Pela questão anterior, temos
+            \begin{equation*}
+                n = \posto ( I ) = \posto ( AB ) \leq \posto ( A )
+            .\end{equation*}
+            Como \( A \) é \( n \times n \), também temos \( \posto ( A ) \leq n \) e, com isso, \( \posto ( A ) = n \).
+            Sendo assim, \( A \) é uma matriz invertível.
+            Logo,
+            \begin{equation*}
+                B = IB = A^{ -1 } A B = A^{ -1 } I = A^{ -1 }
+            .\end{equation*}
         \end{sol} 
 
     \item (\textit{Bônus}) Dado um espaço vetorial real \( V \), definimos o conjunto
@@ -305,9 +479,7 @@
                     \begin{align*}
                         \varphi : V^{ * } &\to V \\
                         f &\mapsto \varphi ( f ) =
-                        \begin{bmatrix}
-                            f ( \bfe_{ 1 } ) \cdots f ( \bfe_{ n } )
-                        \end{bmatrix}^{ \transpose }
+                        ( f ( \bfe_{ 1 } ), \dots, f ( \bfe_{ n } ) )
                     .\end{align*}
                     Pela discussão anterior, já temos a identidade
                     \begin{equation*}
@@ -317,10 +489,7 @@
                     Resta mostrar que \( \varphi \) é uma bijeção.
 
                     Vamos mostrar, primeiro, que \( \varphi \) é sobrejetiva.
-                    Dado \( \bfu =
-                    \begin{bmatrix}
-                        \beta_{ 1 } \cdots \beta_{ n }
-                    \end{bmatrix}^{ \transpose } \in V\), devemos encontrar uma \( g \in V^{ * } \) tal que \( \varphi ( g ) = \bfu \).
+                    Dado \( \bfu = ( \beta_{ 1 }, \dots, \beta_{ n } ) \in V\), devemos encontrar uma \( g \in V^{ * } \) tal que \( \varphi ( g ) = \bfu \).
                     Ora, definindo \( g \) por \( g ( \bfv ) = \bfu^{ \transpose } \bfv \) para todo \( \bfv \in V \), claramente \( g \in V^{ * } \) e, ainda,
                     \begin{equation*}
                         g ( \bfe_{ i } ) = \bfu^{ \transpose } \bfe_{ i } = \beta_{ i }
@@ -330,7 +499,7 @@
 
                     Para mostrar a injetividade de \( \varphi \), vamos supor que existem \( f, g \in V^{ * } \ \) tais que \( \varphi ( f ) = \varphi ( g ) \).
                     Pela definição da \( \varphi \), isso implica em \( f ( \bfe_{ i } ) = g ( \bfe_{ i } ) \) para todo \( i = 1, \dots, n \).
-                    Com isso, dado qualquer \( \bfv \in V \) com \( \bfv = \sum_{ i=1 }^{ n } \alpha_{ i } \bfe_{ i } \), temos, por um desenvolvimento feito anteriormente,
+                    Com isso, dado qualquer \( \bfv \in V \) com \( \bfv = ( \alpha_{ 1 }, \dots, \alpha_{ n } ) \), temos, por um desenvolvimento feito anteriormente,
                     \begin{equation*}
                         f ( \bfv )
                         = \sum_{ i=1 }^{ n } \alpha_{ i } f ( \bfe_{ i } )

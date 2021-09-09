@@ -1,0 +1,363 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel} % \usepackage[latin1]{inputenc}
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage{enumerate}
+\usepackage{xifthen} \usepackage{tikz}
+\usepackage{mathtools} 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue
+}
+\usetikzlibrary{automata,arrows,positioning,calc}
+% \input{../preamble}
+
+\newtheorem{teo}{Teorema} 
+
+% \numberwithin{equation}{section}
+
+\setlength{\parindent}{12 pt}
+
+\begin{document}
+
+% \newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+% \newtheorem{prop}[teo]{Proposição}
+\newtheorem*{prop*}{Proposição}
+\newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+% \newtheorem{cor}[teo]{Corolário}
+\newtheorem*{cor*}{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+\newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+\newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+\newtheorem*{hipo}{Hipóteses}
+\newtheorem*{nota}{Notação}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\DeclarePairedDelimiter{\dotprod}{\langle}{\rangle} 
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+
+\newcommand{\bvecc}[2]{%
+    \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+    \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+\newenvironment{sol}
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm}
+}
+{} 
+
+\title{Álgebra Linear - Lista de Exercícios 4}
+
+\author{Caio Lins e Tiago da Silva}
+
+\date{}
+
+\maketitle
+
+\begin{enumerate}
+
+    \item Sejam $S$ e $T$ dois subespaços de um espaço vetorial $V$.
+	
+	    \begin{obs} \label{vectorial}  
+		Em geral, para mostrarmos que um conjunto $\mathbb{V}$ é um espaço vetorial, precisamos verificar que, um, ele contém o vetor nulo e, dois, ele é fechado para a soma e para a multiplicação por escalar. Essa tarefa, no entanto, pode ser mitigada; ela é, com efeito, equivalente a mostrar que, se $u, v \in \mathbb{V}$ e $\alpha \in \mathbb{R}$, então $u + \alpha v \in \mathbb{V}$\footnote{Explicitamente, escolhemos $u = v$ e $\alpha = -1$ para verificar que $0 \in \mathbb{V}$; em seguida, solicitamos que $\alpha = 1$ para verificar que $u + v \in \mathbb{V}$; enfim, pedimos que $u = 0$ para verificar que $\alpha v \in \mathbb{V}$.}.
+	\end{obs} 
+        \begin{enumerate}
+
+            \item Defina $S + T = \{s + t \ ; \ s \in S \mbox{ e } t \in T\}$. Mostre que $S + T$ é um subespaço vetorial.
+	
+	\begin{sol} 
+		Sejam, conforme a Observação~\ref{vectorial}, $u, v \in S + T$ e $\alpha \in \mathbb{R}$, e perceba que, nesse sentido, existem, por definição, $s_{1}, s_{2} \in S$ e $t_{1}, t_{2} \in T$ tais que $u = s_{1} + t_{1}$ e $v = s_{2} + t_{2}$. Desta forma, temos que $u + \alpha v = (s_{1} + \alpha s_{2}) + (t_{1} + \alpha t_{2}) \in S + T$, porquanto a caracterização de $S$ e de $T$ como espaços vetoriais garante, pela Observação~\ref{vectorial}, que $\hat s = s_{1} + \alpha s_{2} \in S$ e $\hat t = t_{1} + \alpha t_{2} \in T$ e, portanto, $\hat s + \hat t \in S + T$. Em particular, $S + T$ é um espaço vetorial.   
+	\end{sol} 
+
+            \item Defina $S \cup T = \{x \ ; \ x \in S \mbox{ ou } x \in T\}$. Argumente que $S \cup T$ não é necessariamente um subespaço vetorial.
+	
+	\begin{sol} 
+		Geometricamente, a observação de que $S \cup T$ não é um espaço vetorial é bastante plausível; isso porque, em $\mathbb{R}^{2}$, os (únicos) espaços vetoriais consistem no plano, nas retas que contêm a origem e na própria origem. Ora, a união de duas retas não é, em geral, uma reta (nem um plano, nem a origem); portanto, a união de dois espaços vetoriais não é, em geral, um espaço vetorial. 
+
+		Vamos, dessa forma, formalizar essa verificação. Sejam, para isso, $s, t \in \mathbb{R}^{2}\setminus\{0\}$ vetores não colineares, e escreva $S = \{\alpha s : \alpha \in \mathbb{R}\}$ e $T = \{\alpha t : \alpha \in \mathbb{R}\}$. Nesse sentido, temos, por um lado, que $s, t \in S \cup T$; por outro, $s + t \notin S \cup T$, porque, nesse caso, $s + t \in T$ e, logo,  $s \in T$ ou $s + t \in S$ e, em consequência, $t \in S$, o que viola a não colinearidade entre $s$ e $t$. Portanto, $S \cup T$ não é um espaço vetorial. 
+	\end{sol} 
+
+            \item Se $S$ e $T$ são retas no $\R^3$, o que é $S + T$ e $S \cup T$?
+	
+	\begin{sol} 
+		Como $S$ e $T$ são espaços vetoriais, essas retas contêm a origem; em particular, elas são colineares, $S = T$, ou concorrentes, $S \cap T = \{0\}$. Desse modo, temos, por um lado, que, se $S = T$, então $S + T = S$ e $S \cup T = S$; por outro, se $S \cap T = \{0\}$, então $S + T$ é o (único) plano que contém $S$ e $T$, enquanto $S \cup T$ é, redundantemente, o conjunto dos vetores que estão em $S$ ou em $T$. Formalmente, podemos escrever, se $S = \{\alpha s : \alpha \in \mathbb{R}\}$ e $T = \{\alpha t : \alpha \in \mathbb{R}\}$,  
+	\begin{equation*} 
+		S + T = \{\alpha s + \beta t : \alpha, \beta \in \mathbb{R}\}    
+	\end{equation*} 
+
+	\noindent e 
+
+	\begin{equation*} 
+		S \cup T = \{\alpha(\xi s + (1 - \xi)t) : \alpha \in \mathbb{R} \text{ e } \xi \in \{1, 0\}\}; 
+	\end{equation*} 
+
+	\noindent essa notação, no entanto, possivelmente não é tão expressiva quanto uma descrição verbal. 
+	\end{sol} 
+        \end{enumerate}
+
+    \item Como o núcleo $N(C)$ é relacionado aos núcleos $N(A)$ e $N(B)$, onde $C = \begin{bmatrix}A \\ B \end{bmatrix}$?
+	
+    \begin{sol} 
+	    Vamos mostrar que $N(C) = N(A) \cap N(B)$. Seja, para isso, $v \in N(C)$, e perceba que, dessa forma, 
+
+	    \begin{equation} \label{a}  
+	    	Cv = 
+		\begin{bmatrix} 
+			Av \\ 
+			Bv 
+		\end{bmatrix} 
+		= 0 \implies Av = 0 \text{ e } Bv = 0; 
+	    \end{equation} 
+
+	    \noindent logo, $v \in N(A)$ e $v \in N(B)$ e, consequentemente, $v \in N(A) \cap N(B)$. Portanto, $N(C) \subseteq N(A) \cap N(B)$. Correlativamente, a Equação~\eqref{a} garante que, se $v \in N(A) \cap N(B)$, então $Cv = 0$ e, desse modo, $v \in N(C)$; temos, nesse sentido, que $N(A) \cap N(B) \subseteq N(C)$. Dessa maneira, $N(C) = N(A) \cap N(B)$.  
+    \end{sol} 
+
+    \item Considere a matriz
+        $$A = \begin{bmatrix} 
+            1 & 5 & 7 & 9\\
+            0 & 4 & 1 & 7 \\
+            2 & -2 & 11 & -3
+        \end{bmatrix}.$$
+
+        \begin{enumerate}
+
+            \item Ache a sua forma escalonada reduzida.
+	    
+	    \begin{sol} 
+		    O Gilbert Strang \cite[página 89]{strang2006linear} distingue a forma \textit{escalonada reduzida}, em que os pivôs precisam ser unitários, da forma \textit{escalonada}, em que os pivôs podem, mas não precisam, ser unitários. Vou, portanto, adotar essa nomenclatura; mas essa distinção não é, nesse contexto, importante. 
+		
+		    Nesse sentido, para computar a forma escolanada reduzida de $A$, subtraímos, inicialmente, duas vezes a linha um da linha três; em seguida, somamos três vezes a linha dois na linha três e, enfim, dividimos a linha dois pelo seu pivô, que é igual a quatro. Logo, se escrevermos $R(A)$ para a forma escalonada reduzida da matriz $A$, ficamos com 
+		\begin{equation*} 
+			R(A) = 
+			\begin{bmatrix}  
+				1 & 5 & 7 & 9 \\ 
+				0 & 1 & 1/4 & 7/4 \\ 
+				0 & 0 & 0 & 0 \\ 
+			\end{bmatrix}.  
+		\end{equation*} 
+	    \end{sol} 
+
+            \item Qual é o posto dessa matriz?
+	    
+	    \begin{sol} 
+	    	O posto é, formalmente, a dimensão do espaço linha de $A$, que, por definição, é a quantidade de linhas linearmente independentes de $A$. Coincidentemente, essa quantidade é igual ao número de pivôs de $A$; portanto, o posto de $A$ é igual a dois.   
+	    \end{sol} 
+
+            \item Ache uma solução especial para a equação $Ax = 0$.
+	    
+	    \begin{sol} 
+	    	Como $Ax = 0$ se, e somente se, $R(A)x = 0$, precisamos escolher um vetor $x \in \mathbb{R}^{4}$ que seja ortogonal a todas as linhas de $R(A)$. Poderíamos, nesse sentido, utilizar o produto vetorial entre as duas linhas iniciais de $A$ para computar um vetor ortogonal a elas; contudo, essa operação, com as propriedades de que ela goza em $\mathbb{R}^{3}$, existe, conforme o Teorema 1 de \cite{Massey1983}, exclusivamente em $\mathbb{R}^{3}$ e $\mathbb{R}^{7}$.  
+
+		Vamos, portanto, aplicar uma abordagem sistemática: como as variáveis três e quatro de $R(A)$ são livres, podemos escrever $x = \begin{bmatrix} x_{1} & x_{2} & 1 & 1 \end{bmatrix}$ e, em seguida, pedimos que $x_{2} = -\frac{1}{4} - \frac{7}{4} = -2$ e que $x_{1} = 5 \cdot 2 - 7 - 9 = -6$ para garantir que $x$ seja ortogonal às linhas um e dois de $R(A)$. Dessa forma, temos 
+
+		\begin{equation*} 
+			x = 
+			\begin{bmatrix} 
+				-6 \\ 
+				-2 \\ 
+				1 \\ 
+				1 \\ 
+			\end{bmatrix},  
+		\end{equation*} 
+
+		\noindent que satisfaz $Ax = 0$. 
+	    \end{sol} 
+        \end{enumerate}
+
+    \item Ache a matrizes $A_1$ e $A_2$ (não triviais) tais que posto$(A_1B) = 1$ e posto$(A_2B) = 0$ para $B = \begin{bmatrix}1 & 1 \\ 1 & 1 \end{bmatrix}$.
+	
+    \begin{sol} 
+   	Há, possivelmente, alguma ambiguidade, nesse contexto, na expressão  ``não triviais"; vou, desse modo, assumir que $A_{1}$ e $A_{2}$ são não nulas. Nesse sentido, temos que, como $B^{2} = 2B$, $\mathrm{posto}(B^{2}) = \mathrm{posto}(2B) = \mathrm{posto}(B) = 1$; logo, escolhemos $A_{1} = B$. Agora, como $v = \begin{bmatrix} 1 & -1 \end{bmatrix}$ satisfaz $vB = 0$, temos que
+
+	\begin{equation*} 
+		A_{2} = 
+		\begin{bmatrix} 
+			v \\ 
+			v \\ 
+		\end{bmatrix} = 
+		\begin{bmatrix} 
+			1 & -1 \\ 
+			1 & -1 \\ 
+		\end{bmatrix} 
+	\end{equation*} 
+
+	\noindent satisfaz $A_{2}B = 0$ e, portanto, $\mathrm{posto}(A_{2}B) = 0$.  
+    \end{sol} 
+
+    \item Verdadeiro ou Falso:
+
+        \begin{enumerate}
+
+            \item O espaço das matrizes simétricas é subespaço.
+	    
+	    \begin{sol} 
+		    Seja $\mathcal{S} = \{A \in \mathbb{R}^{n \times n} : A^{T} = A\}$ o conjunto das matrizes simétricas (de dimensão $n$)\footnote{É plausível escrever que esse conjunto não é, como descrito do enunciado, um espaço vetorial; isso porque o tamanho da matriz não é informado e, portanto, não temos a garantia de que a soma está bem definida: sem essa operação, não podemos definir um espaço vetorial. Essa observação, aliás, pode ser estendida para o item (b).} e escolha, conforme a Observação~\ref{vectorial}, $A, B \in \mathcal{S}$ e $\alpha \in \mathbb{R}$. Como, nesse sentido, $(A + \alpha B)^{T} = A^{T} + \alpha B^{T} = A + \alpha B$, temos que a matriz $A + \alpha B$ é simétrica e, logo, pertence a $\mathcal{S}$; a arbitrariedade de $A$ e $B$, em particular, garante que $\mathcal{S}$ é um espaço vetorial e que a afirmação é \textbf{verdadeira}. 
+	    \end{sol} 
+
+            \item O espaço das matrizes anti-simétricas é um subespaço.
+	    
+            \begin{sol} 
+		    Seja $\mathcal{A} = \{A \in \mathbb{R}^{n \times n} : A^{T} = -A\}$ o conjunto das matrizes antissimétricas. Vamos, conforme a Observação~\ref{vectorial}, escolher $A, B \in \mathcal{A}$ e $\alpha \in \mathbb{R}$; verificamos, dessa forma, que $(A + \alpha B)^{T} = A^{T} + \alpha B^{T} = -A + \alpha (-B) = -(A + \alpha B)$ e que, nesse sentido, $A + \alpha B$ é antissimétrica. Temos, desse modo, que $A + \alpha B \in \mathcal{A}$, o que implica que $\mathcal{A}$ é um espaço vetorial e, portanto, a afirmação é \textbf{verdadeira}.  
+	    \end{sol} 
+
+            \item O espaço das matrizes não-simétricas ($A^T \neq A$) é um subespaço.
+	    
+	    \begin{sol} 
+	    	A afirmação é \textbf{falsa}: a matriz nula é simétrica e, portanto, o conjunto das matrizes não simétricas não contém o elemento nulo da adição; ele não é, logo, um espaço vetorial.  
+	    \end{sol} 
+
+        \end{enumerate}
+
+    \item Se $A$ é $4\times 4$ e inversível, descreva todos os vetores no núcleo da matriz $B = \begin{bmatrix}A & A \end{bmatrix}$ (que é $4\times 8$).
+    
+    \begin{sol} 
+	    Seja $v \in N(B) \subseteq \mathbb{R}^{8}$ e escreva $v = \begin{bmatrix} v_{1} & v_{2} \end{bmatrix}^{T}$, com $v_{1}, v_{2} \in \mathbb{R}^{4}$. Nesse sentido, temos que $Bv = 0$ e 
+
+	    \begin{equation} \label{aa}  
+		    Bv = Av_{1} + Av_{2};     
+	    \end{equation} 
+
+	    \noindent logo, $Av_{1} = -Av_{2}$ e, como $A$ é invertível, $v_{1} = -v_{2}$. Por outro lado, se $v_{1} = -v_{2}$, então, pela Equação~\eqref{aa}, $v \in N(B)$. Portanto, o núcleo de $B$ é igual a 
+	    \begin{equation*} 
+		    \left\{
+			\begin{bmatrix} 
+				u \\  
+				-u 
+			\end{bmatrix} : 
+			u \in \mathbb{R}^{4} 
+		    \right\}. 
+	    \end{equation*} 
+    \end{sol} 
+
+    \item Mostre por contra-exemplos que as seguintes afirmações são falsas em geral:
+
+        \begin{enumerate}
+
+            \item $A$ e $A^T$ tem os mesmo núcleos.
+	    
+	    \begin{sol} 
+	    	Perceba que, se $A$ não é quadrada, então os núcleos de $A$ e de $A^{T}$ são subconjuntos de conjuntos distintos; em particular, eles não são iguais. No entanto, a afirmação é falsa, em geral, mesmo que $A$ seja quadrada; escolha, com efeito, 
+
+		\begin{equation*} 
+			A = 
+			\begin{bmatrix} 
+				0 & 1 & 0 \\ 
+				0 & 0 & 0 \\ 
+				0 & 0 & 0 \\ 
+			\end{bmatrix}  
+		\end{equation*} 
+
+		\noindent e verifique que $N(A) = \{v \in \mathbb{R}^{3} : \langle v, e_{2} \rangle = 0\}$, enquanto $N(A^{T}) = \{v \in \mathbb{R}^{3} : \langle v, e_{1} \rangle = 0\}$ (escrevemos $e_{i}$ para o vetor em que todas as coordenadas são nulas, exceto a $i$-ésima, que é unitária).  
+	    \end{sol} 
+
+            \item $A$ e $A^T$ tem as mesmas variáveis livres.
+	    
+	    \begin{sol} 
+		    Seja $R(A)$ a forma escalonada da matriz $A$: chamamos de \textit{variáveis básicas} de $A$ ao conjunto de variáveis que correspondem aos pivôs; dizemos que as outras são as \textit{variáveis livres}. Dessa forma, na matriz do item (a), temos que, para a matriz $A$, as variáveis um e três são livres, enquanto, para $A^{T}$, as variáveis dois e três são livres. Portanto, as variáveis livres de $A$ e de $A^{T}$ são distintas, e a afirmação é falsa.  
+	    \end{sol} 
+
+            \item Se $R$ é a forma escalonada de $A$, então $R^T$ é a forma escalonada de $A$.
+	    
+	    \begin{sol} 
+	    	Escrevendo, como no exercício três, $R(A)$ para a forma escalonada da matriz $A$, temos que, se $A$ é a matriz do item (a), $R(A) = A$ e 
+		\begin{equation*} 
+			R(A^{T}) 
+			= 
+			\begin{bmatrix} 
+				1 & 0 & 0 \\ 
+				0 & 0 & 0 \\ 
+				0 & 0 & 0 \\ 
+			\end{bmatrix}; 
+		\end{equation*} 
+
+
+		\noindent em particular, $R(A^{T}) \neq R(A)^{T}$, e a afirmação é falsa.  
+	    \end{sol} 
+        \end{enumerate}
+
+    \item Construa uma matriz cujo espaço coluna contenha $(1,1,5)$ e $(0,3,1)$ e cujo núcleo contenha $(1,1,2)$.
+
+    \begin{sol} 
+    	Seja $A$ uma matriz tal que o núcleo contém o vetor $(1, 1, 2)$ e o espaço coluna, os vetores $(1, 1, 5)$ e $(0, 3, 1)$, perceba que, como esses espaços são subconjuntos de $\mathbb{R}^{3}$, $A \in \mathbb{R}^{3 \times 3}$. Nessas condições, temos que existem vetores $u, v \in \mathbb{R}^{3}$ tais que 
+
+	\begin{equation*} 
+		A = 
+		\begin{bmatrix} 
+			u & v & -\frac{1}{2} (u + v)    
+		\end{bmatrix} 
+	\end{equation*} 
+
+	\noindent (isso porque $(1, 1, 2) \in N(A)$); escolhemos, portanto, $u = (1, 1, 5)$ e $v = (0, 3, 1)$, de modo que $Ae_{1} = u$ e $Ae_{2} = v$; isto é, $u$ e $v$ estão no espaço coluna de $A$. Dessa forma, 
+
+	\begin{equation*} 
+		A = 
+		\begin{bmatrix} 
+			1 & 0 & -1/2 \\ 
+			1 & 3 & -2 \\ 
+			5 & 1 & -3 \\ 
+		\end{bmatrix} 
+	\end{equation*} 
+
+	\noindent satisfaz as condições do enunciado.  
+    \end{sol} 
+
+    \item Construa uma matriz cujo núcleo contenha todos os múltiplos de $(4,3,2,1)$.
+    
+    \begin{sol} 
+	    Seja $v = (4, 3, 2, 1)$. Vamos, agora, escolher um vetor linha $u$ em $\mathbb{R}^{1 \times 4}$ tal que $uv = 0$ e, portanto, $v$ pertencerá ao núcleo de $u$. Heuristicamente, escrevemos $v = (v_{1}, v_{2})$, com $v_{1}, v_{2} \in \mathbb{R}^{2}$, e escolhemos $u = (v_{1}^{\perp}, v_{2}^{\perp})^{T}$, em que $v_{i}^{\perp}$ satisfaz, para $1 \le i \le 2$, $\langle v_{i}^{\perp}, v_{i} \rangle = 0$. Ora, como $v_{1}^{\perp} = (-3, 4)$ e $v_{2}^{\perp} = (-1, 2)$ satisfazem essas condições, 
+
+	    \begin{equation*} 
+		    u = 
+		    \begin{bmatrix} 
+			    -3 & 4 & -1 & 2    
+		    \end{bmatrix} 
+	    \end{equation*} 
+
+	    \noindent é uma matriz tal que $v \in N(u)$. 
+    \end{sol} 
+\end{enumerate} 
+
+\bibliographystyle{unsrt} 
+\bibliography{\jobname} 
+\end{document} 

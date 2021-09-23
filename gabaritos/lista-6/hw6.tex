@@ -186,7 +186,7 @@ $$A = \begin{bmatrix}
 \item A equação $A^T \bfx = \bfw$ tem solução quando $\bfw$ está em qual dos quatro subespaços? Quando a solução é única (condição sobre algum dos quatro subespaços)?
 
 \begin{sol} 
-	A equação $A^{T} \mathbf{x} = \mathbf{w}$ tem solução quando (por definição) $\mathbf{w}$ está no espaço coluna de $A^{T}$ que é (estamos, ainda, aliceçados nas definições) igual ao espaço linha de $A$. Além disso, o conjunto $\{\mathbf{x} : A^{T}\mathbf{x} = \mathbf{w}\}$ é unitário se, e somente se, o núcleo de $A^{T}$ é igual a $\{0\}$; isto é, se o posto de $A$ é igual ao seu número de colunas.   
+	A equação $A^{T} \mathbf{x} = \mathbf{w}$ tem solução quando (por definição) $\mathbf{w}$ está no espaço coluna de $A^{T}$, que é (estamos, ainda, aliceçados nas definições) igual ao espaço linha de $A$. Além disso, o conjunto $\{\mathbf{x} : A^{T}\mathbf{x} = \mathbf{w}\}$ é unitário se, e somente se, o núcleo de $A^{T}$ é igual a $\{0\}$; isto é, se o posto de $A$ é igual ao seu número de colunas.   
 \end{sol} 
 
 \item Seja $M$ o espaço de todas as matrizes $3 \times 3$. Seja
@@ -290,7 +290,7 @@ I & G \\
 \end{bmatrix}.$$
 
 \begin{sol} 
-	Suponha, por contraposição, que $F \neq G$. Vamos, nesse sentido, construir um vetor que está no núcleo de $A$; ele, contudo, não pertencerá ao de $B$. Seja, para isso, $p \times k$ a dimensão de $F$ e de $G$ (elas têm que ter as mesmas dimensões; em outro caso, $A$ e $B$ teriam postos distintos, o que, em particular, violaria a igualdade entre seus espaços colunas); escrevemos, dessa maneira, 
+	Suponha, por contraposição, que $F \neq G$. Vamos, nesse sentido, construir um vetor que está no núcleo de $B$; ele, contudo, não pertencerá ao de $A$. Seja, para isso, $p \times k$ a dimensão de $F$ e de $G$ (elas têm que ter as mesmas dimensões; em outro caso, $A$ e $B$ teriam postos distintos, o que, em particular, violaria a igualdade entre seus espaços colunas); escrevemos, dessa maneira, 
 	\begin{equation*} 
 		r = \underset{1 \le i \le k}{\mathrm{arg min}} \ \mathbf{f}_{i} \neq \mathbf{g}_{i} 
 	\end{equation*} 

@@ -1,0 +1,333 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel} 
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage{enumerate}
+\usepackage{xifthen} \usepackage{tikz}
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+% \numberwithin{equation}{section}
+
+\setlength{\parindent}{12 pt}
+
+\begin{document}
+
+\newtheorem{teo}{Teorema} \newtheorem*{teo*}{Teorema}
+\newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+\newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+\newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+\newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+\newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+\newtheorem*{hipo}{Hipóteses}
+\newtheorem*{nota}{Notação}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfb}{\mathbf{b}}
+
+\newcommand{\bvecc}[2]{%
+  \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+  \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+\newenvironment{sol}
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm}
+}
+{}
+
+\title{Álgebra Linear - Lista de Exercícios 6}
+
+\author{Caio Lins e Tiago da Silva}
+
+\date{}
+
+\maketitle
+
+\begin{enumerate}
+
+\item Seja $A$ uma matriz $m \times n$ com posto $r$. Suponha que existem $\bfb$ tais que $A \bfx = \bfb$ não tenha solução.
+
+\begin{enumerate}
+
+\item Escreva todas as desigualdade ($<$ e $\leq$) que os números $m,n$ e $r$ precisam satisfazer.
+
+	\begin{sol} 
+		Por um lado, temos que, como $\mathrm{posto}(A) = \mathrm{posto}(A^{T})$, $r \le \min\{m, n\}$. Por outro lado, o enunciado garante que o espaço coluna de $A$ não contempla, em sua completude, o conjunto $\mathbb{R}^{m}$; portanto, $r < m$. Não há, contudo, informações que ensejem a descrição das dimensões da matriz $A$: por exemplo, as matrizes nulas de dimensões $2 \times 3$ e $3 \times 2$ satisfazem a existência de algum $b$ que não está contido em seus espaços colunas; além disso, se $A = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$, então $r = 1 < m = 2$ e $r = n = 1$.  
+	\end{sol} 
+
+\item Como podemos concluir que $A^T \bfx = 0$ tem solução fora $\bfx = 0$?
+
+	\begin{sol} 
+		Como $A^{T} \in \mathbb{R}^{n \times m}$ e o posto é invariante à operação de transposição, temos que o posto de $A^{T}$ é menor que seu número de colunas. Em particular, temos, pelo Teorema Fundamental da Álgebra Linear\footnote{A página da Wikipedia, aliás, se refere a esse teorema como o Teorema da Imagem e do Núcleo (\textit{rank-nullity theorem}); apesar de este nome ser mais explícito, ele possivelmente não é tão enfático.}, que 
+		\begin{equation*} 
+			\dim N(A^{T}) = m - r \ge 1;    
+		\end{equation*} 
+
+		\noindent logo, existe $\mathbf{x} \in N(A^{T}) \setminus \{0\}$; isto é, $A^{T} \mathbf{x} = 0$ e $\mathbf{x} \neq 0$. 
+	\end{sol} 
+\end{enumerate}
+
+\item Sem calcular $A$ ache uma bases para os quatro espaços fundamentais:
+$$A = \begin{bmatrix}
+1 & 0 & 0 \\
+6 & 1 & 0 \\
+9 & 8 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 & 2 & 3 & 4 \\
+0 & 1 & 2 & 3 \\
+0 & 0 & 1 & 2
+\end{bmatrix}$$
+
+\begin{sol} 
+	Perceba que, neste exercício, temos a decomposição $LU$ da matriz $A$. Seja, nesse sentido, $A = LU$, em que $L$ e $U$ são as matrizes triangulares que, no enunciado, caracterizam, em seu produto, $A$; em particular, $\mathrm{posto}(A) = \mathrm{posto}(U) = 3$. Nesse contexto, o espaço coluna de $A$ é o próprio $\mathbb{R}^{3}$; uma base para ele, portanto, é o conjunto $\{e_{1}, e_{2}, e_{3}\}$, em que $e_{i} \in \mathbb{R}^{3}$ é a $i$-ésima coluna da matriz identidade em $\mathbb{R}^{3 \times 3}$. Além disso, como $L$ é invertível, temos que $x \in N(A)$ se, e somente se, $x \in N(U)$; logo, como o conjunto 
+	\begin{equation*} 
+		\left\{  
+			\begin{bmatrix} 
+				0 \\ 
+				1 \\ 
+				-2 \\ 
+				1 
+			\end{bmatrix} 
+		\right\} 
+	\end{equation*} 
+
+	\noindent é uma base para $N(U)$, ele é também uma base para $N(A)$. Por outro lado, temos, pelo Teorema Fundamental da Álgebra Linear, que $\dim N(A^{T}) = 3 - \mathrm{posto}(A) = 0$; logo, o núcleo da transposta de $A$ é igual a $\{0\}$. Correlativamente, a invertibilidade de $L$ garante que, como $A^{T} = U^{T}L^{T}$, o espaço coluna de $A$ é igual ao espaço coluna de $U^{T}$; portanto, 
+	\begin{equation*} 
+		\left\{ 
+		\begin{bmatrix} 
+			1 \\ 
+			2 \\ 
+			3 \\ 
+			4 \\ 
+		\end{bmatrix}, 
+		\begin{bmatrix} 
+			0 \\ 
+			1 \\ 
+			2 \\ 
+			3 \\ 
+		\end{bmatrix}, 
+		\begin{bmatrix} 
+			0 \\ 
+			0 \\ 
+			1 \\ 
+			2 \\ 
+		\end{bmatrix} 
+		\right\}  
+	\end{equation*} 
+
+	\noindent é uma base para o espaço coluna de $A^{T}$. 
+\end{sol} 
+
+\item Explique porque $v = (1, 0, -1)$ não pode ser uma linha de $A$ e estar também no seu núcleo.
+
+\begin{sol} 
+	Em geral, um vetor não nulo não pode pertencer, simultaneamente, ao espaço linha de uma matriz e ao seu núcleo; esses conjuntos são, com efeito, ortogonais\footnote{Em um espaço $\mathbb{V}$ tal que a operação de produto interno está bem definida, escrevemos que os conjuntos $A$ e $B$, em $\mathbb{V}$, são ortogonais se, para quaisquer $a \in A$ e $b \in B$, $\langle a, b \rangle = 0$; isto é, se $a$ e $b$ são ortogonais.}, e esboçamos, nesse sentido, essa verificação na proposição seguinte. 
+
+	\begin{prop} \label{aa}  
+		Seja $A \in \mathbb{R}^{m \times n}$ uma matriz. Nessas condições, se escrevermos $N(A)$ para o seu núcleo e $C(A)$ para o seu espaço coluna, temos que 
+		\begin{equation*} 
+			N(A) \cap C(A^{T}) = \{0\}.    
+		\end{equation*} 
+	\end{prop} 
+	\begin{proof} 
+		Seja, por absurdo, $v \in N(A) \cap C(A^{T})$ e $v \neq 0$. Nesse sentido, se $\{w_{1}, \dots, w_{k}\}$ é uma base para $C(A)^{T}$ (podemos, aliás, supor que estes vetores são também linhas de $A$), temos que existe uma sequência $(\alpha_{i})_{1 \le i \le k}$, $\alpha_{i} \in \mathbb{R}$, tal que 
+		\begin{equation} \label{a}  
+			v = \sum_{1 \le i \le n} \alpha_{i} w_{i};  
+		\end{equation} 
+		
+		\noindent agora, como $v$ está no espaço núcleo de $A$, temos que $\langle v, w_{i} \rangle = 0$ para $1 \le i \le k$ e, como $v \neq 0$, $\langle v, v \rangle \neq 0$: em particular, se aplicarmos o produto interno com $v$ em ambos os membros da Equação~\eqref{a}, verificamos, por absurdo, que $\langle v, v \rangle = 0$. Portanto, $v \in N(A) \cap C(A^{T})$ se, e somente se, $v = 0$; esta é, com efeito, a asseração da proposição. 
+	\end{proof} 
+
+	\noindent A Proposição~\ref{aa}, nesse contexto, garante que, se $v = (1, 0, -1) \neq 0$, então $v$ não pertence concomitantemente às linhas e ao núcleo de $A$.  
+\end{sol} 
+
+\item A equação $A^T \bfx = \bfw$ tem solução quando $\bfw$ está em qual dos quatro subespaços? Quando a solução é única (condição sobre algum dos quatro subespaços)?
+
+\begin{sol} 
+	A equação $A^{T} \mathbf{x} = \mathbf{w}$ tem solução quando (por definição) $\mathbf{w}$ está no espaço coluna de $A^{T}$ que é (estamos, ainda, aliceçados nas definições) igual ao espaço linha de $A$. Além disso, o conjunto $\{\mathbf{x} : A^{T}\mathbf{x} = \mathbf{w}\}$ é unitário se, e somente se, o núcleo de $A^{T}$ é igual a $\{0\}$; isto é, se o posto de $A$ é igual ao seu número de colunas.   
+\end{sol} 
+
+\item Seja $M$ o espaço de todas as matrizes $3 \times 3$. Seja
+$$A = \begin{bmatrix}
+1 & 0 & -1 \\
+-1 & 1 & 0 \\
+0 & -1 & 1
+\end{bmatrix}$$
+e note que $A \bveccc{1}{1}{1} = \bveccc{0}{0}{0}$.
+
+\begin{enumerate}
+
+\item Quais matrizes $X \in M$ satisfazem $AX = 0$?
+
+	\begin{sol} 
+		Verificamos, inicialmente, que o posto de $A$ é igual a dois; com efeito, a linha três é múltipla da soma das linhas um e dois, que são linearmente independentes. Portanto, o teorema fundamental da álgebra linear garante que a dimensão do núcleo de $A$ é igual a um e, como o vetor $v$ formado por uns está contido neste conjunto, temos que 
+		\begin{equation*} 
+			N(A) = 
+			\left\{ \alpha 
+				\begin{bmatrix} 
+					1 \\ 
+					1 \\ 
+					1 \\ 
+				\end{bmatrix} : 
+				\alpha \in \mathbb{R} 
+			\right\}. 
+		\end{equation*} 
+		\noindent Nesse sentido, temos que, se $X$ é uma matriz em $M$, $AX = 0$ se, e somente se, as colunas de $X$ estão no núcleo de $A$; portanto, $AX = 0$ se, e somente se, 
+		\begin{equation*} 
+			X = 
+			\begin{bmatrix} 
+				\alpha & \beta & \gamma \\ 
+				\alpha & \beta & \gamma \\ 
+				\alpha & \beta & \gamma \\ 
+			\end{bmatrix}, 
+		\end{equation*} 
+
+		\noindent em que $\alpha$, $\beta$ e $\gamma$ são números reais. 
+	\end{sol} 
+\item Quais matrizes $Y \in M$ podem ser escritas como $Y = AX$, para algum $X \in M$?
+
+	\begin{sol} 
+		No item (a), precisamos computar o núcleo de $A$; isso porque as colunas de $A$ pertenciam a esse conjunto. Desta vez, computamos o espaço coluna de $A$; com efeito, se 
+		\begin{equation*} 
+			X = 
+			\begin{bmatrix} 
+				\mathbf{x}_{1} & \mathbf{x}_{2} & \mathbf{x}_{3}    
+			\end{bmatrix}  
+		\end{equation*} 
+	
+		\noindent ($\mathbf{x}_{i}$ é, para $1 \le i \le 3$, um vetor coluna em $\mathbb{R}^{3}$), então 
+		
+		\begin{equation*} 
+			AX = 
+			\begin{bmatrix} 
+				A\mathbf{x}_{1} & A\mathbf{x}_{2} & A\mathbf{x}_{3}     
+			\end{bmatrix}; 
+		\end{equation*}  
+
+		\noindent isto é, as colunas de $AX$ pertencem ao espaço coluna de $A$. Nesse contexto, como a coluna três de $A$ é múltipla da soma das outras duas, que são linearmente independentes, temos que 
+		\begin{equation*} 
+			C(A) = 
+			\left\{ \alpha 
+				\begin{bmatrix} 
+					1 \\ 
+					-1 \\ 
+					0 \\ 
+				\end{bmatrix} + 
+				\beta  
+				\begin{bmatrix} 
+					0 \\ 
+					1 \\ 
+					-1 \\ 
+				\end{bmatrix} : 
+				\alpha, \beta \in \mathbb{R} 
+			\right\}; 
+		\end{equation*} 
+		
+		\noindent a matriz $Y$, portanto, assume a forma 
+
+		\begin{equation*} 
+			Y = 
+			\begin{bmatrix} 
+				\alpha_{1} & \beta_{1} & \gamma_{1} \\ 
+				\alpha_{2} - \alpha_{1} & \beta_{2} - \beta_{1} & \gamma_{2} - \gamma_{1} \\ 
+				-\alpha_{2} & -\beta_{2} & -\gamma_{2} 
+			\end{bmatrix}, 
+		\end{equation*} 
+
+		\noindent em que $(\alpha_{i}, \beta_{i}, \gamma_{i}) \in \mathbb{R}^{3}$ para $i \in \{1, 2\}$.  
+	\end{sol} 
+\end{enumerate}
+
+\item Sejam $A$ e $B$ matrizes $m \times n$ com os mesmos quatro subespaços fundamentais. Se ambas estão na sua forma escalonada reduzida, prove que $F$ e $G$ são iguais, onde:
+$$A = \begin{bmatrix}
+I & F \\
+0 & 0
+\end{bmatrix} \mbox{ e } B \begin{bmatrix}
+I & G \\
+0 & 0
+\end{bmatrix}.$$
+
+\begin{sol} 
+	Suponha, por contraposição, que $F \neq G$. Vamos, nesse sentido, construir um vetor que está no núcleo de $A$; ele, contudo, não pertencerá ao de $B$. Seja, para isso, $p \times k$ a dimensão de $F$ e de $G$ (elas têm que ter as mesmas dimensões; em outro caso, $A$ e $B$ teriam postos distintos, o que, em particular, violaria a igualdade entre seus espaços colunas); escrevemos, dessa maneira, 
+	\begin{equation*} 
+		r = \underset{1 \le i \le k}{\mathrm{arg min}} \ \mathbf{f}_{i} \neq \mathbf{g}_{i} 
+	\end{equation*} 
+
+	\noindent (isto é, $r$ é a coluna inicial em que $F$ e $G$ diferem; estamos escrevendo $\mathbf{f}_{i}$ para a $i$-ésima coluna da matriz $F$ e $\mathbf{g}_{i}$ para a $i$-ésima linha de $G$). Nessas condições, seja 
+	\begin{equation*} 
+		\mathbf{v} = 
+		\begin{bmatrix} 
+			-\mathbf{g}_{r} \\ 
+			\mathbf{e}_{r} 
+		\end{bmatrix}, 
+	\end{equation*} 
+	\noindent em que $\mathbf{e}_{r}$ é a $r$-ésima coluna da matriz identidade com dimensão $k \times k$; perceba, dessa forma, que 
+
+	\begin{equation*} 
+		\begin{split} 
+			B\mathbf{v} = I(-\mathbf{g}_{r}) + G\mathbf{e}_{r} = \\ 
+			= -\mathbf{g}_{r} + \mathbf{g}_{r} = 0; 
+		\end{split}    
+	\end{equation*} 
+
+	\noindent no entanto, $B\mathbf{v} = -\mathbf{g}_{r} + \mathbf{f}_{r} \neq 0$ (porque, por definição, $\mathbf{g}_{r} \neq \mathbf{f}_{r}$); logo, $N(B) \neq N(A)$, porquanto $\mathbf{v} \in N(B)\setminus N(A)$. Portanto, se os quatro espaços fundamentais das matrizes $A$ e $B$ coincidirem, então $F = G$.   
+\end{sol} 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document} 

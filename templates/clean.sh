@@ -1,5 +1,13 @@
 #!/bin/bash 
+
+# usage: 
+# bash clean.sh DIR 
+
 DIR=$1
+# files with those extensions will be removed; usually, 
+# they are generated during the compilation 
+# (if you are using bibtex, you possibly want to insert 
+# *.bbl and *.blg in this list) 
 EXTENSIONS=("*.aux" "*.fdb_latexmk" "*.fls" "*.log" "*.synctex.gz" "*.out")   
 
 if [ -h ${DIR} ]; then 
@@ -11,5 +19,5 @@ else
 			rm ${DIR}/${ext} 
 		fi    
 	done 
-	echo Cleaned the directory ${DIR}!  
+	echo The directory ${DIR} is, now, clean!  
 fi 

@@ -1,0 +1,198 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel} \usepackage[utf8]{inputenc}
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage{enumerate} 
+\usepackage{enumitem} 
+\usepackage{xifthen} \usepackage{tikz}
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+% \numberwithin{equation}{section}
+
+\setlength{\parindent}{12 pt}
+
+\begin{document}
+
+\newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+\newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+\newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+\newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+\newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+\newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+\newtheorem*{hipo}{Hipóteses}
+\newtheorem*{nota}{Notação}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfb}{\mathbf{b}}
+
+\newcommand{\bvecc}[2]{%
+  \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+  \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+\newenvironment{sol} 
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm} 
+} 
+% Objetos que aparecem *após* o ambiente. 
+% (você pode, por exemplo, modificar, 
+% ou remover, a barra horizontal} 
+{\noindent\rule{4cm}{.1mm}}
+
+\title{Álgebra Linear - Lista de Exercícios 7}
+
+\author{escreva seu nome aqui}
+
+\date{\today}
+
+\maketitle
+
+\begin{enumerate}
+
+\item Se $AB = 0$, as colunas de $B$ estão em qual espaço fundamental de $A$? E as linhas de $A$ estão em qual espaço fundamental de $B$? É possível que $A$ e $B$ sejam $3 \times 3$ e com posto 2?
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+\item Se $Ax = b$ e $A^Ty = 0$, temos $y^Tx = 0$ ou $y^Tb=0$?
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+\item O sistema abaixo não tem solução:
+$$\begin{cases}
+x + 2y + 2z = 5\\
+2x + 2y + 3z = 5\\
+3x + 4y + 5z = 9
+\end{cases}$$
+Ache números $y_1,y_2,y_3$ para multiplicar as equações acima para que elas somem $0=1$. Em qual espaço fundamental o vetor $y$ pertence? Verifique que $y^Tb = 1$. O caso acima é típico e conhecido como a \textit{Alternativa de Fredholm}: ou $Ax = b$ ou $A^Ty = 0$ com $y^Tb = 1$.
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+\item Mostre que se $A^TAx = 0$, então $Ax = 0$. O oposto é obviamente verdade e então temos $N(A^TA) = N(A)$.
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+\item Seja $A$ uma matriz $3 \times 4$ e $B$ uma $4 \times 5$ tais que $AB = 0$. Mostre que $C(B) \subset N(A)$. Além disso, mostre que posto$(A)$ $ + $ posto$(B) \leq 4$.
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+\item Sejam $\mathbf{a,b,c,d}$ vetores não-zeros de $\bR^2$.
+
+\begin{enumerate}
+
+\item Quais são as condições sobre esses vetores para que cada um possa ser, respectivamente, base dos espaços $C(A^T)$, $N(A)$, $C(A)$ e $N(A^T)$ para uma dada matriz $A$ que seja $2 \times 2$. \textit{Dica: cada espaço fundamental vai ter somente um desses vetores como base.}
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+\item Qual seria uma matriz $A$ possível?
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+\end{enumerate}
+
+\item Ache $S^{\perp}$ para os seguintes conjuntos:
+
+\begin{enumerate}
+
+\item $S = \{0\}$
+
+\item $S = span\{[1,1,1]\}$
+
+\item $S = span\{[1,1,1], [1,1,-1]\}$
+
+\item $S = \{[1,5,1], [2,2,2]\}$. Note que $S$ não é um subespaço, mas $S^\perp$ é.
+
+\end{enumerate}
+
+\begin{sol}
+	\vspace{-\baselineskip} 
+	\begin{enumerate}    
+		\item % item (a)  
+		\item % item (b) 
+		\item % item (c) 
+		\item % item (d)  
+	\end{enumerate}    
+\end{sol} 
+
+\item Seja $A$ uma matriz $4 \times 3$ formada pela primeiras 3 colunas da matriz identidade $4 \times 4$. Projeta o vetor $b = [1,2,3,4]$ no espaço coluna de $A$. Ache a matriz de projeção $P$.
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+\item Se $P^2 = P$, mostre que $(I - P)^2 = I - P$. Para a matriz $P$ do exercício anterior, em qual subespaço a matriz $I - P$ projeta?
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document} 

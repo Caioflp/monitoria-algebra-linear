@@ -9,4 +9,5 @@ Repositório para disponibilizar o material feito pelos monitores da disciplina 
 * 21/08: https://youtu.be/AXXZU6bFN-s
 * 27/08: https://youtu.be/-BWM8AGTS10
 * 03/09: https://youtu.be/ggMWK5bz0MU
-* 19/08: https://youtu.be/p_o4my8Ohnc
+* 19/09: https://youtu.be/p_o4my8Ohnc
+* 30/09: https://youtu.be/OmynVKbAuz4

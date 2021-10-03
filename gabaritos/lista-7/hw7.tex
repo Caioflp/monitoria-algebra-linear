@@ -1,0 +1,492 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel} % \usepackage[utf8]{inputenc}
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage{enumerate} 
+\usepackage{enumitem} 
+\usepackage{xifthen} \usepackage{tikz}
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+% \numberwithin{equation}{section}
+
+\setlength{\parindent}{12 pt}
+
+\input{../preamble}
+
+\begin{document}
+
+%% \newtheorem{teo}{Teorema} \newtheorem*{teo*}{Teorema}
+%% \newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+%% \newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+%% \newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+\newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+\newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+\newtheorem*{hipo}{Hipóteses}
+\newtheorem*{nota}{Notação}
+
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfy}{\mathbf{y}}
+\newcommand{\bfa}{\mathbf{a}}
+\newcommand{\bfb}{\mathbf{b}}
+\newcommand{\bfc}{\mathbf{c}}
+\newcommand{\bfd}{\mathbf{d}}
+
+\newcommand{\bvecc}[2]{%
+  \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+  \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+\newenvironment{sol} 
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm} 
+} 
+% Objetos que aparecem *após* o ambiente. 
+% (você pode, por exemplo, modificar, 
+% ou remover, a barra horizontal} 
+{\noindent\rule{4cm}{.1mm}}
+
+\title{Álgebra Linear - Soluções Lista de Exercícios 7}
+
+\author{Caio Lins e Tiago Silva}
+
+\date{\today}
+
+\maketitle
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 1 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Se $AB = 0$, as colunas de $B$ estão em qual espaço fundamental de $A$? E as linhas de $A$ estão em qual espaço fundamental de $B$? É possível que $A$ e $B$ sejam $3 \times 3$ e com posto 2?
+
+\begin{sol} 
+
+    Como \( AB = 0 \), devemos ter \( A\bfb_{ i } = 0 \) para toda coluna \( \bfb_{ i } \) de \( B \).
+    Logo, \( \bfb_{ i } \in N ( A ) \).
+    Da mesma forma, devemos ter \( \bfa^{ \transpose }_{ i } B = 0 \) para toda linha \( \bfa_{ i }^{ \transpose } \) de \( A \).
+    Tomando o transposto de cada lado da equação, temos \( B^{ \transpose } \bfa_{ i } = 0 \), ou seja, \( \bfa_{ i } \in N ( B^{ \transpose } ) \).
+
+    Não é possível que ambas sejam \( 3 \times 3 \) com posto \( 2 \).
+    Se \( B \) tem posto \( 2 \), então temos \( \dim N ( A ) \geq 2 \).
+    Pelo Teorema do Posto, isso implica \( \dim C ( A ) \leq 1 \) e, assim, \( A \) não pode ter posto \( 2 \).
+
+\end{sol} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 2 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\item Se $Ax = b$ e $A^Ty = 0$, temos $y^Tx = 0$ ou $y^Tb=0$?
+
+\begin{sol} 
+    
+    De \( \bfy^{ \transpose } A = 0 \) obtemos \( A^{ \transpose } \bfy = 0 \).
+    Portanto, multiplicando ambos lados de \( A \bfx = \bfb \) por \( \bfy^{ \transpose } \), obtemos \( \bfy^{ \transpose } \bfb = 0 \).
+    Por outro lado, se \( A \) não é quadrada, \( \bfy \) e \( \bfx \) não pertencem a espaços euclidianos de mesma dimensão.
+    Logo, o produto interno \( \bfy^{ \transpose } \bfx \) nem sempre está bem definido.
+    Entretanto, mesmo se \( A \) for quadrada essa afirmação ainda não será válida.
+    Tome, por exemplo,
+    \begin{equation*}
+        A =
+        \begin{bmatrix}
+            1 & 1 \\
+            1 & 1
+        \end{bmatrix}, \
+        \bfb =
+        \begin{bmatrix}
+            1 \\
+            1
+        \end{bmatrix}, \
+        \bfx =
+        \begin{bmatrix}
+            1 \\
+            0
+        \end{bmatrix} \text{ e } \
+        \bfy =
+        \begin{bmatrix}
+            1 \\
+            -1
+        \end{bmatrix}
+    .\end{equation*}
+
+\end{sol} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 3 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\item O sistema abaixo não tem solução:
+$$\begin{cases}
+x + 2y + 2z = 5\\
+2x + 2y + 3z = 5\\
+3x + 4y + 5z = 9
+\end{cases}$$
+Ache números $y_1,y_2,y_3$ para multiplicar as equações acima para que elas somem $0=1$. Em qual espaço fundamental o vetor $y$ pertence? Verifique que $y^Tb = 1$. O caso acima é típico e conhecido como a \textit{Alternativa de Fredholm}: ou $Ax = b$ ou $A^Ty = 0$ com $y^Tb = 1$.
+
+\begin{sol} 
+
+    O sistema pode ser escrito como \( A \bfx = \bfb \), onde
+    \begin{equation*}
+        A =
+        \begin{bmatrix}
+            1 & 2 & 2 \\
+            2 & 2 & 3 \\
+            3 & 4 & 5
+        \end{bmatrix}, \
+        \bfx =
+        \begin{bmatrix}
+            x \\
+            y \\
+            z
+        \end{bmatrix} \text{ e } \
+        \bfb =
+        \begin{bmatrix}
+            5 \\
+            5 \\
+            9
+        \end{bmatrix}
+    .\end{equation*}
+    Procuramos \( \bfy = ( y_{ 1 }, y_{ 2 }, y_{ 3 } ) \) tal que \( \bfy^{ \transpose } A = 0 \), ou seja, \( \bfy \in N ( A^{ \transpose } ) \), e \( \bfy^{ \transpose } \bfb = 1 \).
+    Observe que basta encontrarmos um \( \bfy' \in N ( A^{ \transpose } ) \) e fazer \( \bfy \defeq \norm{ \bfy^{ \transpose } \bfb }^{ -1 } \bfy' \).
+    Prosseguindo pelos métodos já estudados, chegamos no vetor
+    \begin{equation*}
+        \bfy' = ( 1, 1, -1 )
+    .\end{equation*}
+    Por sorte, já temos \( \bfy^{ \transpose } \bfb = 1 \) e não precisamos realizar a normalização, podendo, então, tomar \( \bfy \defeq \bfy' \).
+\end{sol} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 4 %%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\item Mostre que se $A^TAx = 0$, então $Ax = 0$. O oposto é obviamente verdade e então temos $N(A^TA) = N(A)$.
+
+\begin{sol} 
+
+    Multiplicando ambos lados de \( A^{ \transpose } A \bfx = 0 \) por \( \bfx^{ \transpose } \), ficamos com
+    \begin{equation*}
+        \bfx^{ \transpose } A^{ \transpose } A \bfx = 0
+    ,\end{equation*}
+    o que implica \( ( A \bfx )^{ \transpose } ( A \bfx ) = 0 \) e, assim, \( \norm{ A \bfx }^{ 2 } = 0 \).
+    Com isso, \( \norm{ A \bfx } = 0 \) e \( A \bfx = 0 \).
+
+\end{sol} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 5 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\item Seja $A$ uma matriz $3 \times 4$ e $B$ uma $4 \times 5$ tais que $AB = 0$. Mostre que $C(B) \subset N(A)$. Além disso, mostre que posto$(A)$ $ + $ posto$(B) \leq 4$.
+
+\begin{sol} 
+
+    Pela questão \( 1 \) sabemos que as colunas de \( B \) pertencem a \( N ( A ) \).
+    Como \( C ( B ) \) é, por definição, o \( \vspan \) das colunas de \( B \) e \( N ( A ) \) é um subespaço vetorial, temos \( C ( B ) \subset N ( A ) \).
+    Com isso, \( \dim C ( B ) \leq \dim N ( A ) \).
+    Pelo Teorema do Posto, temos \( \dim N ( A ) = 4 - \dim C ( A ) \) e, assim, \( \dim C ( B ) \leq 4 - \dim C ( A ) \), ou seja,
+    \begin{equation*}
+        \dim C ( A ) + \dim C ( B ) \leq 4
+    .\end{equation*}
+
+\end{sol} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%% Exercício 6 %%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Sejam $\mathbf{a,b,c,d}$ vetores não-zeros de $\bR^2$.
+
+\begin{enumerate}
+
+\item Quais são as condições sobre esses vetores para que cada um possa ser, respectivamente, base dos espaços $C(A^T)$, $N(A)$, $C(A)$ e $N(A^T)$ para uma dada matriz $A$ que seja $2 \times 2$. \textit{Dica: cada espaço fundamental vai ter somente um desses vetores como base.}
+
+\begin{sol} 
+
+    Perceba que, como temos \( C ( A^{ \transpose } ) \perp N ( A ) \) e \( C ( A ) \perp N ( A^{ \transpose } ) \), uma condição necessária para termos
+    \begin{align*}
+        C ( A^{ \transpose } ) &= \vspan \left\{ \bfa \right\} \\
+        N ( A ) &= \vspan \left\{ \bfb \right\} \\
+        C ( A ) &= \vspan  \left\{ \bfc \right\} \\
+        N ( A^{ \transpose } ) &= \vspan  \left\{ \bfd \right\}
+    \end{align*}
+    é \( \bfa^{ \transpose } \bfb = \bfc^{ \transpose } \bfd = 0 \).
+    Vamos mostrar que essa condição é, na verdade, suficiente, ou seja, vamos encontrar uma matriz \( A \) que satisfaça as igualdades acima, dados os vetores \( \bfa, \bfb, \bfc \) e \( \bfd \).
+    Para termos \( C ( A^{ \transpose } ) = \vspan  \left\{ \bfa \right\} \) é necessário que a matriz \( A \) seja da forma
+    \begin{equation*}
+        \begin{bmatrix}
+            \alpha \bfa^{ \transpose } \\
+            \beta \bfa^{ \transpose }
+        \end{bmatrix}
+    ,\end{equation*}
+    onde \( \alpha, \beta \in \R \).
+    Perceba que, com isso, temos \( \dim C ( A ) = \dim C ( A^{ \transpose } ) = 1 \), o que implica, pelo Teorema do Posto, \( \dim N ( A ) = 1 \).
+    Com isso, \( \bfb \) já é uma base para \( N ( A ) \).
+    Agora, sendo \( \bfa = ( a_{ 1 }, a_{ 2 } ) \) e \( \bfc = ( c_{ 1 }, c_{ 2 } ) \), observe que pondo \( \alpha \defeq c_{ 1 }/a_{ 1 } \) e \( \beta \defeq c_{ 2 } / a_{ 1 } \) (ou sobre \( a_{ 2 } \), caso \( a_{ 1 } = 0 \), mas vamos supor \( a_{ 1 } \neq 0 \), pois o outro caso é análogo), ficamos com
+    \begin{equation*}
+        A =
+        \begin{bmatrix}
+            c_{ 1 } & \frac{ a_{ 2 } }{ a_{ 1 } } c_{ 1 } \\
+            c_{ 2 } & \frac{ a_{ 2 } }{ a_{ 1 } } c_{ 2 }
+        \end{bmatrix}
+    .\end{equation*}
+    Definindo \( \lambda \defeq a_{ 2 } / a_{ 1 } \), temos que
+    \begin{equation*}
+        A = \begin{bmatrix}
+            \bfc & \lambda \bfc
+        \end{bmatrix}
+    .\end{equation*}
+    Portanto, seguindo um raciocínio análogo ao anterior, automaticamente temos \( C ( A ) = \vspan \left\{ \bfc \right\} \) e \( N ( A^{ \transpose } ) = \vspan \left\{ d \right\} \).
+
+\end{sol} 
+
+\item Qual seria uma matriz $A$ possível?
+
+\begin{sol} 
+
+    Como mostrado no item anterior, podemos tomar
+    \begin{equation*}
+        A =
+        \begin{bmatrix}
+            c_{ 1 } & \frac{ a_{ 2 } }{ a_{ 1 } } c_{ 1 } \\
+            c_{ 2 } & \frac{ a_{ 2 } }{ a_{ 1 } } c_{ 2 }
+        \end{bmatrix}
+    .\end{equation*}
+
+\end{sol} 
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%% Exercício 7 %%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Ache $S^{\perp}$ para os seguintes conjuntos:
+
+\begin{enumerate}
+
+\item $S = \{0\}$
+
+
+\item $S = span\{[1,1,1]\}$
+
+\item $S = span\{[1,1,1], [1,1,-1]\}$
+
+\item $S = \{[1,5,1], [2,2,2]\}$. Note que $S$ não é um subespaço, mas $S^\perp$ é.
+
+\end{enumerate}
+
+\begin{sol}
+    Observe (\emph{tente mostrar}) que se \( V = \vspan \left\{ \bfv_{ 1 }, \dots, \bfv_{ n } \right\} \), então \( \bfw \in V^{ \perp } \) se, e somente se, \( \bfw^{ \transpose } \bfv_{ i } = 0 \) para todo \( i = 1, \dots, n \).
+    Vamos usar esse fato nas resoluções.
+
+	\begin{enumerate}    
+		\item Para todo \( \bfx \in \R^{ 3 } \), vale \( \bfx^{ \transpose } 0 = 0 \).
+            Logo, \( S^{ \perp } = \R^{ 3 } \).
+
+		\item O conjunto \( S^{ \perp } \) é exatamente \( N ( A ) \), onde \( A = 
+            \begin{bmatrix}
+                1 & 1 & 1 
+		    \end{bmatrix} \).
+            Como o posto de \( A \) é claramente \( 1 \), o núcleo de \( A \) tem dimensão \( 2 \).
+            Como \( ( -1, 0, 1 ) \) e \( ( 0, -1, 1 ) \) são dois elementos linearmente independentes de \( N ( A ) \), temos
+            \begin{equation*}
+                S^{ \perp } = N ( A ) =
+                \vspan
+                \left\{ 
+                    \begin{bmatrix}
+                        -1 \\
+                        0 \\
+                        1
+                    \end{bmatrix},
+                    \begin{bmatrix}
+                        0 \\
+                        -1 \\
+                        1
+                    \end{bmatrix}
+                \right\}
+            .\end{equation*}
+
+		\item Analogamente ao item anterior, vamos calcular \( N ( A ) \), onde
+            \begin{equation*}
+                A =
+                \begin{bmatrix}
+                    1 & 1 & 1 \\
+                    1 & 1 & -1
+                \end{bmatrix}
+            .\end{equation*}
+            Prosseguindo pelos métodos usuais, encontramos a base
+            \begin{equation*}
+                \left\{ 
+                    \begin{bmatrix}
+                        1 \\
+                        -1 \\
+                        0
+                    \end{bmatrix}
+                \right\}
+            .\end{equation*}
+            Portanto,
+            \begin{equation*}
+                S^{ \perp } = \vspan 
+                \left\{ 
+                    \begin{bmatrix}
+                        1 \\
+                        -1 \\
+                        0
+                    \end{bmatrix}
+                \right\}
+            .\end{equation*}
+		\item De maneira análoga,
+            \begin{equation*}
+                S^{ \perp } =
+                N \left(
+                    \begin{bmatrix}
+                        1 & 5 & 1 \\
+                        2 & 2 & 2
+                    \end{bmatrix}
+                \right) =
+                \vspan \left\{ 
+                    \begin{bmatrix}
+                        1 \\
+                        0 \\
+                        -1
+                    \end{bmatrix}
+                \right\}
+            .\end{equation*}
+	\end{enumerate}    
+\end{sol} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 8 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Seja $A$ uma matriz $4 \times 3$ formada pela primeiras 3 colunas da matriz identidade $4 \times 4$. Projeta o vetor $b = [1,2,3,4]$ no espaço coluna de $A$. Ache a matriz de projeção $P$.
+
+\begin{sol} 
+
+    Temos
+    \begin{equation*}
+        A =
+        \begin{bmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            0 & 0 & 0
+        \end{bmatrix}
+    .\end{equation*}
+    Queremos encontrar \( \hat{ \bfx } \) tal que
+    \begin{equation*}
+        A^{ \transpose } ( A \hat{ \bfx } - \bfb ) = 0
+    .\end{equation*}
+    Desenvolvendo a equação, obtemos
+    \begin{equation*}
+        \hat{ \bfx } = ( A^{ \transpose } A )^{ -1 } A^{ \transpose } \bfb
+    .\end{equation*}
+    Realizando as contas, ficamos com
+    \begin{equation*}
+        A^{ \transpose }A = I_{ 3 }
+    .\end{equation*}
+    Assim,
+    \begin{equation*}
+        \hat{ x } = A^{ \transpose } \bfb =
+        \begin{bmatrix}
+            1 \\
+            2 \\
+            3
+        \end{bmatrix}
+    .\end{equation*}
+    A projeção de \( \bfb \) é dada por \( A \hat{ \bfx } = ( 1, 2, 3, 0 ) \).
+    A matriz de projeção é dada por
+    \begin{equation*}
+        P = A ( A^{ \transpose } A )^{ -1 } A^{ \transpose } = A A^{ \transpose } =
+        \begin{bmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 0
+        \end{bmatrix}
+    .\end{equation*}
+\end{sol} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 9 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Se $P^2 = P$, mostre que $(I - P)^2 = I - P$. Para a matriz $P$ do exercício anterior, em qual subespaço a matriz $I - P$ projeta?
+
+\begin{sol} 
+
+    Desenvolendo \( ( I - P )^{ 2 } \), obtemos
+    \begin{align*}
+        ( I - P )^{ 2 } &= I^2 - I P - P I + P^2 \\
+                        &= I - 2 P + P \\
+                        &= I - P
+    .\end{align*}
+    Com a matriz \( P \) do item anterior, temos
+    \begin{equation*}
+        I - P =
+        \begin{bmatrix}
+            0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+    .\end{equation*}
+    Essa matriz projeta no subespaço
+    \begin{equation*}
+        \left\{ \bfx = ( x_{ 1 }, \dots, x_{ 4 } ) \in \R^{ 4 } : x_{ 1 } = x_{ 2 } = x_{ 3 } = 0 \right\}
+    .\end{equation*}
+\end{sol} 
+\end{enumerate}
+\end{document} 

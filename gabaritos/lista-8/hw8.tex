@@ -1,0 +1,554 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel} %\usepackage[latin1]{inputenc}
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage{enumerate}
+\usepackage{xifthen} \usepackage{tikz}
+\usetikzlibrary{automata,arrows,positioning,calc}
+\usepackage{listings} 
+
+% \numberwithin{equation}{section}
+
+% https://tex.stackexchange.com/questions/83882/how-to-highlight-python-syntax-in-latex-listings-lstinputlistings-command 
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{9} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{9}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttm,
+morekeywords={self},              % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+\setlength{\parindent}{12 pt}
+
+\begin{document}
+
+\newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+\newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+\newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+\newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+\newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+\newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+\newtheorem*{hipo}{Hipóteses}
+\newtheorem*{nota}{Notação}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfb}{\mathbf{b}}
+
+\newcommand{\bvecc}[2]{%
+  \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+  \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+\newenvironment{sol} 
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm} 
+} 
+% Objetos que aparecem *após* o ambiente. 
+% (você pode, por exemplo, modificar, 
+% ou remover, a barra horizontal} 
+{\noindent\rule{4cm}{.1mm}}
+
+
+\title{Álgebra Linear - Lista de Exercícios 8}
+
+\author{Caio Lins e Tiago da Silva}
+
+\date{\today}
+
+\maketitle
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 1 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Escreva as 3 equações para a reta $b = C + Dt$ passar pelos pontos $(-1,7)$, $(1,7)$, $(2,21)$. Ache a solução de mínimos quadrados $\hat{x}$ e a projeção $p = A\hat{x}$.
+
+\begin{sol}
+	Precisamos, nesse exercício, escrever as condições necessárias para que a reta $\{(t, C + Dt) : t \in \mathbb{R}\}$ contenha os pontos $(-1, 7)$, $(1, 7)$ e $(2, 21)$; desta forma, escolhas subsequentes de $t$ no conjunto $\{-1, 1, 2\}$ culminam em 
+	\begin{equation} \label{a}  
+		\begin{cases} 
+			C - D = 7 \\ 
+			C + D = 7 \\ 
+			C + 2D = 21, \\ 
+		\end{cases} 
+	\end{equation} 
+
+	\noindent que é, para $(C, D) \in \mathbb{R}^{2}$, absolutamente inadmissível (por exemplo, as equações iniciais implicam que $C = 7$ e $D = 0$; estas condições, contudo, violam a outra igualdade). Nesse contexto, como a Equação~\eqref{a} é equivalente a 
+	\begin{equation*} 
+		A 
+		\begin{bmatrix} 
+			C \\ 
+			D \\ 
+		\end{bmatrix} = 
+		\begin{bmatrix} 
+			7 \\ 
+			7 \\ 
+			21 \\ 
+		\end{bmatrix},  
+	\end{equation*} 
+	
+	\noindent com $A = \begin{bmatrix} \mathbf{a} & \mathbf{w} \end{bmatrix}$, em que $\mathbf{a} = \begin{bmatrix} 1 & 1 & 1 \end{bmatrix}^{T}$ e $\mathbf{w} = \begin{bmatrix} -1 & 1 & 2 \end{bmatrix}^{T}$, podemos projetar (ortogonalmente) o vetor $\mathbf{b} = \begin{bmatrix} 7 & 7 & 21 \end{bmatrix}^{T}$ no espaço coluna de $A$; para isso, precisamos (sistematicamente) enfrentar a equação 
+	\begin{equation*} 
+		A^{T}A 
+		\begin{bmatrix} 
+			\hat C \\ 
+			\hat D \\ 
+		\end{bmatrix} = 
+		A^{T}\mathbf{b}    
+	\end{equation*} 
+	
+	\noindent (com $(\hat C, \hat D) \in \mathbb{R}^{2}$), que é igual a 
+
+	\begin{equation*} 
+		\begin{bmatrix} 
+			3 & 2 \\ 
+			2 & 6 \\ 
+		\end{bmatrix}   
+		\begin{bmatrix} 
+			\hat C \\ 
+			\hat D \\ 
+		\end{bmatrix} 
+		= 
+		\begin{bmatrix} 
+			35 \\ 
+			42 \\ 
+		\end{bmatrix}; 
+	\end{equation*} 
+
+	\noindent logo, $\hat C = 9$ e $\hat D = 4$. Agora, o vetor $\hat x$, descrito no enunciado, é precisamente igual ao vetor $\begin{bmatrix} \hat C & \hat D \end{bmatrix}^{T}$; portanto, como $p = A \hat x$, temos que 
+
+	\begin{equation*} 
+		\hat x = 
+		\begin{bmatrix} 
+			9 \\ 
+			4 \\ 
+		\end{bmatrix}    
+		\text{ e } 
+		p = 
+		\begin{bmatrix} 
+			5 \\ 
+			13 \\ 
+			17 \\ 
+		\end{bmatrix}.   
+	\end{equation*} 
+
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 2 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Dado o problema acima, quais dos quatro subespaços fundamentais contêm o vetor erro $e = b - p$? E o vetor $p$? E o vetor $\hat{x}$? Qual é o núcleo de $A$?
+
+\begin{sol}
+	Perceba, inicialmente, que, utilizando as notações do exercício um (isto é, escrevemos $\mathbf{b}$ em oposição a $b$),  $e = \mathbf{b} - p$ é ortogonal ao espaço coluna de $A$ (com efeito, temos que $p = A(A^{T}A)^{-1}A^{T}\mathbf{b} = P\mathbf{b}$, em que $P$ é simétrica; logo, se $v \in C(A)$, 
+
+	\begin{equation*} 
+		\begin{split} 
+			\langle \mathbf{b} - p, v \rangle = \\ 
+			= \langle \mathbf{b}, v \rangle - \langle P\mathbf{b}, v \rangle = \\ 
+			= \langle \mathbf{b}, v \rangle - \langle \mathbf{b}, P^{T}v \rangle = \\ 
+			= \langle \mathbf{b}, v \rangle - \langle \mathbf{b}, Pv \rangle = \\ 
+			= \langle \mathbf{b}, v \rangle - \langle \mathbf{b}, v \rangle = 0; 
+		\end{split}    
+	\end{equation*} 
+
+	\noindent portanto, $e = \mathbf{b} - p$ é ortogonal a qualquer vetor em $C(A)$ e, nesse sentido, $e \in C(A)^{\perp}$); isto é, $e \in C(A)^{\perp} = N(A^{T})$ (isso porque, se $x \in C(A)^{\perp}$, então, em particular, $x$ é ortogonal às colunas de $A$ e, dessa maneira, $A^{T}x = 0$). Por outro lado, $p$ está no espaço coluna de $A$; ele é, por definição, a projeção de $\mathbf{b}$ neste espaço. Além disso, como $A^{T}A$ é invertível (porquanto, por exemplo, seu determinante é não nulo), temos que seu posto é igual a dois e, portanto, o posto de $A^{T}$ é igual a dois, o que, desse modo, garante que o espaço coluna de $A^{T}$ é igual a $\mathbb{R}^{2}$ e, portanto, $\hat x$ pertence a $C(A^{T})$. Nessas condições, temos também que, como $N(A)$ é igual ao complemento ortogonal, em $\mathbb{R}^{2}$, de $C(A^{T})$, $N(A) = \{0\} \subset \mathbb{R}^{2}$. 
+
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 3 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Ache a melhor reta que se ajusta aos pontos $t = -2, -1, 0, 1, 2$ e $b = 4, 2, -1, 0, 0$.
+
+\begin{sol}
+	Contemplamos, neste exercício, a caracterização da otimalidade da reta pela otimização do desvio quadrático; isto é, a reta $f(t) = wt + a$ é ótima no sentido de que, se $\tilde f(t) = \tilde w t + \tilde a$ é outra reta que objetiva se ajustar aos dados $\{(t_{i}, b_{i}) : 1 \le i \le 5\}$, então 
+	\begin{equation*} 
+		\sum_{1 \le i \le 5} |f(t_{i}) - b_{i}|^{2} \le \sum_{1 \le i \le 5} |\tilde f(t_{i}) - b_{i}|^{2} 
+	\end{equation*} 
+
+	\noindent (estou escrevendo isso porque, em geral, a verificação de que uma reta, um modelo linear, é mais apropriada que outra trascende o cômputo do desvio quadrático). Nessas condições, seja 
+
+	\begin{equation*} 
+		A = 
+		\begin{bmatrix} 
+			-2 & 1 \\ 
+			-1 & 1 \\ 
+			0 & 1 \\ 
+			1 & 1 \\ 
+			2 & 1 \\ 
+		\end{bmatrix};   
+	\end{equation*} 
+
+	\noindent temos, dessa forma, que computar $\mathbf{w} = \begin{bmatrix} w \\ b \end{bmatrix}$ tal que $\|A\mathbf{w} - b\|^{2} \le \|A\mathbf{x} - b\|^{2}$ para qualquer $\mathbf{x} \in \mathbb{R}^{2}$, o que é equivalente a abordar a equação $A^{T}A\mathbf{w} = b$\footnote{\textit{Maybe you don't believe this assertion; in this case:} o gradiente, com respeito a $\mathbf{w}$, de $\|A\mathbf{w} - b\|^{2}$ é igual a $A^{T}(A\mathbf{w} - b)$; as condições de otimalidade, nesse sentido, exigem que $A^{T}A\mathbf{w} - A^{T}b = 0$ e, como $A^{T}A$ é, nesse exercício, positiva definida, essas condições são suficientes para a garantia de que $\|A\mathbf{w} - b\| < \|A\mathbf{x} - b\|$ para qualquer $\mathbf{x} \in \mathbb{R}^{2}$.}; isto é, 
+	\begin{equation*} 
+		\begin{bmatrix} 
+			10 & 0 \\ 
+			0 & 5 \\ 
+		\end{bmatrix} 
+		\begin{bmatrix} 
+			w \\ 
+			b 
+		\end{bmatrix} = 
+		\begin{bmatrix} 
+			-10 \\ 
+			5 \\ 
+		\end{bmatrix}.  
+	\end{equation*} 
+
+	\noindent Portanto, $w = -1$ e $b = 1$, o que, em particular, implica que a reta descrita no enunciado é igual a $\{(x, -x + 1), x \in \mathbb{R}\}$. 
+
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 4 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Dados os vetores
+$$v_1 = [1 \ -1 \ 0 \ 0], \ v_2 = [0 \ 1 \ -1 \ 0] \mbox{ e } v_3 = [0 \ 0 \ 1 \ -1],$$
+use o método de Gram-Schmidt para achar uma base ortornormal que gera o mesmo espaço de $v_1, v_2, v_3$.
+
+\begin{sol}
+	O algoritmo de Gram-Schmidt contempla, em sua descrição, duas etapas: projeção e normalização. Explicitamente, seja $\{v_{1}, \cdots, v_{n}\}$ um conjunto de vetores linearmente independentes; o método de Gram-Schmidt, nesse sentido, permite, deterministicamente, computar um conjunto $\{u_{1}, \cdots, u_{n}\}$ de vetores ortonormais tais que, para $1 \le i \le n$, $\mathrm{span}(\{u_{1}, \cdots, u_{i}\}) = \mathrm{span}(\{v_{1}, \cdots, v_{i}\})$. Iniciamos, nesse contexto, escrevendo $u_{i} = \frac{v_{1}}{\|v_{1}\|}$ e, iterativamente, computamos 
+	\begin{equation} \label{aa}  
+		\tilde u_{m} = v_{m} - \sum_{1 \le i \le m - 1} \langle u_{i}, v_{m} \rangle u_{i}; 
+	\end{equation} 
+
+	\noindent em seguida, $u_{m} = \frac{\tilde u_{m}}{\|\tilde u_{m}\|}$ para $m \ge 2$ (e $m \le n$). Munidos, portanto, do conjunto de vetores $\{v_{1}, v_{2}, v_{3}\}$, descritos no enunciado, podemos computar $u_{1} = \frac{1}{\sqrt{2}}v_{1}$ e 
+
+	\begin{equation*} 
+		\tilde u_{2} = v_{2} - \langle u_{1}, v_{2} \rangle u_{1} = v_{2} - \frac{1}{2} \langle v_{1}, v_{2} \rangle v_{1} = 
+		\begin{bmatrix} 
+			1/2 \\ 
+			1/2 \\ 
+			-1 \\ 
+			0 \\ 
+		\end{bmatrix},  
+	\end{equation*} 
+
+	\noindent o que nos direciona a $u_{2} = \left(\frac{2}{3}\right)^{1/2}\tilde u_{2}$ (isso porque $\|\tilde u_{2}\|^{2} = \frac{3}{2}$). Utilizando, agora, a Equação~\eqref{aa}, temos que 
+
+	\begin{equation*} 
+		\begin{split} 
+			\tilde u_{3} = v_{3} - \langle u_{1}, v_{3} \rangle u_{1} - \langle u_{2}, v_{3} \rangle u_{2} = \\ 
+			= v_{3} - \frac{1}{2} \langle v_{1}, v_{3} \rangle v_{1} - \frac{2}{3} \langle \tilde u_{2}, v_{3} \rangle \tilde u_{2} = \\ 
+			= v_{3} + \frac{2}{3} \tilde u_{2} = 
+			\begin{bmatrix} 
+				1/3 \\ 
+				1/3 \\ 
+				1/3 \\ 
+				-1  \\ 
+			\end{bmatrix}; 
+		\end{split}    
+	\end{equation*} 
+	
+	\noindent isto é, $u_{3} = \frac{\sqrt{3}}{2} \tilde u_{3}$. Portanto, 
+	\begin{equation*} 
+		u_{1} = 
+		\begin{bmatrix} 
+			1/\sqrt{2} \\ 
+			-1/\sqrt{2} \\ 
+			0 \\ 
+			0 \\ 
+		\end{bmatrix}, 
+		u_{2} = 
+		\begin{bmatrix} 
+			1/\sqrt{6} \\ 
+			1/\sqrt{6} \\ 
+			\sqrt{2/3} \\ 
+			0 \\ 
+		\end{bmatrix} 
+		\text{ e } 
+		u_{3} = 
+		\begin{bmatrix} 
+			1/(2\sqrt{3}) \\ 
+			1/(2\sqrt{3}) \\ 
+			1/(2\sqrt{3}) \\ 
+			\sqrt{3}/2 \\ 
+		\end{bmatrix} 
+	\end{equation*} 
+
+	\noindent são os vetores que, nas condições do algoritmo de Gram-Schimdt, formam uma base ortonormal para o espaço vetorial $\mathrm{span}(\{v_{1}, v_{2}, v_{3}\})$. Aliás, o \texttt{numpy}, em Python, enseja o cômputo destes vetores; as linhas seguintes, por exemplos, executam essa tarefa. 
+
+\begin{python} 
+import numpy as np 
+
+x = np.array([1, -1, 0, 0]).reshape(-1, 1) 
+y = np.array([0, 1, -1, 0].reshape(-1, 1) 
+w = np.array([0, 0, 1, -1]).reshape(-1, 1) 
+# Concatena os vetores 
+A = np.hstack([x, y, w]) 
+	
+# QR 
+q, r = np.linalg.qr(A) 
+# q = [u_{1} u_{2} u_{3}]  
+print(q) 
+\end{python} 
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 5 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Se os elementos de cada linha de uma matriz $A$ somam zero, ache uma solução para $Ax = 0$ e conclua que $\det A = 0$. Se esses elementos somam 1, conclua que $\det(A - I) = 0$.
+
+\begin{sol}
+	Seja $A \in \mathbb{R}^{n \times n}$ ($A$ é, nas condições do enunciado, quadrada; isso porque a definição de autovalores e, em particular, de determinante é realizada nesta classe de matrizes); seja, além disso, $\{\mathbf{a}_{1}, \cdots, \mathbf{a}_{n}\} \subset \mathbb{R}^{n}$ o conjunto das linhas de $A$, que identificamos, desta vez, como vetores em $\mathbb{R}^{n}$. Seja, logo, $\mathbf{v} = (v_{i})_{1 \le i \le n} \in \mathbb{R}^{n}$, em que $v_{i} = 1$ para $1 \le i \le n$; a verificação de que a soma dos elementos em cada linha de $A$ é nula culmina, portanto, em $\mathbf{a}_{i}^{T}\mathbf{v} = \mathbf{0}$; isto é, $\mathbf{v}$ é ortogonal às linhas de $A$, o que garante que $\mathbf{v} \in C(A^{T})^{\perp} = N(A)$. Temos, desta maneira, que o núcleo de $A$ contém algum vetor não nulo (especificamente, $\mathbf{v}$), o que, neste cenário, implica a nulidade do seu determinante, $\det A = 0$ (isso porque, por exemplo, $0$ é um autovalor de $A$; logo, como o determinante é igual ao produto dos autovalores, $\det A = 0$; por outro lado, o posto de $A$, quadrada, é igual à sua dimensão se, e somente se, seu determinante é não nulo; contudo, como a dimensão do núcleo de $A$ é positiva, temos que $\mathrm{posto}(A) < n$, o que também implica a nulidade do determinante). Correlativamente, se as somas dos elementos das linhas de $A$ é unitária, temos que $(\mathbf{a}_{i} - \mathbf{e}_{i})^{T}\mathbf{v} = \mathbf{0}$, em que $\mathbf{e}_{i}$ é a $i$-ésima linha da matriz identidade, e, logo, $\mathbf{v}$ pertence ao núcleo de $A - I$, garantindo, deste modo, que $\det(A - I) = 0$.  
+
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 6 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Use as propriedades do determinante (e não suas fórmulas) para mostrar que
+$$\det \begin{bmatrix} 1 & a & a^2 \\ 1 & b & b^2 \\ 1 & c & c^2 \end{bmatrix} = (b-a)(c-a)(c-b).$$
+
+\begin{sol}	
+	Seja $A(a, b, c)$ a matriz do enunciado: ela é chamada de \textit{matriz de Vandermonde}; seu determinante, aliás, é convenientemente descrito por \textit{determinante de Vandermonde} e é nulo se, e somente se, a cardinalidade do conjunto $\{a, b, c\}$ for distinta de três (essa verificação tem aplicações, por exemplo, na teoria de interpolação de polinômios, garantindo, com efeito, a existência e a unicidade de um polinômio de grau (até) $n$ que contempla, em sua curva, $n + 1$ pares distintos de coordenadas informados a priori). Como o determinante é, por definição (em $\mathbb{R}^{n}$), uma $n$-forma antissimétrica que é unitária na matriz identidade\footnote{Explicitamente, uma $n$-forma antissimétrica é uma função $f: (\mathbb{R}^{n})^{n} \rightarrow \mathbb{R}$, $\mathbf{v} = (v_{1}, \cdots, v_{n}) \mapsto \alpha \in \mathbb{R}$, $v_{i} \in \mathbb{R}^{n}$, que é linear em cada $v_{i}$ (isto é, $f(v_{1}, \cdots, v_{i} + \beta u_{i}, \cdots, v_{n}) = f(v_{1}, \cdots, v_{i}, \cdots, v_{n}) + \beta f(v_{1}, \cdots, u_{i}, \cdots, v_{n})$) e que satisfaz, para $i \neq j$, $f(v_{1}, \cdots, v_{i}, \cdots, v_{j}, \cdots, v_{n}) = -f(v_{1}, \cdots, v_{j}, \cdots, v_{i}, \cdots, v_{n})$ (esta é a antissimetria; perceba, em particular, que, se existirem $i$ e $j$, $i \neq j$, tais que $v_{i} = v_{j}$, então $f(\mathbf{v}) = 0$).}, temos que ele é um polinônmio de grau dois em $a$, em $b$ e em $c$; com efeito, se escrevermos $f : \mathbb{R} \rightarrow \mathbb{R}$ para a função $f(a) = \det A(a, b, c)$, 
+
+	\begin{equation*} 
+		\begin{split} 
+			f(a) = \det 
+			\begin{bmatrix} 
+				1 & a & a^{2} \\ 
+				1 & b & b^{2} \\ 
+				1 & c & c^{2} \\ 
+			\end{bmatrix} = \\ 
+			= \det 
+			\begin{bmatrix} 
+				1 & 0 & a^{2} \\ 
+				1 & b & b^{2} \\ 
+				1 & c & c^{2} \\ 
+			\end{bmatrix} + 
+			\det 
+			\begin{bmatrix} 
+				1 & a & a^{2} \\ 
+				1 & 0 & b^{2} \\ 
+				1 & 0 & c^{2} \\  
+			\end{bmatrix} = \\ 
+			= \det 
+			\begin{bmatrix} 
+				1 & 0 & 0 \\ 
+				1 & b & b^{2} \\ 
+				1 & c & c^{2} \\ 
+			\end{bmatrix} + 
+			\det 
+			\begin{bmatrix} 
+				1 & 0 & a^{2} \\ 
+				1 & b & 0 \\ 
+				1 & c & 0 \\ 
+			\end{bmatrix} + 
+			\det 
+			\begin{bmatrix} 
+				1 & a & 0 \\ 
+				1 & 0 & b^{2} \\ 
+				1 & 0 & c^{2} \\ 
+			\end{bmatrix} 
+		\end{split}    
+	\end{equation*} 
+	
+	\noindent (isso porque 
+
+	\begin{equation*} 
+		\det 
+		\begin{bmatrix} 
+			1 & a & a^{2} \\ 
+			1 & 0 & 0 \\ 
+			1 & 0 & 0 \\ 
+		\end{bmatrix} = 0, 
+	\end{equation*} 
+
+	\noindent porquanto o determinante é antissimétrico e a coluna três é diretamente proporcional à coluna dois), e os dois componentes, nessa expressão, à direita são polinômios de grau (até) dois em $a$ (na medida em que o determinante é uma $n$-forma). Agora, se $a = b$ e $a = c$, a estabilidade do determinante à transposição implica que $b$ e $c$ são raízes de $f$; logo, o teorema fundamental da álgebra garante que $f(a) = \alpha (a - b)(a - c)$ para algum $\alpha \in \mathbb{R}$. Escolhemos, portanto, $a = 0$ e verificamos, por ser estável, com respeito às operações elementares, o determinante, que 
+
+	\begin{equation*} 
+		\det 
+		\begin{bmatrix} 
+			1 & 0 & 0 \\ 
+			1 & b & b^{2} \\ 
+			1 & c & c^{2} 
+		\end{bmatrix} 
+		= \det 
+		\begin{bmatrix} 
+			1 & 0 & 0 \\ 
+			1 & b & 0 \\ 
+			1 & c & c^{2} - cb \\ 
+		\end{bmatrix} = cb(c - b) 
+	\end{equation*} 
+
+	\noindent (utilizamos, nesta expressão, a verificação de que o determinante de uma matriz triangular é igual ao produto dos elementos da sua diagonal; isso é verdade porque (1) ele é uma $n$-forma, (2) ele é unitário na matriz identidade e (3) ele é estável à transposição); portanto, $\alpha = (c - b)$. Temos, desse modo, que $\det A = (c - b)(a - b)(a - c)$.  
+
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 7 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Calcule
+$$\det \begin{bmatrix} 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0  \end{bmatrix}.$$
+
+\begin{sol}
+	Seja $A$ a matriz do enunciado; perceba que, como 
+
+	\begin{equation*} 
+		A = 
+		\begin{bmatrix} 
+			\mathbf{e}_{2} & \mathbf{e}_{3} & \mathbf{e}_{4} & \mathbf{e}_{1}    
+		\end{bmatrix}, 
+	\end{equation*} 
+
+	\noindent a caracterização do determinante como uma $n$-forma garante que 
+	\begin{equation*} 
+		\begin{split} 
+			\det A = 
+			-\det 
+			\begin{bmatrix} 
+				\mathbf{e}_{1} & \mathbf{e}_{3} & \mathbf{e}_{4} \mathbf{e}_{2}    
+			\end{bmatrix} = \\ 
+			= \det 
+			\begin{bmatrix} 
+				\mathbf{e}_{1} & \mathbf{e}_{2} & \mathbf{e}_{4} & \mathbf{e}_{3}    
+			\end{bmatrix} = \\ 
+			= -\det 
+			\begin{bmatrix} 
+				\mathbf{e}_{1} & \mathbf{e}_{2} & \mathbf{e}_{3} & \mathbf{e}_{4}    
+			\end{bmatrix} = -1 
+		\end{split}    
+	\end{equation*} 
+
+	\noindent por definição; isto é, $\det A = -1$. 
+
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 8 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Use o fato de que
+$$\det \begin{bmatrix} 1 & 1 & 1 & 1 \\ 1 & 2 & 3 & 4 \\ 1 & 3 & 6 & 10 \\ 1 & 4 & 10 & 20  \end{bmatrix} = 1$$
+para mostrar que
+
+$$\det \begin{bmatrix} 1 & 1 & 1 & 1 \\ 1 & 2 & 3 & 4 \\ 1 & 3 & 6 & 10 \\ 1 & 4 & 10 & \mathbf{19}  \end{bmatrix} = 0.$$
+
+\begin{sol}
+	Sejam, agora, $A = (a_{ij})_{1 \le i, j \le 4}$ e $B = (b_{ij})_{1 \le i, j \le 4}$, com 
+
+	\begin{equation*} 
+		A = 
+		\begin{bmatrix} 
+			1 & 1 & 1 & 1 \\ 
+			1 & 2 & 3 & 4 \\ 
+			1 & 3 & 6 & 10 \\ 
+			1 & 4 & 10 & 20 \\ 
+		\end{bmatrix} 
+		\text{ e } 
+		B = 
+		\begin{bmatrix} 
+			1 & 1 & 1 & 1 \\ 
+			1 & 2 & 3 & 4 \\ 
+			1 & 3 & 6 & 10 \\ 
+			1 & 4 & 10 & 19 \\ 
+		\end{bmatrix};  
+	\end{equation*} 
+
+	\noindent se escrevermos, nesse sentido, $M = (a_{ij})_{1 \le i, j \le 3}$, temos que, pelo método dos cofatores, 
+
+	\begin{equation*} 
+		\det A - \det B = (-1)^{4 + 4}(20 - 19) \det M = \det M 
+	\end{equation*} 
+
+	\noindent e, logo, como $\det M = 1$ ($M$ é uma matriz de Pascal simétrica; seu determinante é unitário) e $\det A = 1$, $\det B = 0$.
+
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 9 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Ache o determinante da seguinte matriz:
+$$A = \begin{bmatrix} 1 & 1 & 4 \\ 1 & 2 & 2 \\ 1 & 2 & 5   \end{bmatrix}$$
+usando cofatores. O que acontece quando mudamos o valor 4 para 100?
+
+\begin{sol}
+	O método dos cofatores, aplicado na linha inicial, culmina em 
+
+	\begin{equation*} 
+		\det A = 1 \cdot (10 - 4) - 1 \cdot (5 - 2) + 4 \cdot (2 - 2) = 3; 
+	\end{equation*} 
+
+	\noindent por outro lado, como o cofator correspondente ao elemento $a_{13}$ é nulo, o determinante é estável com respeito a este elemento: isto é, a modificação de $4$ para $100$ é inócua a $\det A$. 
+
+\end{sol}
+
+\end{enumerate}
+\end{document}

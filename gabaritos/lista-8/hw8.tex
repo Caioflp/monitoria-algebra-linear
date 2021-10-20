@@ -250,7 +250,7 @@ showstringspaces=false
 		\end{bmatrix};   
 	\end{equation*} 
 
-	\noindent temos, dessa forma, que computar $\mathbf{w} = \begin{bmatrix} w \\ b \end{bmatrix}$ tal que $\|A\mathbf{w} - b\|^{2} \le \|A\mathbf{x} - b\|^{2}$ para qualquer $\mathbf{x} \in \mathbb{R}^{2}$, o que é equivalente a abordar a equação $A^{T}A\mathbf{w} = b$\footnote{\textit{Maybe you don't believe this assertion; in this case:} o gradiente, com respeito a $\mathbf{w}$, de $\|A\mathbf{w} - b\|^{2}$ é igual a $A^{T}(A\mathbf{w} - b)$; as condições de otimalidade, nesse sentido, exigem que $A^{T}A\mathbf{w} - A^{T}b = 0$ e, como $A^{T}A$ é, nesse exercício, positiva definida, essas condições são suficientes para a garantia de que $\|A\mathbf{w} - b\| < \|A\mathbf{x} - b\|$ para qualquer $\mathbf{x} \in \mathbb{R}^{2}$.}; isto é, 
+	\noindent temos, dessa forma, que computar $\mathbf{w} = \begin{bmatrix} w \\ b \end{bmatrix}$ tal que $\|A\mathbf{w} - b\|^{2} \le \|A\mathbf{x} - b\|^{2}$ para qualquer $\mathbf{x} \in \mathbb{R}^{2}$, o que é equivalente a abordar a equação $A^{T}A\mathbf{w} = b$\footnote{\textit{Maybe you don't believe this assertion; in this case:} o gradiente, com respeito a $\mathbf{w}$, de $\|A\mathbf{w} - b\|^{2}$ é igual a $2A^{T}(A\mathbf{w} - b)$; as condições de otimalidade, nesse sentido, exigem que $A^{T}A\mathbf{w} - A^{T}b = 0$ e, como $A^{T}A$ é, nesse exercício, positiva definida, essas condições são suficientes para a garantia de que $\|A\mathbf{w} - b\| < \|A\mathbf{x} - b\|$ para qualquer $\mathbf{x} \in \mathbb{R}^{2}$.}; isto é, 
 	\begin{equation*} 
 		\begin{bmatrix} 
 			10 & 0 \\ 

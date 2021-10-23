@@ -1,0 +1,310 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel} % \usepackage[latin1]{inputenc}
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage[inline]{enumitem}
+\usepackage{xifthen} \usepackage{tikz}
+\usepackage{mathtools}
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+\DeclareMathOperator{\vspan}{Span}
+\DeclareMathOperator{\sen}{sen}
+
+\numberwithin{equation}{section}
+
+\setlength{\parindent}{12 pt}
+
+\newenvironment{sol} 
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm} 
+} 
+% Objetos que aparecem *após* o ambiente. 
+% (você pode, por exemplo, modificar, 
+% ou remover, a barra horizontal} 
+{\noindent\rule{4cm}{.1mm}}
+
+\begin{document}
+
+\newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+\newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+\newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+\newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+\newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+\newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+\newtheorem*{hipo}{Hipóteses}
+\newtheorem*{nota}{Notação}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\defeq}{\vcentcolon =}
+
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfb}{\mathbf{b}}
+
+\newcommand{\bvecc}[2]{%
+  \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+  \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+
+\title{Álgebra Linear - Lista de Exercícios 9}
+
+\author{Meu nome Sensacional}
+
+\date{\today}
+
+\maketitle
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 1 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Seja $B$ uma matriz $3 \times 3$ com autovalores 0, 1 e 2. Com  essa informação, ache:
+
+\begin{enumerate}
+
+\item o posto de $B$;
+
+\item o determinante de $B^TB$;
+
+\item os autovalores de $B^TB$;
+
+\item os autovalores de $(B^2 + I)^{-1}$.
+
+\end{enumerate}
+
+\begin{sol}
+
+    % Minha solução genial
+    
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 2 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Ache os autovalores das seguintes matrizes
+
+\begin{enumerate*}
+
+\item $A = \begin{bmatrix}
+1 & 2 & 3\\
+0 & 4 & 5 \\
+0 & 0 & 6 
+\end{bmatrix}$;
+
+\item $B = \begin{bmatrix}
+0 & 0 & 1\\
+0 & 2 & 0 \\
+3 & 0 & 0 
+\end{bmatrix}$;
+
+\item $C = \begin{bmatrix}
+2 & 2 & 2\\
+2 & 2 & 2 \\
+2 & 2 & 2 
+\end{bmatrix}$.
+
+\end{enumerate*}
+
+\begin{sol}
+
+    % Minha solução genial
+    
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 3 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Descreva todas as matrizes $S$ que diagonalizam as matrizes $A$ e $A^{-1}$:
+$$A = \begin{bmatrix}
+0 & 4 \\
+1 & 2 
+\end{bmatrix}.$$
+
+\begin{sol}
+
+    % Minha solução genial
+    
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 4 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Ache $\Lambda$ e $S$ que diagonalizem $A$
+$$A = \begin{bmatrix}
+0.6 & 0.9 \\
+0.4 & 0.1
+\end{bmatrix}.$$
+Qual limite de $\Lambda^k$ quando $k \to +\infty$? E o limite de $A^k$?
+
+\begin{sol}
+
+    % Minha solução genial
+    
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 5 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Seja $Q(\theta)$ a matriz de rotação do ângulo $\theta$ em $\bR^2$:
+$$Q(\theta) = \begin{bmatrix}
+\cos \theta & -\mbox{sen} \theta \\
+\mbox{sen} \theta & \cos \theta
+\end{bmatrix}.$$
+Ache os autovalores e autovetores de $Q(\theta)$ (eles podem ser complexos).
+
+\begin{sol}
+
+    % Minha solução genial
+    
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 6 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Suponha que $A$ e $B$ são duas matrizes $n \times n$ com os mesmo autovalores $\lambda_1, \ldots, \lambda_n$ e os mesmos autovetores $x_1, \ldots, x_n$. Suponha ainda que $x_1, \ldots, x_n$ são LI. Prove que $A = B$.
+
+\begin{sol}
+
+    % Minha solução genial
+    
+\end{sol}
+
+%\item Sejam $B$, $C$ e $D$ matrizes $2 \times 2$ com auto-valores $\{1,2\}$, $\{3,4\}$ e $\{5, 7\}$, respectivamente. Quais são os autovalores da matriz $4 \times 4$:
+%$$A = \begin{bmatrix}
+%B & C \\
+%0 & D
+%\end{bmatrix}.$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 7 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Seja $Q(\theta)$ como na Questão 5. Diagonalize $Q(\theta)$ e mostre que
+$$Q(\theta)^n = Q(n\theta).$$
+
+\begin{sol}
+
+    % Minha solução genial
+    
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 8 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Suponha que $G_{k+2}$ é a média dos dois números anteriores $G_{k+1}$ e $G_k$. Ache a matriz $A$ que faz com que
+$$\begin{bmatrix}
+G_{k+2}\\
+G_{k+1}\end{bmatrix} = A \begin{bmatrix}
+G_{k+1}\\
+G_k\end{bmatrix}.$$
+
+\begin{enumerate}
+
+\item Ache os autovalores e autovetores de $A$;
+
+\item Ache o limite de $A^n$ quando $n \to +\infty$;
+
+\item Mostre que $G_n$ converge para $2/3$ quando $G_0 = 0$ e $G_1 = 1$.
+
+\end{enumerate}
+
+\begin{sol}
+
+    % Minha solução genial
+    
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 9 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Ache a solução do sistema de EDOs usando o método de diagonalização:
+$$\begin{cases}
+u_1'(t) = 8u_1(t) + 3u_2(t),\\
+u_2'(t) = 2u_1(t) + 7u_2(t),
+\end{cases}$$
+onde $u(0) = (5, 10)$.
+
+\begin{sol}
+
+    % Minha solução genial
+    
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 10 %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Seja \( \mathcal{F} ( \R; \R ) \) o espaço vetorial das funções reais de uma variável real.
+    Considere em \( \mathcal{F} ( \R; \R ) \) o subespaço
+    \begin{equation*}
+        S \defeq \vspan \left\{ e^{ 2x } \sen x, e^{ 2x } \cos x, e^{ 2x } \right\}
+    .\end{equation*}
+    e o operador linear \( D : S \to S \) definido por \( D ( f ) = f' \).
+    Considere, ainda, as funções \( f_{ 1 } ( x ) = e^{ 2x } \sen x, f_{ 2 } ( x ) = e^{ 2x } \cos x \) e \( f_{ 3 } ( x ) = e^{ 2x } \) em \( \mathcal{F} ( \R; \R ) \).
+    Determine:
+    \begin{enumerate}[label=(\alph*)]
+        \item a matriz de \( D \) em relação à base \( \mathcal{B} = \left\{ f_{ 1 }, f_{ 2 }, f_{ 3 } \right\} \).
+            Lembre-se de que, dada a base \( \mathcal{B} \), podemos enxergar os elementos de \(  \) como vetores em \( \R^{ 3 } \).
+            Por exemplo:
+            \begin{equation*}
+                ( 1, 2, 3 )_{ \mathcal{B} } = f_{ 1 } + 2f_{ 2 } + 3f_{ 3 }
+            .\end{equation*}
+        \item os autovalores de \( D \) e as funções de \( S \) que são autovetores de \( D \).
+    \end{enumerate}
+
+\begin{sol}
+
+    % Minha solução genial
+    
+\end{sol}
+\end{enumerate}
+\end{document} 

@@ -1,0 +1,762 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel} % \usepackage[latin1]{inputenc}
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage[inline]{enumitem}
+\usepackage{xifthen} \usepackage{tikz}
+\usepackage{mathtools}
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+\input{../preamble}
+
+\numberwithin{equation}{section}
+
+\setlength{\parindent}{12 pt}
+
+\newenvironment{sol} 
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm} 
+} 
+% Objetos que aparecem *após* o ambiente. 
+% (você pode, por exemplo, modificar, 
+% ou remover, a barra horizontal} 
+{\noindent\rule{4cm}{.1mm}}
+
+\begin{document}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bfw}{\boldsymbol{w}}
+\newcommand{\bfv}{\boldsymbol{v}}
+\newcommand{\bfu}{\boldsymbol{u}}
+\newcommand{\bfx}{\boldsymbol{x}}
+\newcommand{\bfb}{\boldsymbol{b}}
+\newcommand{\bfe}{\boldsymbol{e}}
+
+\newcommand{\bvecc}[2]{%
+  \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+  \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+
+\title{Álgebra Linear - Soluções da Lista de Exercícios 9}
+
+\author{Caio Lins e Tiago da Silva}
+
+\date{\today}
+
+\maketitle
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 1 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Seja $B$ uma matriz $3 \times 3$ com autovalores 0, 1 e 2. Com  essa informação, ache:
+
+\begin{enumerate}
+
+\item o posto de $B$;
+
+\item o determinante de $B^TB$;
+
+\item os autovalores de $B^TB$;
+
+\item os autovalores de $(B^2 + I)^{-1}$.
+
+\end{enumerate}
+
+\begin{sol}
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Sabemos que a multiplicidade algébrica (MA) de cada autovalor de \( B \) é \( 1 \).
+            Com isso, como a multiplicidade geométrica (MG) de cada autovalor deve ser maior ou igual a \( 1 \) e menor ou igual à MA, concluímos que a MG de cada autovalor de \( B \) é exatamente \( 1 \).
+            Portanto, a dimensão do autoespaço correspondente ao autovalor \( 0 \) (que é o núcleo de \( B \)) tem dimensão \( 1 \) e, assim, pelo Teorema do Posto, \( B \) tem posto \( 2 \).
+
+        \item Naturalmente, se \( B \bfx = 0 \), então \( B^{ \transpose } B \bfx = 0 \) e, com isso, o núcleo de \( B \) está contido no núcleo de \( B^{ \transpose } B \).
+            Dessa forma, \( \dim N ( B^{ \transpose } B ) \geq 1 \) e, assim, \( \det B^{ \transpose } B = 0 \).
+
+        \item Não é possível saber exatamente quais são os autovalores de \( B^{ \transpose } B \), mas podemos afirmar, com certeza, que \( 0 \) é um deles.
+
+        \item Vamos calcular, primeiro, os autovalores de \( B^2 + I \).
+            Sabemos que \( \lambda \) é um autovalor de \( B^2 + I \) se, e somente se, \( \det ( B^2 + I - \lambda I ) = \det ( B^2 - ( \lambda - 1 ) I ) = 0 \).
+            Portanto, \( \lambda \) ser autovalor de \( B^2 + I \) é equivalente a \( \lambda - 1 \) ser autovalor de \( B^2 \).
+            Porém, é fácil perceber que se \( \alpha \) é autovalor de \( B \), então \( \alpha^2 \) é autovalor de \( B^2 \), com o mesmo autovetor.
+            Sendo assim, os três autovalores de \( B^2 \) são \( 0, 1 \) e \( 4 \) e, com isso, os autovalores de \( B^2 + I \) são \( 1, 2 \) e \( 5 \).
+            Agora, perceba que \( B^2 + I \) é invertível, pois todos seus autovalores são diferentes de \( 0 \).
+            Além disso, observe que se \( \lambda \) é autovalor de \( B^2 + I \), então \( \lambda^{ -1 } \) é autovalor de \( ( B^2 + I )^{ -1 } \) com o mesmo autovetor.
+            Portanto, os autovalores de \( ( B^2 + I )^{ -1 } \) são \( 1, 1/2 \) e \( 1/5 \).
+    \end{enumerate}
+    
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 2 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Ache os autovalores das seguintes matrizes
+
+\begin{enumerate*}
+
+\item $A = \begin{bmatrix}
+1 & 2 & 3\\
+0 & 4 & 5 \\
+0 & 0 & 6 
+\end{bmatrix}$;
+
+\item $B = \begin{bmatrix}
+0 & 0 & 1\\
+0 & 2 & 0 \\
+3 & 0 & 0 
+\end{bmatrix}$;
+
+\item $C = \begin{bmatrix}
+2 & 2 & 2\\
+2 & 2 & 2 \\
+2 & 2 & 2 
+\end{bmatrix}$.
+
+\end{enumerate*}
+
+\begin{sol}
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Calculando \( \det ( A - \lambda I ) \) obtemos
+            \begin{equation*}
+                ( 1 - \lambda ) ( 4 - \lambda ) ( 6 - \lambda )
+            .\end{equation*}
+            Portanto, os autovalores de \( A \) são os seus elementos da diagonal.
+            Observe que isso é verdade para qualquer matriz triangular.
+
+        \item Calculando \( \det ( B - \lambda I ) \) ficamos com
+            \begin{equation*}
+                \lambda^2 ( 2 - \lambda ) - 3 ( 2 - \lambda )
+                = ( 2 - \lambda ) ( \lambda^2 - 3 )
+            .\end{equation*}
+            Portanto, os autovalores de \( B \) são \( 2, \sqrt{ 3 } \) e \( - \sqrt{ 3 } \).
+
+        \item Aqui podemos prosseguir mais rapidamente reparando que, como \( C \) tem posto \( 1 \), já sabemos que \( 0 \) é um de seus autovalores, com multiplicidade algébrica pelo menos \( 2 \).
+            Como \( C \) não é a matriz nula, deve ser exatamente \( 2 \).
+            Além disso, não é difícil reparar que \( ( 1, 1, 1 ) \) é autovetor de \( C \), com autovalor correspondente igual a \( 6 \).
+            Dessa forma, os autovalores de \( C \) são \( 0 \) e \( 6 \).
+    \end{enumerate}
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 3 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Descreva todas as matrizes $S$ que diagonalizam as matrizes $A$ e $A^{-1}$:
+$$A = \begin{bmatrix}
+0 & 4 \\
+1 & 2 
+\end{bmatrix}.$$
+
+\begin{sol}
+
+    Calculando o polinômio característico de \( A \), obtemos
+    \begin{equation*}
+        p_{ A } ( \lambda ) = - \lambda ( 2 - \lambda ) - 4 = \lambda^2 - 2 \lambda - 4
+    ,\end{equation*}
+    cujas raízes são \( \lambda_{ 1 } = 1 + \sqrt{ 5 } \) e \( \lambda_{ 2 } = 1 - \sqrt{ 5 } \).
+    Vamos obter os autovetores correspondentes.
+    Temos
+    \begin{equation*}
+        A - \lambda_{ 1 } I =
+        \begin{bmatrix}
+            - 1 - \sqrt{ 5 } & 4 \\
+            1 & 1 - \sqrt{ 5 }
+        \end{bmatrix}
+    .\end{equation*}
+    Perceba que multiplicando a primeira coluna por \( \sqrt{ 5 } - 1 \) e somando com a segunda, eliminamos a segunda entrada e, de fato, a primeira também.
+    Logo, \( \bfv_{ 1 } = ( \sqrt{ 5 } - 1, 1 ) \).
+    Da mesma forma, temos
+    \begin{equation*}
+        A - \lambda_{ 2 } I =
+        \begin{bmatrix}
+            \sqrt{ 5 } - 1 & 4 \\
+            1 & 1 + \sqrt{ 5 }
+        \end{bmatrix}
+    .\end{equation*}
+    Analogamente, multiplicando a primeira coluna por \( - 1 - \sqrt{ 5 } \) e somando com a segunda, eliminamos a segunda entrada e, com efeito, a primeira também.
+    Portanto, \( \bfv_{ 2 } = ( - 1 - \sqrt{ 5 }, 1 ) \).
+    Logo, dados \( \alpha, \beta \in \R \backslash \left\{ 0 \right\} \) pondo
+    \begin{equation*}
+        S =
+        \begin{bmatrix}
+            \alpha \bfv_{ 1 } & \beta \bfv_{ 2 }
+        \end{bmatrix}
+        \text{ e }
+        \Lambda =
+        \begin{bmatrix}
+            \lambda_{ 1 } & 0 \\
+            0 & \lambda_{ 2 }
+        \end{bmatrix}
+    ,\end{equation*}
+    temos \( A = S \Lambda S^{ -1 } \) e, ainda, \( A^{ -1 } = S \Lambda^{ -1 } S^{ -1 } \).
+    Sendo assim, as matrizes \( S \) que diagonalizam \( A \) e \( A^{ -1 } \) são as matrizes da forma
+    \begin{equation*}
+        S = 
+        \begin{bmatrix}
+            \alpha \bfv_{ 1 } & \beta \bfv_{ 2 }
+        \end{bmatrix}
+    ,\end{equation*}
+    com \( \alpha, \beta \in \R \backslash \left\{ 0 \right\} \).
+
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 4 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Ache $\Lambda$ e $S$ que diagonalizem $A$
+$$A = \begin{bmatrix}
+0.6 & 0.9 \\
+0.4 & 0.1
+\end{bmatrix}.$$
+Qual limite de $\Lambda^k$ quando $k \to +\infty$? E o limite de $A^k$?
+
+\begin{sol}
+
+    Utilizando a propriedade de que \( \lambda_{ 1 } + \lambda_{ 2 } = \operatorname{tr } A = 0.7 \) e \( \lambda_{ 1 } \lambda_{ 2 } = \det A = - 0.3 \), concluímos que \( \lambda_{ 1 } = 1 \) e \( \lambda_{ 2 } = - 0.3 \).
+    Calculando os núcleos de \( A - \lambda_{ 1 } I \) e \( A - \lambda_{ 2 } I \), obtemos \( \bfv_{ 1 } = ( 9, 4 ) \) e \( \bfv_{ 2 } = ( 1, -1 ) \).
+    Portanto, pondo
+    \begin{equation*}
+        S =
+        \begin{bmatrix}
+            \bfv_{ 1 } & \bfv_{ 2 }
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            9 & 1 \\
+            4 & -1
+        \end{bmatrix}
+        \text{ e }
+        \Lambda =
+        \begin{bmatrix}
+            \lambda_{ 1 } & 0 \\
+            0 & \lambda_{ 2 }
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            1 & 0 \\
+            0 & - 0.3
+        \end{bmatrix}
+    ,\end{equation*}
+    temos \( A = S \Lambda S^{ -1 } \).
+    Observe que, como \( \Lambda \) é diagonal (não vamos nos preocupar muito com os detalhes aqui), temos
+    \begin{equation*}
+        \Lambda^{ k } = 
+        \begin{bmatrix}
+            1 & 0 \\
+            0 & (- 0.3)^{ k }
+        \end{bmatrix}
+    .\end{equation*}
+    Como \( \abs{ - 0.3 } < 1 \), temos que \( ( - 0.3 )^{ k } \to 0 \) quando \( k \to +\infty \).
+    Dessa forma,
+    \begin{equation*}
+        \lim \Lambda^{ k } =
+        \begin{bmatrix}
+            1 & 0 \\
+            0 & 0
+        \end{bmatrix}
+    .\end{equation*}
+    Com isso, vale que
+    \begin{align*}
+        \lim A^{ k } &= \lim S \Lambda^{ k } S^{ -1 } \\
+                     &= S ( \lim \Lambda^{ k } ) S^{ -1 } \\
+                     &=
+                     S \begin{bmatrix}
+                         1 & 0 \\
+                         0 & 0
+                     \end{bmatrix}
+                     S^{ -1 }
+    .\end{align*}
+    Calculando \( S^{ -1 } \) pela fórmula para a inversa de matriz \( 2 \times 2 \), obtemos
+    \begin{equation*}
+        S^{ -1 } =
+        \frac{ 1 }{ -13 }
+        \begin{bmatrix}
+            -1 & -1 \\
+            -4 & 9
+        \end{bmatrix}
+    ,\end{equation*}
+    e, assim,
+    \begin{equation*}
+        \lim A^{ k } = 
+         S \begin{bmatrix}
+             1 & 0 \\
+             0 & 0
+         \end{bmatrix}
+         S^{ -1 }
+         =
+         \frac{ 1 }{ 13 }
+         \begin{bmatrix}
+             9 & 9 \\
+             4 & 4
+         \end{bmatrix}
+    .\end{equation*}
+
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 5 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Seja $Q(\theta)$ a matriz de rotação do ângulo $\theta$ em $\bR^2$:
+$$Q(\theta) = \begin{bmatrix}
+\cos \theta & -\mbox{sen} \theta \\
+\mbox{sen} \theta & \cos \theta
+\end{bmatrix}.$$
+Ache os autovalores e autovetores de $Q(\theta)$ (eles podem ser complexos).
+
+\begin{sol}
+
+    Seja \( p_{ \theta } ( \lambda ) \) o polinômio característico de \( Q ( \theta ) \).
+    Ou seja, temos
+    \begin{equation*}
+        p_{ \theta } ( \lambda ) = ( \cos \theta - \lambda )^2 + ( \sen \theta )^2
+        = \lambda^2 - 2 ( \cos \theta ) \lambda + 1
+    .\end{equation*}
+    Pela fórmula quadrática, suas raízes são
+    \begin{equation*}
+        \lambda_{ 1 } ( \theta ) = \cos \theta + i \abs{ \sen \theta }
+        \text{ e }
+        \lambda_{ 2 } ( \theta ) = \cos \theta - i \abs{ \sen \theta }
+    .\end{equation*}
+    Agora observe que, se \( \theta \in [0, \pi) \) então \( \lambda_{ 1 } ( \theta ) = \cos \theta + i \sen \theta \) e \( \lambda_{ 2 } ( \theta ) = \cos \theta - i \sen \theta \) e, se \( \theta \in [\pi, 2 \pi) \), então \( \lambda_{ 1 } ( \theta ) = \cos \theta - i \sen \theta \) e \( \lambda_{ 2 } ( \theta ) = \cos \theta + i \sen \theta \).
+    De qualquer forma, os autovalores são \( \cos \theta + i \sen \theta \) e \( \cos \theta - i \sen \theta \).
+    Convencionemos, portanto, \( \lambda_{ 1 } ( \theta ) = \cos \theta + i \sen \theta \) e \( \lambda_{ 2 } ( \theta ) = \cos \theta - i \sen \theta \).
+
+    Encontremos agora os autovetores.
+    Temos
+    \begin{equation*}
+        Q ( \theta ) - \lambda_{ 1 } ( \theta ) I =
+        \begin{bmatrix}
+            - i \sen \theta & - \sen \theta \\
+            \sen \theta & - i \sen \theta
+        \end{bmatrix}
+    .\end{equation*}
+    Percebe-se facilmente que \( \bfv_{ 1 } = ( i, 1 ) \) pertence ao núcleo dessa matriz.
+    Da mesma forma, temos
+    \begin{equation*}
+        Q ( \theta ) - \lambda_{ 2 } ( \theta ) I =
+        \begin{bmatrix}
+            i \sen \theta & - \sen \theta \\
+            \sen \theta & i \sen \theta
+        \end{bmatrix}
+    .\end{equation*}
+    Novamente, percebemos sem dificuldade que \( \bfv_{ 2 } = ( i, -1 ) \) pertence ao núcleo dessa matriz.
+
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 6 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Suponha que $A$ e $B$ são duas matrizes $n \times n$ com os mesmo autovalores $\lambda_1, \ldots, \lambda_n$ e os mesmos autovetores $\bfx_1, \ldots, \bfx_n$. Suponha ainda que $\bfx_1, \ldots, \bfx_n$ são LI. Prove que $A = B$.
+
+\begin{sol}
+
+    Vamos provar o resultado mais geral:
+    \begin{prop*}
+        Se \( A \) e \( B \) são matrizes \( n \times n \), \( \mathcal{A} = \left\{ \bfv_{ 1 }, \dots, \bfv_{ n } \right\} \subset \R^{ n } \) um conjunto de vetores L.I. e, ainda, \( A \bfv_{ i } = B \bfv_{ i } \) para todo \( i \), então \( A = B \).
+    \end{prop*}
+    \begin{proof}
+        Como \( \mathcal{A} \) é formado por \( n \) vetores L.I., compõe uma base para \( \R^{ n } \).
+        Sendo \( \mathcal{B} = \left\{ \bfe_{ 1 }, \dots, \bfe_{ n } \right\} \) a base canônica do \( \R^{ n } \), sabemos que, dado \( \bfe_{ j } \in \mathcal{B} \), existem escalares \( \alpha_{ 1, j }, \dots, \alpha_{ n, j } \) tais que
+        \begin{equation*}
+            \bfe_{ j } = \sum_{ i=1 }^{ n } \alpha_{ i, j } \bfv_{ i }
+        .\end{equation*}
+        Agora, observe que para todo \( j = 1, \dots, n \) temos
+        \begin{align*}
+            A \bfe_{ j } &=
+            A \left(
+                \sum_{ i=1 }^{ n } \alpha_{ i, j } \bfv_{ i }
+            \right) \\
+                         &= \sum_{ i=1 }^{ n } \alpha_{ i, j } A \bfv_{ i } \\
+                         &= \sum_{ i=1 }^{ n } \alpha_{ i, j } B \bfv_{ i } \\
+                         &= B \left(
+                             \sum_{ i=1 }^{ n } \alpha_{ i, j } \bfv_{ i }
+                         \right) \\
+                         &= B \bfe_{ j }
+        .\end{align*}
+        Sendo assim, a \( j \)-ésima coluna de \( A \) é igual à \( j \)-ésima coluna de \( B \) para todo \( j = 1, \dots, n \), ou seja, \( A = B \).
+    \end{proof}
+    Para a questão, basta tomar \( \mathcal{A} = \left\{ \bfx_{ 1 }, \dots, \bfx_{ n } \right\} \).
+    
+\end{sol}
+
+%\item Sejam $B$, $C$ e $D$ matrizes $2 \times 2$ com auto-valores $\{1,2\}$, $\{3,4\}$ e $\{5, 7\}$, respectivamente. Quais são os autovalores da matriz $4 \times 4$:
+%$$A = \begin{bmatrix}
+%B & C \\
+%0 & D
+%\end{bmatrix}.$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 7 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Seja $Q(\theta)$ como na Questão 5. Diagonalize $Q(\theta)$ e mostre que
+$$Q(\theta)^n = Q(n\theta).$$
+
+\begin{sol}
+
+    Pelo desenvolvimento da Questão \( 5 \), sabemos que pondo
+    \begin{equation*}
+        S =
+        \begin{bmatrix}
+            i & i \\
+            1 & -1
+        \end{bmatrix}
+        \text{ e }
+        \Lambda =
+        \begin{bmatrix}
+            \cos \theta + i \sen \theta & 0 \\
+            0 & \cos \theta - i \sen \theta
+        \end{bmatrix}
+    ,\end{equation*}
+    temos \( Q ( \theta ) = S \Lambda S^{ -1 } \).
+    Dessa forma,
+    \begin{align*}
+        Q ( \theta )^{ n } &= ( S \Lambda S^{ -1 } )^{ n } \\
+                           &= S ( \Lambda^{ n } ) S^{ -1 } \\
+                           &=
+                           S
+                           \begin{bmatrix}
+                                ( \cos \theta + i \sen \theta )^{ n } & 0 \\
+                                0 & ( \cos \theta - i \sen \theta )^{ n }
+                           \end{bmatrix}
+                           S^{ -1 }
+    .\end{align*}
+    Pela Fórmula de De Moivre, sabemos que \( ( \cos \theta \pm i \sen \theta )^{ n } = \cos n \theta \pm i \sen n \theta \).
+    Portanto,
+    \begin{equation*}
+        S
+        \begin{bmatrix}
+             ( \cos \theta + i \sen \theta )^{ n } & 0 \\
+             0 & ( \cos \theta - i \sen \theta )^{ n }
+        \end{bmatrix}
+        S^{ -1 }
+        =
+        S
+        \begin{bmatrix}
+             \cos n \theta + i \sen n \theta & 0 \\
+             0 & \cos n \theta - i \sen n \theta
+        \end{bmatrix}
+        S^{ -1 }
+        = Q ( n \theta )
+    .\end{equation*}
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 8 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Suponha que $G_{k+2}$ é a média dos dois números anteriores $G_{k+1}$ e $G_k$. Ache a matriz $A$ que faz com que
+$$\begin{bmatrix}
+G_{k+2}\\
+G_{k+1}\end{bmatrix} = A \begin{bmatrix}
+G_{k+1}\\
+G_k\end{bmatrix}.$$
+
+\begin{enumerate}
+
+\item Ache os autovalores e autovetores de $A$;
+
+\item Ache o limite de $A^n$ quando $n \to +\infty$;
+
+\item Mostre que $G_n$ converge para $2/3$ quando $G_0 = 0$ e $G_1 = 1$.
+
+\end{enumerate}
+
+\begin{sol}
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Não é difícil perceber que devemos ter
+            \begin{equation*}
+                A =
+                \begin{bmatrix}
+                    \frac{ 1 }{ 2 } & \frac{ 1 }{ 2 } \\
+                    1 & 0
+                \end{bmatrix}
+            .\end{equation*}
+            Pelo traço e determinante de \( A \), temos \( \lambda_{ 1 } = 1 \) e \( \lambda_{ 2 } = - \frac{ 1 }{ 2 } \).
+            Calculando os núcleos de \( A - \lambda_{ 1 } I \) e \( A - \lambda_{ 2 } I \), obtemos \( \bfv_{ 1 } = ( 1, 1 ) \) e \( \bfv_{ 2 } = ( 1 , - 2 ) \).
+
+        \item Pondo
+            \begin{equation*}
+                S =
+                \begin{bmatrix}
+                    1 & 1 \\
+                    1 & -2
+                \end{bmatrix}
+                \text{ e }
+                \Lambda =
+                \begin{bmatrix}
+                    1 & 0 \\
+                    0 & - \frac{ 1 }{ 2 }
+                \end{bmatrix}
+            \end{equation*}
+            temos \( A = S \Lambda S^{ -1 } \), de modo que
+            \begin{align*}
+                \lim A^{ n } &= \lim ( S \Lambda S^{ -1 } )^{ n } \\
+                             &= \lim S \Lambda^{ n } S^{ -1 } \\
+                             &= S ( \lim \Lambda^{ n } ) S^{ -1 }
+            .\end{align*}
+            Analogamente à Questão 4, temos
+            \begin{equation*}
+                \lim \Lambda^{ n } =
+                \begin{bmatrix}
+                    1 & 0 \\
+                    0 & 0
+                \end{bmatrix}
+            .\end{equation*}
+            Calculando \( S^{ -1 } \) ficamos com
+            \begin{equation*}
+                S^{ -1 } =
+                \frac{ 1 }{ 3 }
+                \begin{bmatrix}
+                    2 & 1 \\
+                    1 & -1
+                \end{bmatrix}
+            .\end{equation*}
+            Assim,
+            \begin{equation*}
+                S ( \lim \Lambda^{ n } ) S^{ -1 }
+                =
+                \frac{ 1 }{ 3 }
+                \begin{bmatrix}
+                    1 & 1 \\
+                    1 & -2
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1 & 0 \\
+                    0 & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    2 & 1 \\
+                    1 & -1
+                \end{bmatrix}
+                =
+                \frac{ 1 }{ 3 }
+                \begin{bmatrix}
+                    2 & 1 \\
+                    2 & 1
+                \end{bmatrix}
+            .\end{equation*}
+
+        \item Seja \( G = \lim G_{ n } \) quando \( n \to \infty \).
+            Observe que \( G = \lim G_{ n+1 } = \lim G_{ n+2 } \).
+            Com isso,
+            \begin{align*}
+                \begin{bmatrix}
+                    G \\
+                    G
+                \end{bmatrix}
+                &=
+                \begin{bmatrix}
+                    \lim G_{ n+2 } \\
+                    \lim G_{ n+1 }
+                \end{bmatrix} \\
+                &= \lim
+                \begin{bmatrix}
+                    G_{ n+2 } \\
+                    G_{ n+1 }
+                \end{bmatrix} \\
+                &= \lim \left(
+                    A^{ n+1 }
+                    \begin{bmatrix}
+                        G_{ 1 } \\
+                        G_{ 0 }
+                    \end{bmatrix}
+                \right) \\
+                &= ( \lim A^{ n+1 } )
+                \begin{bmatrix}
+                    G_{ 1 } \\
+                    G_{ 0 }
+                \end{bmatrix} \\
+                &= \frac{ 1 }{ 3 }
+                \begin{bmatrix}
+                    2 & 1 \\
+                    2 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    G_{ 1 } \\
+                    G_{ 0 }
+                \end{bmatrix} \\
+                &=
+                \begin{bmatrix}
+                    \frac{ 2 G_{ 1 } + G_{ 0 } }{ 3 } \\
+                    \frac{ 2 G_{ 1 } + G_{ 0 } }{ 3 }
+                \end{bmatrix}
+            .\end{align*}
+            Sendo assim, \( G = ( 2 G_{ 1 } + G_{ 0 } ) / 3 \).
+            Se \( G_{ 0 } = 0 \) e \( G_{ 1 } = 1 \), então \( G = 2/3 \).
+    \end{enumerate}
+    
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 9 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Ache a solução do sistema de EDOs usando o método de diagonalização:
+$$\begin{cases}
+u_1'(t) = 8u_1(t) + 3u_2(t),\\
+u_2'(t) = 2u_1(t) + 7u_2(t),
+\end{cases}$$
+onde $u(0) = (5, 10)$.
+
+\begin{sol}
+
+    Pondo
+    \begin{equation*}
+        \bfu ( t ) =
+        \begin{bmatrix}
+            u_{ 1 } ( t ) \\
+            u_{ 2 } ( t )
+        \end{bmatrix}
+    ,\end{equation*}
+    o sistema de EDOs pode ser reescrito como
+    \begin{equation*}
+        \bfu'( t ) = A \bfu ( t )
+    ,\end{equation*}
+    onde
+    \begin{equation*}
+        A =
+        \begin{bmatrix}
+            8 & 3 \\
+            2 & 7
+        \end{bmatrix}
+    ,\end{equation*}
+    com
+    \begin{equation*}
+        \bfu ( 0 ) = ( 5, 10 )
+    .\end{equation*}
+    Como visto em aula, a solução desses sistema é dada por
+    \begin{equation*}
+        \bfu ( t ) = e^{ At } \bfu ( 0 )
+    .\end{equation*}
+    Para calcular \( e^{ At } \) vamos, primeiro, diagonalizar \( A \).
+    Não estou com paciência para fazer isso pela vigésima vez nessa lista, então aceite que temos \( A = S \Lambda S^{ -1 } \), onde
+    \begin{equation*}
+        S =
+        \begin{bmatrix}
+            3 & 1 \\
+            2 & -1
+        \end{bmatrix}
+        \text{ e }
+        \Lambda =
+        \begin{bmatrix}
+            10 & 0 \\
+            0 & 5
+        \end{bmatrix}
+    .\end{equation*}
+    Com isso,
+    \begin{equation*}
+        e^{ At } = S e^{ \Lambda t } S^{ -1 } =
+        \frac{ 1 }{ 5 }
+        \begin{bmatrix}
+            3 e^{ 10 t } + 2 e^{ 5 t } & 3 e^{ 10 t } - 3 e^{ 5 t } \\
+            2 ( e^{ 10 t } - e ^{ 5t } ) & 2 e^{ 10t } + 3  e^{ 5t }
+        \end{bmatrix}
+    .\end{equation*}
+    Dessa forma,
+    \begin{equation*}
+        \bfu ( t ) = e^{ At } \bfu ( 0 ) =
+        \begin{bmatrix}
+            9 e^{ 10 t } - 4 e^{ 5 t } \\
+            6 e^{ 10 t } - 4 e^{ 5 t }
+        \end{bmatrix}
+    .\end{equation*}
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 10 %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Seja \( \mathcal{F} ( \R; \R ) \) o espaço vetorial das funções reais de uma variável real.
+    Considere em \( \mathcal{F} ( \R; \R ) \) o subespaço
+    \begin{equation*}
+        S \defeq \vspan \left\{ e^{ 2x } \sen x, e^{ 2x } \cos x, e^{ 2x } \right\}
+    .\end{equation*}
+    e o operador linear \( D : S \to S \) definido por \( D ( f ) = f' \).
+    Considere, ainda, as funções \( f_{ 1 } ( x ) = e^{ 2x } \sen x, f_{ 2 } ( x ) = e^{ 2x } \cos x \) e \( f_{ 3 } ( x ) = e^{ 2x } \) em \( \mathcal{F} ( \R; \R ) \).
+    Determine:
+    \begin{enumerate}[label=(\alph*)]
+        \item a matriz de \( D \) em relação à base \( \mathcal{B} = \left\{ f_{ 1 }, f_{ 2 }, f_{ 3 } \right\} \).
+            Lembre-se de que, dada a base \( \mathcal{B} \), podemos enxergar os elementos de \(  \) como vetores em \( \R^{ 3 } \).
+            Por exemplo:
+            \begin{equation*}
+                ( 1, 2, 3 )_{ \mathcal{B} } = f_{ 1 } + 2f_{ 2 } + 3f_{ 3 }
+            .\end{equation*}
+        \item os autovalores de \( D \) e as funções de \( S \) que são autovetores de \( D \).
+    \end{enumerate}
+
+\begin{sol}
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Para obter a matriz \( [D]_{ \mathcal{B} } \) de \( D \) com relação à base \( \mathcal{B} \), vamos calcular \( D ( f_{ i } ) \) para cada \( f_{ i } \in \mathcal{B} \):
+            \begin{equation*}
+                D ( f_{ 1 } ) ( x ) = f_{ 1 }' ( x ) = 2 e^{ 2x } \sen x + e^{ 2x } \cos x = 2 f_{ 1 } ( x ) + f_{ 2 } ( x )
+            .\end{equation*}
+            Portanto, a primeira coluna de \( [D]_{ \mathcal{B} } \) é dada por \( D ( f_{ 1 } ) = 2 f_{ 1 } + f_{ 2 } = ( 2, 1, 0 )_{ \mathcal{B} } \).
+            Analogamente, temos
+            \begin{align*}
+                D ( f_{ 2 } ) ( x ) &= f_{ 2 }' ( x ) = - e^{ 2x } \sen x + 2 e^{ 2x } \cos x = - f_{ 1 } ( x ) + f_{ 2 } ( x ) \\
+                D ( f_{ 3 } ) ( x ) &= f_{ 3 }' ( x ) = 2 e^{ 2x } = 2 f_{ 3 } ( x )
+            .\end{align*}
+            Portanto, \( D ( f_{ 2 } ) = - f_{ 1 } + 2 f_{ 2 } = ( - 1, 2, 0 )_{ \mathcal{B} } \) e \( D ( f_{ 3 } ) = 2 f_{ 3 } = ( 0, 0, 2 )_{ \mathcal{B} } \).
+
+            Sendo assim, temos
+            \begin{equation*}
+                [D]_{ \mathcal{B} } =
+                \begin{bmatrix}
+                    2 & -1 & 0 \\
+                    1 & 2 & 0 \\
+                    0 & 0 & 2
+                \end{bmatrix}
+            .\end{equation*}
+
+        \item Fazendo as contas, obtemos que os autovalores de \( [D]_{ \mathcal{B} } \) são \( 2, 2 + i \) e \( 2 - i \).
+            Fazendo mais contas ainda, concluímos que os autovetores correspondentes são \( ( 0, 0, 1 )_{ \mathcal{B} }, ( i, 1, 0 )_{ \mathcal{B} } \) e \( ( 1, i, 0 )_{ \mathcal{B} } \).
+            Ou seja, as funções que são autovetores de \( D \) são \( g_{ 1 } ( x ) = e^{ 2x } \), \( g_{ 2 } ( x ) = i e^{ 2x } \sen x + e^{ 2x } \cos x \) e \( g_{ 3 } ( x ) = e^{ 2x } \sen x + i e^{ 2x } \cos x \).
+    \end{enumerate}
+\end{sol}
+\end{enumerate}
+\end{document} 

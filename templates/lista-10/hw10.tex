@@ -1,0 +1,278 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel} % \usepackage[latin1]{inputenc}
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage[inline]{enumitem}
+\usepackage{xifthen} \usepackage{tikz}
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+\numberwithin{equation}{section}
+
+\setlength{\parindent}{12 pt}
+
+\begin{document}
+
+\newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+\newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+\newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+\newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+\newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+\newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+\newtheorem*{hipo}{Hipóteses}
+\newtheorem*{nota}{Notação}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfb}{\mathbf{b}}
+
+\newcommand{\bvecc}[2]{%
+  \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+  \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+\newenvironment{sol}
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm}
+}
+% Objetos que aparecem *após* o ambiente; 
+% nestas configurações, estamos desenhando uma 
+% linha horizontal. 
+% (você pode, por exemplo, modificar 
+% ou remover este elemento gráfico) 
+{\noindent\rule{4cm}{.1mm}}
+
+
+\title{Álgebra Linear - Lista de Exercícios 10}
+
+\author{escreva seu nome aqui}
+
+\date{\today}
+
+\maketitle
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 1 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Seja $A = \begin{bmatrix}
+1 & b \\
+b & 1
+\end{bmatrix}$.
+
+\begin{enumerate}
+
+\item Ache $b$ tal que $A$ tenha um autovalor negativo.
+
+	\begin{sol} 
+		% escreva sua solução aqui.    
+	\end{sol} 
+
+\item Como podemos concluir que $A$ precisa ter um pivô negativo?
+
+	\begin{sol} 
+		% escreva sua solução aqui.    
+	\end{sol} 
+
+\item Como podemos concluir que $A$ não pode ter dois autovalores negativos?
+
+	\begin{sol} 
+		% escreva sua solução aqui.    
+	\end{sol} 
+
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 2 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Em quais das seguintes classes as matrizes $A$ e $B$ abaixo pertencem: invertível, ortogonal, projeção, permutação, diagonalizável, Markov?
+$$A = \begin{bmatrix}
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 0
+\end{bmatrix} \mbox{ e } B = \frac{1}{3}\begin{bmatrix}
+1 & 1 & 1 \\
+1 & 1 & 1 \\
+1 & 1 & 1
+\end{bmatrix}.$$
+Quais das seguintes fatorações são possíveis para $A$ e $B$? $LU$, $QR$, $S\Lambda S^{-1}$ ou $Q\Lambda Q^T$?
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 3 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Complete a matriz $A$ abaixo para que seja de Markov e ache o autovetor estacionário. Sua conclusão é válida para qualquer matriz simétrica de Markov $A$? Por quê?
+$$A = \begin{bmatrix}
+0.7 & 0.1 & 0.2 \\
+0.1 & 0.6 & 0.3 \\
+* & * & *
+\end{bmatrix}$$
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 4 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Dizemos que $\cM$ é um grupo de matrizes invertíveis se $A, B \in \cM$ implica $AB \in \cM$ e $A^{-1} \in \cM$. Quais dos conjuntos abaixo é um grupo?  
+
+\begin{enumerate}
+
+\item O conjunto das matrizes positivas definidas;
+
+\item o conjunto das matrizes ortogonais;
+
+\item o conjunto $\{e^{tC} \ ; \ t \in \bR\}$, para uma matriz $C$ fixa;
+
+\item o conjunto das matrizes com determinante igual a 1.
+
+\end{enumerate}
+
+\begin{sol} 
+	\vspace{-\baselineskip}  
+	\begin{enumerate} 
+		\item % item (a) 
+		\item % item (b) 
+		\item % item (c) 
+		\item % item (d) 
+	\end{enumerate} 
+\end{sol} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 5 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Sejam $A$ e $B$ matrizes simétricas e positivas definidas. Prove que os autovalores de $AB$ são positivos. Podemos dizer que $AB$ é simétrica e positiva definida?
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 6 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Ache a forma quadrática associada à matriz $A = \begin{bmatrix}
+1 & 5 \\
+7 & 9
+\end{bmatrix}$. Qual o sinal dessa forma quadrática? Positivo, negativo ou ambos?
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 7 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Prove os seguintes fatos:
+
+\begin{enumerate}
+
+\item Se $A$ e $B$ são similares, então $A^2$ e $B^2$ também o são.
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+\item $A^2$ e $B^2$ podem ser similares sem $A$ e $B$ serem similares.
+
+\item $\begin{bmatrix}
+3 & 0 \\
+0 & 4
+\end{bmatrix}$ é similar à $\begin{bmatrix}
+3 & 1 \\
+0 & 4
+\end{bmatrix}$.
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+\item $\begin{bmatrix}
+3 & 0 \\
+0 & 3
+\end{bmatrix}$ não é similar à $\begin{bmatrix}
+3 & 1 \\
+0 & 3
+\end{bmatrix}$.
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 8 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Ache os valores singulares (como na decomposição SVD) da matriz $A = \begin{bmatrix}
+1 & 1 \\
+1 & 0
+\end{bmatrix}$.
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 9 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Suponha que as colunas de $A$ sejam $\bfw_1, \ldots, \bfw_n$ que são vetores ortogonais com comprimentos $\sigma_1, \ldots, \sigma_n$. Calcule $A^TA$. Ache a decomposição SVD de $A$.
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+\end{enumerate}
+\end{document} 

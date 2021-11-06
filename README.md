@@ -13,3 +13,4 @@ Repositório para disponibilizar o material feito pelos monitores da disciplina 
 * 01/10: https://youtu.be/OmynVKbAuz4
 * 15/10: https://youtu.be/iUszkiAMRfo
 * 22/10: https://youtu.be/mCPia6ZBjKE
+* 06/11: https://youtu.be/BlNSmErb3-k

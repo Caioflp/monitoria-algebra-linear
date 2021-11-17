@@ -1,0 +1,236 @@
+\documentclass[leqno]{article}
+
+\usepackage[brazil]{babel} \usepackage[utf8]{inputenc}
+\usepackage{a4wide}
+\setlength{\oddsidemargin}{-0.2in}
+% % \setlength{\oddsidemargin}{0.2in}
+\setlength{\evensidemargin}{-0.2in}
+% % \setlength{\evensidemargin}{0.5in}
+% % \setlength{\textwidth}{5.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1.2in}
+\setlength{\textheight}{10in}
+\usepackage[]{amsfonts} \usepackage[]{amsmath}
+\usepackage[]{amssymb} \usepackage[]{latexsym}
+\usepackage{graphicx,color} \usepackage{amsthm}
+\usepackage{mathrsfs} \usepackage{url}
+\usepackage{cancel} \usepackage[inline]{enumitem}
+\usepackage{xifthen} \usepackage{tikz}
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+\numberwithin{equation}{section}
+
+\setlength{\parindent}{12 pt}
+
+\newenvironment{sol}
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm}
+}
+% Objetos que aparecem *após* o ambiente; 
+% nestas configurações, estamos desenhando uma 
+% linha horizontal. 
+% (você pode, por exemplo, modificar 
+% ou remover este elemento gráfico) 
+{\noindent\rule{4cm}{.1mm}}
+
+\begin{document}
+
+\newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+\newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+\newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+\newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+\newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+\newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+\newtheorem*{hipo}{Hipóteses}
+\newtheorem*{nota}{Notação}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfb}{\mathbf{b}}
+
+\newcommand{\bvecc}[2]{%
+  \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+  \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+
+\title{Álgebra Linear - Lista de Exercícios 11 - Simulado}
+
+\author{escreva seu nome aqui} 
+
+\date{}
+
+\maketitle
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 1 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Verdadeiro ou falso (prove ou dê um contra-exemplo):
+
+\begin{enumerate}
+
+\item Se $A$ é singular, então $AB$ também é singular.
+
+\item O determinante de $A$ é sempre o produto de seus pivôs.
+
+\item O determinante de $A - B$ é $\det A - \det B$.
+
+\item $AB$ e $BA$ tem o mesmo determinante.
+
+\end{enumerate}
+
+\begin{sol} 
+	\vspace{-\baselineskip} 
+	\begin{enumerate} 
+		\item % item (a) 
+		\item % item (b) 
+		\item % item (c) 
+		\item % item (d)
+	\end{enumerate}    
+\end{sol} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 2 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Sejam $u$ e $v$ vetores ortonormais em $\bR^2$ e defina $A = uv^T$. Calcule $A^2$ para descobrir os autovalores de $A$. Verifique que o traço de $A$ é $\lambda_1 + \lambda_2$.
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 3 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item A matriz $B$ tem autovalores 1 e 2, $C$ tem autovalores 3 e 4 e $D$ tem autovalores 5 e 7 (todas são matrizes $2 \times 2$). Ache os autovalores de $A$:
+$$A = \begin{bmatrix}
+B & C \\
+0 & D
+\end{bmatrix}.$$
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 4 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Seja $D$ uma matriz $n \times n$ só com 1's em suas entradas. Procure a inversa da matriz $A = I + D$ dentre as matrizes $I + cD$ e ache o número $c$ correto.
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 5 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Vamos resolver uma EDO de segunda ordem usando o que aprendemos. Considere $y'' = 5y' + 4y$ com $y(0) = C_1$ e $y'(0) = C_2$. Defina $u_1 = y$ e $u_2 = y'$. Escreva $\bfu'(t) = A\bfu(t)$ e ache a solução da equação.
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 6 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Se $A$ é simétrica e todos seus autovalores são iguais a $\lambda$. O que podemos dizer sobre $A$?
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 7 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Suponha que $C$ é positiva definida e que $A$ tenha as colunas LI. Mostre que $A^TCA$ é positiva definida.
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 8 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Quais são os autovalores de $A$ se ela for similar a $A^{-1}$?
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 9 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Suponha que $A$ é quadrada, mostre que $\sigma_1 \geq |\lambda|$, para qualquer autovalor $\lambda$ de $A$, onde $\sigma_1$ é o primeiro valor singular de $A$.
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 10 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Ache a decomposição SVD da matriz
+$$A = \begin{bmatrix}
+1 & 0 & 1 & 0\\
+0 & 1 & 0 & 1 \\
+\end{bmatrix}.$$
+
+\begin{sol} 
+	% escreva sua solução aqui.    
+\end{sol} 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document} 
